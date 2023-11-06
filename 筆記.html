@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>建立vite專案</h2>
+  <pre class="prettyprint">
+    <xmp>
+      //安裝
+      npm create vite@latest
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10319331" target="_blank">試試用Vue建立網站吧系列</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>引入Bootstrap套件</h2>
+  <pre class="prettyprint">
+    <xmp>
+      //安裝
+      npm install bootstrap@v5.3.1
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://www.npmjs.com/package/bootstrap" target="_blank">bootstrap</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>sass</h2>
+  <h3>建立預處理器</h3>
+  <p>
+    根目錄/ src / assets 底下新增 all.scss 檔案內引入 bootstrap 。
+    下面語法會讓系統透過專案根目錄的相對路徑找到 node_modules ，再從中尋找 bootstrap 的 scss 文件並引入。
+  </p>
+  <pre class="prettyprint">
+    <xmp>
+      @import "bootstrap/scss/bootstrap.scss";   #scss環境裡可以省略.scss
+    </xmp>
+  </pre>
+  <h3>安裝 sass 套件</h3>
+  <p>系統跳出「Passing percentage units to the global abs() function is deprecated...」錯誤訊息。是因為 Sass 從 1.65.0 版本開始，不建議將百分比單位傳遞給全域 abs()</p>
+  <pre class="prettyprint">
+    <xmp>
+      npm i -D sass@1.64.2  #在終端機輸入
+    </xmp>
+  </pre>
+  <h3>與進入點建立關係</h3>
+  <p>進入點 main.js 檔案內寫 import 引入專案根目錄下的 bootstrap。</p>
+  <pre class="prettyprint">
+    <xmp>
+      import './assets/all.scss';
+    </xmp>
+  </pre>
+  <hr>
+  <h2>路由</h2>
+  <pre class="prettyprint">
+    <xmp>
+      npm install vue-router@4
+    </xmp>
+  </pre>
+  <h3>新增 route.js</h3>
+  <pre class="prettyprint">
+    <xmp>
+      // Vue Router 的實例必須有 createRouter 和 createWebHistory 這兩個函數。
+      // 有了 Vue Router 的實例就可以使用 <router-view> 標籤來渲染匹配到的路由元件內容。
+      import { createRouter, createWebHistory } from 'vue-router'
+      import Home from '../views/Home.vue'
+      import Login from '../views/Login.vue'
+
+      const router = createRouter({
+      // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
+      // 錄或子網站）就建議使用這個參數來設置。若無任何子目錄則可寫 history: createWebHistory()
+        history: createWebHistory(import.meta.env.BASE_URL),
+        routes: [
+          {path: '/',component: Home},
+          {path: '/login',component: Login}
+        ]
+      })
+
+      // 將路由實例導出，以便其他地方可以導入並使用它
+      export default router
+    </xmp>
+  </pre>
+  <h3>修改 main.js</h3>
+  <pre class="prettyprint">
+    <xmp>
+      import { createApp } from 'vue'
+      import App from './App.vue'
+      import router from './router'  // 引入路由
+
+      // 建立 Vue 實體元件
+      const app = createApp(App);
+      //使 app 的所有子元件
+      app.use(router);
+      //掛載 Vue.js 實體至 DOM
+      app.mount('#app')
+    </xmp>
+  </pre>
+  <h3>修改 src / App.vu</h3>
+  <pre class="prettyprint">
+    <xmp>
+      <template>
+        <router-view />
+      </template>
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://book.vue.tw/CH4/4-1-vue-router-intro.html" target="_blank">Vue Router 安裝</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10320594" target="_blank">試試Vue3-首頁(註冊)畫面</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>快速建立虛擬 REST API 伺服器</h2>
+  <h3>安裝 json-server</h3>
+  <pre class="prettyprint">
+    <xmp>
+      #安裝 json-server
+      npm install -g json-server 
+
+      #檢查安裝是否完成
+      json-server 
+    </xmp>
+  </pre>
+  <h3>新增 db.json 檔案建立資料</h3>
+  <p>專案根目錄下新增名為 db 的資料夾,新增 db.json 的 json 格式檔案於該資料夾。</p>
+  <pre class="prettyprint">
+    <xmp>
+      // db.json
+      {
+        "user": [
+          {
+            "name": "mary",
+            "email": "mary@gmail.com",
+            "password": "a123",
+            "id": 1
+          }
+        ]
+      }
+    </xmp>
+  </pre>
+  <h3>終端機啟動 JSON API 伺服器</h3>
+  <p>（windows系統）命令提示字元執行以下指令。</p>
+  <pre class="prettyprint">
+    <xmp>
+      cd db  #到db路徑
+      json-server --watch db.json  #啟動 JSON API 伺服器並監聽 db.json 檔案
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://www.npmjs.com/package/json-server#getting-started" target="_blank">JSON Server</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>網路請求</h2>
+  <h3>安裝 axios 與 vue-axios 套件</h3>
+  <pre class="prettyprint">
+    <xmp>
+      #安裝
+      npm install --save axios vue-axios
+    </xmp>
+  </pre>
+  <h3> src / main.js 這個進入點檔案引入 axios 與 vue-axios 套件。</h3>
+  <pre class="prettyprint">
+    <xmp>
+      import axios from 'axios';
+      import VueAxios from 'vue-axios';
+      
+      // axios套件必須使用vue3版本。使用插件方式運用
+      app.use(VueAxios, axios)
+    </xmp>
+  </pre>
+  <h3>組件引入 axios 套件</h3>
+  <pre class="prettyprint">
+    <xmp>
+      <script>
+        import axios from "axios";
+      </script>
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>Vee Validate驗證</h2>
+  <h3>安裝</h3>
+  <pre class="prettyprint">
+    <xmp>
+      npm install --save vee-validate
+      npm install @vee-validate/rules # Vee Validate 全部驗證規則
+      npm install @vee-validate/i18n  # Vee Validate 多國語系功能
+    </xmp>
+  </pre>
+  <h3>進入點引入 VeeValidate 套件</h3>
+  <p>路徑 src / main.js 這個進入點檔案引入 Vee Validate 套件與定義驗證規則。</p>
+  <pre class="prettyprint">
+    <xmp>
+      // 引入 Vee Validate 元件跟功能
+      import {Form, Field, ErrorMessage, defineRule, configure} from 'vee-validate'
+      // 引入 Vee Validate 全部驗證規則
+      import AllRules from '@vee-validate/rules'
+      // 引入 Vee Validate 多國語系功能
+      import { localize, setLocale } from '@vee-validate/i18n'
+      // 引入 Vee Validate 繁體中文語系檔
+      import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+
+      // Vee Validate 表單驗證語法開始
+      // 定義規則（加入全部規則）
+      Object.keys(AllRules).forEach(rule => {
+          if (rule !== 'default') {
+              defineRule(rule, AllRules[rule])
+          }
+      })
+      // 加入 Vee Validate 繁體中文語系檔
+      // *將當前 Vee Validate 語系設定為繁體中文
+      configure({
+          generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
+          validateOnInput: true // 指欄位輸入內容時，會立即進行驗證（即邊寫邊判斷）
+      })
+
+      // *設定預設語系
+      setLocale('zh_TW')
+      // Vee Validate 表單驗證語法結束
+
+      const app = createApp(App)
+
+      // 註冊全域的表單驗證元件（VForm, VField, ErrorMessage）
+      app.component('VForm', Form)
+      app.component('VField', Field)
+      app.component('ErrorMessage', ErrorMessage)
+    </xmp>
+  </pre>
+  <h3>註冊頁面的表單增加驗證</h3>
+  <p><v-form></v-form> 取代 <from></from>因為 Vee Validate 套件需要通過 v-slot 來接收和顯示錯誤訊息</p>
+  <p>ref="form" 是為了在 <v-form> 元素上增加 ref 屬性。後續能用它來定義提交表單（this.$refs.form.submit()）、重置表單（this.$refs.form.reset()）、訪問表單的錯誤訊息（this.$refs.form.errors）等功能</p>
+  <p>:class="{ 'is-invalid': errors.email }" 用 errors.email 判斷是否要加上is-invalid( bootstrap5 )</p>
+  <p>驗證規則：rules="required|email" 表示該欄位必填且用 Vee Validate 既有的 email 驗證規則。密碼採用自訂驗證規則，透過 v-blind 觸發 methods 的方式。</p>
+  <p>顯示驗證錯誤訊息：<error-message> 是 Vue 組件用於顯示表單驗證錯誤訊息。<error-message name="email" class="invalid-feedback"></error-message> 中 invalid-feedback 這個 class 屬性是參考 bootstrap5 。編譯完看瀏覽器的 html 架構時這個標籤會是 <span></span> </p>
+  <pre class="prettyprint">
+    <xmp>
+      <v-form id="form" ref="form" v-slot="{ errors }" @submit="submitOrder">
+        <h1 class="mb-4">華特義式餐廳</h1>
+        <div class="mb-3">
+          <v-field
+            type="text"
+            name="會員名稱"
+            placeholder="請輸入會員名稱"
+            class="px-3 pe-4 py-2 form-control"
+            rules="required"
+            v-model="name"
+            :class="{ 'is-invalid': errors['會員名稱'] }"
+          ></v-field>
+          <error-message name="會員名稱" class="invalid-feedback"></error-message>
+        </div>
+        <div class="mb-3">
+          <v-field
+            type="text"
+            name="信箱"
+            placeholder="請輸入電子郵件"
+            class="px-3 pe-4 py-2 form-control"
+            rules="required|email"
+            v-model="email"
+            :class="{ 'is-invalid': errors.['信箱'] }"
+          ></v-field>
+          <error-message name="信箱" class="invalid-feedback"></error-message>
+        </div>
+        <div class="mb-4">
+          <v-field
+            type="password"
+            name="密碼"
+            placeholder="請輸入密碼"
+            class="px-3 pe-4 py-2 form-control"
+            :rules="isPassword"
+            v-model="password"
+            :class="{ 'is-invalid': errors.['密碼'] }"
+          ></v-field>
+          <error-message name="密碼" class="invalid-feedback"></error-message>
+        </div>
+        <button class="btn btn-lg btn-primary w-75" type="submit">
+          註冊
+        </button>
+      </v-form>
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10323688" target="_blank">Vee Validate驗證</a>
+    </li>
+  </ul>
+  <hr>
+</body>
+</html>
