@@ -52,6 +52,7 @@
 
 <script>
   import axios from "axios";
+  import { useLoginStore } from "../components/LoginStore.js";
   export default {
     data() {
       return {
@@ -75,10 +76,29 @@
             axios
               .get(`http://localhost:3000/user?email=${this.email}&password=${this.password}`)
               .then((res) => {
-                console.log(res);
-                alert("登入成功");
+                // console.log(res);
+                // alert("登入成功");
+              
+                // 假設網路請求成功取得資料集
+                // 變數 newName 指資料集裡的第一個物件值
+                const newName = res.data[0]; 
+                // console.log(newName)
+                // 令 data() 裡的 name 為資料集的 name
+                this.name = newName.name; 
+                this.email = newName.email;
+                this.id = newName.id;
+                // 使用 Pinia 中的 updateUser action 更新 store 裡的 state 資料
+                // (1)訪問 store 中的狀態和執行。這寫法是直接在方法中取得 store 實例(userStore)
+                const userStore = useLoginStore(); 
+                // (2)操作這實例(userStore)去調用 updateName ，將 axios.get 取得的 newName.name 更新到 store 的 name 狀態中
+                userStore.updateName(newName.name); 
+                userStore.updateEmail(newName.email); 
+                userStore.updateId(newName.id); 
+                // 印出來看 newName.name 值
+                // console.log("User data updated:", newName.name);
                 // 網路請求成功後清空表單欄位(初始化)
-                this.$refs.form.resetForm();
+                // this.$refs.form.resetForm();
+                this.$router.push("/login/main");
               })
               .catch((error) => {
                 console.log(error);

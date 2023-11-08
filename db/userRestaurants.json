@@ -1,0 +1,16 @@
+{
+  "userRes": [
+    {
+      "name": "mary",
+      "email": "mary@gmail.com",
+      "id": 1,
+      "userRestaurants": []
+    },
+    {
+      "name": "jay",
+      "email": "jay555@gmail.com",
+      "id": 4,
+      "userRestaurants": []
+    }
+  ]
+}

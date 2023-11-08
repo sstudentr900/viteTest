@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>vite 環境</h2>
+    <pre class="prettyprint">
+      <xmp>
+        vscode=> vetur
+        google=> vue devtools beta
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>vite 安裝</h2>
+    <pre class="prettyprint">
+      <xmp>
+        npm create vite@latest
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://cn.vitejs.dev/guide/" target="_blank">Vite 官方中文文档</a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=2" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>vite 資料夾</h2>
+    <pre class="prettyprint">
+      <xmp>
+        vite.config                             //vite設定檔
+        README.md                               //說明檔
+        package.json                            //專案設定檔
+        --dependencies                          //專案依賴
+        --devDependencies                       //專案開發
+        .gitignore                              //忽略
+        public                                  //靜態資源(不會被打包 完全複製)
+        .vscode                                 //vscode設定檔
+        src
+        --assets                                //會被打包
+        --main.js                               //
+        ----createApp(App).mount('#app')        //創立App(放入App組件).掛載到('html=>#app')
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>建立組件</h2>
+    <pre class="prettyprint">
+      <xmp></xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=vfxWeC1PwOc&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=4" target="_blank">建立組件</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>silde-effect and pureFunc</h2>
+    <pre class="prettyprint">
+      <xmp>
+        const a = [1,2,3]
+        
+        //silde-effect 副作用/髒的/污染到變數
+        const test = (num)=>{
+          a.push(num)
+        }
+        test(4)
+        consoel.log(a) [1,2,3,4]
+
+        //pureFunc 乾淨的/純淨
+        const pureFunc = (num)=>{
+          const newA = Array.from(a)
+          newA.push(num)
+          return newA
+        }
+        const newA = pureFunc(4)
+        consoel.log(newA) [1,2,3,4]
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7" target="_blank"> computed 計算屬性</a>
+      </li>
+    </ul>
+  </body>
+</html>

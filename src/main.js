@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/all.scss';
+import './style.css'
 // 引入路由
 import router from './router'  
 import axios from 'axios';
@@ -14,6 +15,8 @@ import { required, email, min, max, alpha, numeric, regex, confirmed, integer, u
 import { localize, setLocale } from '@vee-validate/i18n'
 // 引入 Vee Validate 繁體中文語系檔
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+//Vuex 
+import { createPinia } from 'pinia'
 
 
 // Vee Validate 表單驗證語法開始
@@ -40,8 +43,10 @@ setLocale('zh_TW')
 // Vee Validate 表單驗證語法結束
 
 
+// 建立 Pinia 實例
+const pinia = createPinia();
 
-
+// console.log(pinia)
 
 // const app = createApp(App).use(router)
 
@@ -49,6 +54,8 @@ setLocale('zh_TW')
 const app = createApp(App);
 //使 app 的所有子元件
 app.use(router,axios,VueAxios);
+//pinia 
+app.use(pinia);
 // 註冊全域的表單驗證元件（VForm, VField, ErrorMessage）
 app.component('VForm', Form)
 app.component('VField', Field)

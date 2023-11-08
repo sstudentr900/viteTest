@@ -308,5 +308,33 @@
     </li>
   </ul>
   <hr>
+  <h2>Pinia 視為 Vuex5</h2>
+  <p>安裝 Pinia 套件</p>
+  <pre class="prettyprint">
+    <xmp>
+      npm install pinia
+    </xmp>
+  </pre>
+  <p>建立 Pinia 實例</p>
+  <pre class="prettyprint">
+    <xmp>
+      import { createPinia } from 'pinia'
+      const pinia = createPinia();
+      // 建立 Vue 實體元件
+      const app = createApp(App);
+      //使 app 的所有子元件
+      app.use(..,pinia);
+    </xmp>
+  </pre>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10326598" target="_blank">主頁歡迎訊息顯示會員名(Pinia)</a>
+    </li>
+    <li>
+      <a href="https://www.tpisoftware.com/tpu/articleDetails/2844" target="_blank">新一代狀態管理工具 Pinia</a>
+    </li>
+  </ul>
+  <hr>
 </body>
 </html>
