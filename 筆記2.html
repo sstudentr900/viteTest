@@ -6,6 +6,12 @@
     <title>Document</title>
   </head>
   <body>
+    <h2>
+      //pureFunc              乾淨的/純淨
+      //silde-effect          副作用/髒的/污染到變數
+      //composition API       vue3
+      //options API           vue2
+    </h2>
     <h2>vite 環境</h2>
     <pre class="prettyprint">
       <xmp>
@@ -62,7 +68,10 @@
     <hr>
     <h2>建立組件</h2>
     <pre class="prettyprint">
-      <xmp></xmp>
+      <xmp>
+        :=>v-bind=>:src
+        @=>v-on=>@click
+      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -99,5 +108,47 @@
         <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7" target="_blank"> computed 計算屬性</a>
       </li>
     </ul>
+    <hr>
+    <h2>組件生命週期</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //composition API vue3
+        <script setup></script>
+
+        //options API vue2
+        <script>
+          import {ref} from 'vue'
+          export default{
+            name: 'App',
+            components:{},
+            data:()=>({
+              count:0
+            }),
+            computed:{},
+            methods:{},
+            warch:{},
+            setup(){
+              const userName = ref('')
+              return {unserName}
+            },
+          }
+        </script>
+      </xmp>
+    </pre>
+    <h3>h jsx</h3>
+    <pre class="prettyprint">
+      <xmp>
+        import {h} from 'vue'
+        //jsx程式跑html
+        h('<p>hello</p>')
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=xUdWNqD5JhI&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=10" target="_blank"> 組件生命週期</a>
+      </li>
+    </ul>
+    <hr>
   </body>
 </html>
