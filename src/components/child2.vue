@@ -1,5 +1,5 @@
 <template>
-  <div>child:{{ data }},字數:{{msgCount}}</div>
+  <div>childText:{{ data }},{{ data2 }},字數:{{msgCount}}</div>
 </template>
 <script setup>
   import {computed,reactive,ref,watch,watchEffect} from 'vue'
@@ -10,6 +10,11 @@
   //obj 方式
   const props = defineProps({
     data:{
+      type: String,
+      default: '',
+      requires: true,
+    },
+    data2:{
       type: String,
       default: '',
       requires: true,

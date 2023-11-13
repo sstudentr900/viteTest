@@ -1,9 +1,12 @@
 // Vue Router 的實例必須有 createRouter 和 createWebHistory 這兩個函數。
 // 有了 Vue Router 的實例就可以使用 <router-view> 標籤來渲染匹配到的路由元件內容。
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Contact from '../views/Contact.vue'
+import ref from '../views/ref.vue'
+import watch from '../views/watch.vue'
+import computed from '../views/computed.vue'
+import props from '../views/props.vue'
+import component from '../views/component.vue'
+import model from '../views/model.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Main from '../views/Main.vue'
@@ -15,20 +18,13 @@ const router = createRouter({
 // 錄或子網站）就建議使用這個參數來設置。若無任何子目錄則可寫 history: createWebHistory()
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      component: Home,
-      children: [
-        {
-          path: 'about',
-          component: About,
-        },
-        {
-          path: 'contact',
-          component: Contact,
-        },
-      ],
-    },
+    {path: '/',component: ref,},
+    {path: '/ref',component: ref,},
+    {path: '/watch',component: watch,},
+    {path: '/computed',component: computed,},
+    {path: '/props',component: props,},
+    {path: '/component',component: component,},
+    {path: '/model',component: model,},
     {path: '/register',component: Register},
     {path: '/basis',component: Basis},
     {path: '/login',component: Login},
