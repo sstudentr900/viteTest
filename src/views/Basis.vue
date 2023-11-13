@@ -8,6 +8,7 @@
   <watch2/>
   <childe/>
   <life/>
+  <slotA/>
 </template>
 <script setup>
   import modelRef from '../components/modelRef.vue'
@@ -19,5 +20,6 @@
   import watch2 from '../components/watch2.vue'
   import childe from '../components/childe.vue'
   import life from '../components/life.vue'
+  import slotA from '../components/slot.vue'
 </script>
 <style scoped></style>
