@@ -12,6 +12,7 @@ import Register from '../views/Register.vue'
 import Main from '../views/Main.vue'
 import Pocket from '../views/Pocket.vue'
 import Basis from '../views/Basis.vue'
+import composables from '../views/composables.vue'
 
 const router = createRouter({
 // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
@@ -24,6 +25,7 @@ const router = createRouter({
     {path: '/computed',component: computed,},
     {path: '/props',component: props,},
     {path: '/component',component: component,},
+    {path: '/composables',component: composables,},
     {path: '/model',component: model,},
     {path: '/register',component: Register},
     {path: '/basis',component: Basis},

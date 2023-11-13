@@ -3,13 +3,13 @@
     <router-link to="/ref">ref</router-link>
     <router-link to="/watch">watch</router-link>
     <router-link to="/computed">computed</router-link>
-    <router-link to="/props"> props emit</router-link>
     <router-link to="/component">component</router-link>
+    <router-link to="/composables">composables</router-link>
+    <router-link to="/props"> props emit</router-link>
     <router-link to="/model">v-model</router-link>
   </div>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style scoped>
   .navbar{
     width: 220px;
