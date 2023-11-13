@@ -42,6 +42,66 @@
       </li>
     </ul>
     <hr>
+    <h2>options API  Composition API</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //options API=>vue2
+        export default {
+          data() {
+            return {
+              message: 'Hello, Vue 2!',
+            };
+          },
+          methods: {
+            reverseMessage() {
+              this.message = this.message.split('').reverse().join('');
+            },
+          },
+        };
+
+        //composition API=>vue3
+        import { ref } from 'vue';
+        export default {
+          setup() {
+            // 创建响应式数据
+            const message = ref('Hello, Vue 3!');
+        
+            // 定义一个函数来操作数据
+            function reverseMessage() {
+              message.value = message.value.split('').reverse().join('');
+            }
+        
+            return {
+              message,
+              reverseMessage,
+            };
+          },
+        };
+
+        //composition API setup=>語法糖
+        <script setup>
+          import {computed,reactive,ref,watch,watchEffect} from 'vue'
+          //obj 方式
+          const props = defineProps({
+            data:{
+              type: String,
+              default: '',
+              requires: true,
+            }
+          })
+          const msgCount = computed(()=>{
+            return props.data.length
+          })
+        </script>
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ" target="_blank">初探 Vite 專案 / Vue3 初學者應該要先知道的東西 / 剛開始寫 Composition API 會犯的錯誤 !</a>
+      </li>
+    </ul>
+    <hr>
     <h2>vite 資料夾</h2>
     <pre class="prettyprint">
       <xmp>

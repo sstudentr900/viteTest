@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './assets/all.scss';
+// import './assets/all.scss';
 import './style.css'
 // 引入路由
 import router from './router'  
