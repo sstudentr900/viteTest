@@ -16,6 +16,6 @@ export function useWindowPosition(e){
 
   return{
     pageX,
-    pageY
+    pageY,
   }
 }

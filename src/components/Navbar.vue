@@ -1,12 +1,16 @@
 <template>
   <div class="navbar">
-    <router-link to="/ref">ref</router-link>
-    <router-link to="/watch">watch</router-link>
-    <router-link to="/computed">computed</router-link>
-    <router-link to="/component">component</router-link>
-    <router-link to="/composables">composables</router-link>
-    <router-link to="/props"> props emit</router-link>
-    <router-link to="/model">v-model</router-link>
+    <router-link to="/ref">ref reactive 變數</router-link>
+    <router-link to="/watch">watch 變數監聽</router-link>
+    <router-link to="/computed">computed 計算函數</router-link>
+    <router-link to="/component">component 組件</router-link>
+    <router-link to="/composables">composables js共用邏輯</router-link>
+    <router-link to="/props">props emit 資料傳遞</router-link>
+    <router-link to="/pinia">pinia 資料傳遞</router-link>
+    <router-link to="/model">v-model 相向綁定</router-link>
+    <router-link to="/naive">naive ui</router-link>
+    <router-link to="/slot">slot</router-link>
+    <router-link to="/vrouter">router</router-link>
   </div>
 </template>
 <script setup></script>

@@ -1,5 +1,5 @@
 <template>
-  <h2>建立組件與基本資料綁定 v-model、ref</h2>
+  <h2>reactive、ref</h2>
   <br>
   <h3>ref(動態資料監聽畫面和資料做改變)</h3>
   <p>ref可以包任何型別的值</p>
