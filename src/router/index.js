@@ -17,6 +17,7 @@ import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
 import vrouter from '../views/vrouter.vue'
+import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
 
 const router = createRouter({
@@ -41,6 +42,7 @@ const router = createRouter({
     {path: '/login/Main',component: Main},
     {path: '/login/pocket',component: Pocket},
     {path: '/vrouter',component: vrouter},
+    {path: '/nuxt',component: nuxt},
     //children
     {
       path: '/children',

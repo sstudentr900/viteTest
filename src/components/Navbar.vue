@@ -11,6 +11,7 @@
     <router-link to="/naive">naive ui</router-link>
     <router-link to="/slot">slot</router-link>
     <router-link to="/vrouter">router</router-link>
+    <router-link to="/nuxt">nuxt</router-link>
   </div>
 </template>
 <script setup></script>
