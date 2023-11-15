@@ -11,6 +11,9 @@
     <router-link to="/naive">naive ui</router-link>
     <router-link to="/slot">slot</router-link>
     <router-link to="/vrouter">router</router-link>
+    <router-link to="/ifShow">ifShow</router-link>
+    <router-link to="/vFor">vFor</router-link>
+    <router-link to="/life">life</router-link>
   </div>
 </template>
 <script setup></script>

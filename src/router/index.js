@@ -11,13 +11,15 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Main from '../views/Main.vue'
 import Pocket from '../views/Pocket.vue'
-import Basis from '../views/Basis.vue'
 import composables from '../views/composables.vue'
 import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
 import vrouter from '../views/vrouter.vue'
 import error from '../views/error.vue'
+import life from '../views/life.vue'
+import vFor from '../views/vFor.vue'
+import ifShow from '../views/ifShow.vue'
 
 const router = createRouter({
 // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
@@ -36,11 +38,12 @@ const router = createRouter({
     {path: '/slot',component: slot,},
     {path: '/register',component: Register},
     {path: '/naive',component: naive},
-    {path: '/basis',component: Basis},
     {path: '/login',component: Login},
     {path: '/login/Main',component: Main},
     {path: '/login/pocket',component: Pocket},
-    {path: '/vrouter',component: vrouter},
+    {path: '/life',component: life},
+    {path: '/vFor',component: vFor},
+    {path: '/ifShow',component: ifShow},
     //children
     {
       path: '/children',
