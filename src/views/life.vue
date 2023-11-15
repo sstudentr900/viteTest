@@ -17,7 +17,7 @@
   <hr>
 </template>
 <script setup>
-  import life2 from './life2.vue'
+  import life2 from '../components/life2.vue'
   import {
     onBeforeMount,
     onMounted ,

@@ -123,6 +123,10 @@
     },3000)
   </pre>
   <hr>
+  <h3>useRoute useRouter</h3>
+  <p>useRoute 局部對象可獲取name path params querr</p>
+  <p>useRouter 全局對象 push replace </p>
+  <hr>
   <h4>參考</h4>
   <ul>
     <li>

@@ -11,7 +11,13 @@
     <router-link to="/naive">naive ui</router-link>
     <router-link to="/slot">slot</router-link>
     <router-link to="/vrouter">router</router-link>
+<<<<<<< HEAD
     <router-link to="/nuxt">nuxt</router-link>
+=======
+    <router-link to="/ifShow">ifShow</router-link>
+    <router-link to="/vFor">vFor</router-link>
+    <router-link to="/life">life</router-link>
+>>>>>>> e52a7212fd80754447c88800496f02ddb070918a
   </div>
 </template>
 <script setup></script>
