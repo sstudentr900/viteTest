@@ -42,14 +42,11 @@ const router = createRouter({
     {path: '/login',component: Login},
     {path: '/login/Main',component: Main},
     {path: '/login/pocket',component: Pocket},
-<<<<<<< HEAD
-    {path: '/vrouter',component: vrouter},
-    {path: '/nuxt',component: nuxt},
-=======
     {path: '/life',component: life},
     {path: '/vFor',component: vFor},
     {path: '/ifShow',component: ifShow},
->>>>>>> e52a7212fd80754447c88800496f02ddb070918a
+    {path: '/vrouter',component: vrouter},
+    {path: '/nuxt',component: nuxt},
     //children
     {
       path: '/children',

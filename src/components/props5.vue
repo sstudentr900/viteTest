@@ -12,12 +12,12 @@
     data:{
       type: String,
       default: '',
-      requires: true,
+      // requires: true,
     },
     data2:{
       type: String,
       default: '',
-      requires: true,
+      // requires: true,
     }
   })
 
