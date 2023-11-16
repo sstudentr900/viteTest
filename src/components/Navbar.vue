@@ -12,9 +12,10 @@
     <router-link to="/slot">slot</router-link>
     <router-link to="/vrouter">router</router-link>
     <router-link to="/ifShow">ifShow</router-link>
-    <router-link to="/vFor">vFor</router-link>
+    <router-link to="/vFor">for</router-link>
     <router-link to="/life">life</router-link>
     <router-link to="/nuxt">nuxt</router-link>
+    <router-link to="/validate">plug vee-validate</router-link>
   </div>
 </template>
 <script setup></script>

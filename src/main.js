@@ -6,41 +6,43 @@ import './style.css'
 import router from './router'  
 // import axios from 'axios';
 // import VueAxios from 'vue-axios';
+//pinia 
+import { createPinia } from 'pinia'
+
 // 引入 Vee Validate 元件跟功能
 import {Form, Field, ErrorMessage, defineRule, configure} from 'vee-validate'
 // 引入 Vee Validate 全部驗證規則
-import { required, email, min, max, alpha, numeric, regex, confirmed, integer, url } from '@vee-validate/rules';
+import { required, email, min, max, between, numeric, regex, confirmed } from '@vee-validate/rules';
 // import AllRules from '@vee-validate/rules'
 // 引入 Vee Validate 多國語系功能
 import { localize, setLocale } from '@vee-validate/i18n'
 // 引入 Vee Validate 繁體中文語系檔
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
-//pinia 
-import { createPinia } from 'pinia'
-
-
-// Vee Validate 表單驗證語法開始
 // 注册内置验证规则
 defineRule('required', required);
 defineRule('email', email);
 defineRule('min', min);
 defineRule('max', max);
-defineRule('alpha', alpha);
-defineRule('numeric', numeric);
-defineRule('regex', regex);
-defineRule('confirmed', confirmed);
-defineRule('integer', integer);
-defineRule('url', url);
-// 加入 Vee Validate 繁體中文語系檔
-// *將當前 Vee Validate 語系設定為繁體中文
+defineRule('between', between); //最小最大
+defineRule('numeric', numeric); //數字
+defineRule('regex', regex); //正則
+defineRule('confirmed', confirmed); //在確認
+//將當前 Vee Validate 語系設定為繁體中文
 configure({
   generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
-  validateOnInput: true // 指欄位輸入內容時，會立即進行驗證（即邊寫邊判斷）
+  validateOnInput: true, // 指欄位輸入內容時，會立即進行驗證（即邊寫邊判斷）
+  generateMessage: localize('zh_TW', {
+    names: {
+      name: '姓名',
+      email: '信箱',
+      age: '年齡',
+      ageConfirm: '年齡確認',
+    },
+  }),
 })
-
 // *設定預設語系
 setLocale('zh_TW')
-// Vee Validate 表單驗證語法結束
+
 
 // console.log(pinia)
 // const app = createApp(App).use(router)
