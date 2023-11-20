@@ -19,6 +19,21 @@
       打包   npm run build
     </h2>
     <hr>
+    <h2>圖片 api</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //https://picsum.photos/寬度/高度
+        https://picsum.photos/200/300
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://picsum.photos/" target="_blank">圖片 api</a>
+      </li>
+    </ul>
+    <hr>
+
     <h2>引入Bootstrap套件</h2>
     <pre class="prettyprint">
       <xmp>
@@ -103,6 +118,7 @@
         app.use(router);
         //掛載 Vue.js 實體至 DOM
         app.mount('#app')
+<<<<<<< HEAD
         </xmp>
       </pre>
       <h3>修改 src / App.vu</h3>
@@ -180,6 +196,72 @@
       <pre class="prettyprint">
         <xmp>
           import { createPinia } from 'pinia'
+=======
+      </xmp>
+    </pre>
+    <h3>修改 src / App.vu</h3>
+    <pre class="prettyprint">
+      <xmp>
+        <template>
+          <router-view />
+        </template>
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://book.vue.tw/CH4/4-1-vue-router-intro.html" target="_blank">Vue Router 安裝</a>
+      </li>
+      <li>
+        <a href="https://ithelp.ithome.com.tw/articles/10320594" target="_blank">試試Vue3-首頁(註冊)畫面</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>安裝 axios 套件</h2>
+    <pre class="prettyprint">
+      <xmp>
+        #安裝
+        npm i axios
+      </xmp>
+    </pre>
+    <h3>全局引入 axios 套件</h3>
+    <p>src / main.js</p>
+    <pre class="prettyprint">
+      <xmp>
+        //src / main.js
+        import axios from 'axios';
+        
+        // axios套件必須使用vue3版本。使用插件方式運用
+        app.use(axios)
+      </xmp>
+    </pre>
+    <h3>組件引入 axios 套件</h3>
+    <pre class="prettyprint">
+      <xmp>
+        <script>
+          import axios from "axios";
+        </script>
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>Pinia 視為 Vuex5</h2>
+    <p>安裝 Pinia 套件</p>
+    <pre class="prettyprint">
+      <xmp>
+        npm install pinia
+      </xmp>
+    </pre>
+    <p>建立 Pinia 實例</p>
+    <pre class="prettyprint">
+      <xmp>
+        import { createPinia } from 'pinia'
+>>>>>>> bed7dce3588e462e48c3f40fff5d2066f699278f
         const pinia = createPinia();
         // 建立 Vue 實體元件
         const app = createApp(App);

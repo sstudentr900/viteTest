@@ -17,7 +17,6 @@
     import home from '../views/home.vue'
 
     const router = createRouter({
-     
       history: createWebHistory(import.meta.env.BASE_URL),
       routes: [
         {path: '/',component: home},
@@ -34,13 +33,13 @@
   <hr>
   <h3>引用router</h3>
   <pre>
-    <template>
-      //連結
-      <router-link to="/">home</router-link>
+    
+    //連結
+    <router-link to="/">home</router-link>
 
-      //顯示頁面
-      <router-view />
-    </template>
+    //顯示頁面
+    <router-view />
+
   </pre>
   <hr>
   <h3>createWebHistory</h3>

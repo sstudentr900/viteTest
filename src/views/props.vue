@@ -21,7 +21,7 @@
     name.value = newName
   }
 
-  //props no emits
+  //props no emits 執行父函數
   import props4 from '../components/props4.vue'
   const name2= ref('kk')
   const updateName2 = (newName)=>{
