@@ -4,8 +4,7 @@ import App from './App.vue'
 import './style.css'
 // 引入路由
 import router from './router'  
-// import axios from 'axios';
-// import VueAxios from 'vue-axios';
+import axios from 'axios';
 //pinia 
 import { createPinia } from 'pinia'
 
@@ -51,10 +50,9 @@ setLocale('zh_TW')
 const app = createApp(App);
 //使 app 的所有子元件
 app.use(router);
-//VueAxios
-// app.use(VueAxios);
-//axios
-// app.use(axios);
+//axios 挂载一个自定义属性$http
+app.config.globalProperties.$http = axios
+app.provide('$axios', axios)
 //建立 Pinia 實例
 app.use(createPinia());
 // 註冊全域的表單驗證元件（VForm, VField, ErrorMessage）

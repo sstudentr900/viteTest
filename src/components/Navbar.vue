@@ -16,6 +16,9 @@
     <router-link to="/life">life</router-link>
     <router-link to="/nuxt">nuxt</router-link>
     <router-link to="/validate">plug vee-validate</router-link>
+    <router-link to="/axioss">plug axios</router-link>
+    <router-link to="/mocks">plug mock</router-link>
+    <router-link to="/environment">Vite 與環境變數</router-link>
   </div>
 </template>
 <script setup></script>

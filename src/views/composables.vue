@@ -35,7 +35,7 @@
 
   //fetch
   import { useFetch } from '../composables/useFetch.js'
-  const {data,errorMessage,fetchInit} = useFetch()
+  const {data,errorMessage,useAsiosInit} = useFetch()
   onMounted(()=>{
     fetchInit()
   })
