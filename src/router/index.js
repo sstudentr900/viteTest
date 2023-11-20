@@ -22,6 +22,9 @@ import life from '../views/life.vue'
 import vFor from '../views/vFor.vue'
 import ifShow from '../views/ifShow.vue'
 import validate from '../views/validate.vue'
+import currentInstance from '../views/currentInstance.vue'
+import imageerror from '../views/imageerror.vue'
+import jsonserver from '../views/jsonserver.vue'
 
 const router = createRouter({
 // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
@@ -49,6 +52,9 @@ const router = createRouter({
     {path: '/vrouter',component: vrouter},
     {path: '/nuxt',component: nuxt},
     {path: '/validate',component: validate},
+    {path: '/currentInstance',component: currentInstance},
+    {path: '/imageerror',component: imageerror},
+    {path: '/jsonserver',component: jsonserver},
     //children
     {
       path: '/children',

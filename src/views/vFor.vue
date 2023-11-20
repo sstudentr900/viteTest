@@ -3,17 +3,17 @@
   <br>
   <h3>v-for array</h3>
   <ul>
-    <li v-for="text in dataList">{{text}}</li>
+    <li v-for="text in dataList" :key='text'>{{text}}</li>
   </ul>
   <hr>
   <h3>v-for obj</h3>
   <p>for 也可以跑obj</p>
   <ul>
-    <li v-for="text in dataObjList">{{text}}</li>
+    <li v-for="text in dataObjList" :key='text'>{{text}}</li>
   </ul>
   <p>obj 顯示key</p>
   <ul>
-    <li v-for="(value,key,index) in dataObjList" v-show="index!==2">
+    <li v-for="(value,key,index) in dataObjList" :key='index' v-show="index!==2">
       {{index}}:{{key}}:{{value}}
     </li>
   </ul>

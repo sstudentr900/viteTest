@@ -19,6 +19,21 @@
       打包   npm run build
     </h2>
     <hr>
+    <h2>圖片 api</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //https://picsum.photos/寬度/高度
+        https://picsum.photos/200/300
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://picsum.photos/" target="_blank">圖片 api</a>
+      </li>
+    </ul>
+    <hr>
+
     <h2>引入Bootstrap套件</h2>
     <pre class="prettyprint">
       <xmp>
@@ -121,68 +136,22 @@
       </li>
     </ul>
     <hr>
-    <h2>快速建立虛擬 REST API 伺服器</h2>
-    <h3>安裝 json-server</h3>
-    <pre class="prettyprint">
-      <xmp>
-        #安裝 json-server
-        npm install -g json-server 
-  
-        #檢查安裝是否完成
-        json-server 
-      </xmp>
-    </pre>
-    <h3>新增 db.json 檔案建立資料</h3>
-    <p>專案根目錄下新增名為 db 的資料夾,新增 db.json 的 json 格式檔案於該資料夾。</p>
-    <pre class="prettyprint">
-      <xmp>
-        // db.json
-        {
-          "user": [
-            {
-              "name": "mary",
-              "email": "mary@gmail.com",
-              "password": "a123",
-              "id": 1
-            }
-          ]
-        }
-      </xmp>
-    </pre>
-    <h3>終端機啟動 JSON API 伺服器</h3>
-    <p>（windows系統）命令提示字元執行以下指令。</p>
-    <pre class="prettyprint">
-      <xmp>
-        cd db  #到db路徑
-        json-server --watch db.json  #啟動 JSON API 伺服器並監聽 db.json 檔案
-      </xmp>
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://www.npmjs.com/package/json-server#getting-started" target="_blank">JSON Server</a>
-      </li>
-      <li>
-        <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>網路請求</h2>
-    <h3>安裝 axios 與 vue-axios 套件</h3>
+    <h2>安裝 axios 套件</h2>
     <pre class="prettyprint">
       <xmp>
         #安裝
-        npm install --save axios vue-axios
+        npm i axios
       </xmp>
     </pre>
-    <h3> src / main.js 這個進入點檔案引入 axios 與 vue-axios 套件。</h3>
+    <h3>全局引入 axios 套件</h3>
+    <p>src / main.js</p>
     <pre class="prettyprint">
       <xmp>
+        //src / main.js
         import axios from 'axios';
-        import VueAxios from 'vue-axios';
         
         // axios套件必須使用vue3版本。使用插件方式運用
-        app.use(VueAxios, axios)
+        app.use(axios)
       </xmp>
     </pre>
     <h3>組件引入 axios 套件</h3>
