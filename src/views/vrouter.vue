@@ -23,8 +23,24 @@
         //動態載入(到該頁面才載入比較快)
         {path: '/about',component: ()=>import('../views/about.vue')},
         //找不到頁面，要放在最後
-        {path: '/:error(.*)*',component: error},
-      ]
+        {
+          path: '/404',
+          component: error,
+          name: '404'
+        },
+        {
+          path: '/:error(.*)*',
+          redirect: '/404',
+          name: 'any'
+        },
+      ],
+      //滾動行為
+      scrollBehavior(){
+        return{
+          left:0,
+          top:0,
+        }
+      }
     })
 
     // 將路由實例導出，以便其他地方可以導入並使用它

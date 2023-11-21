@@ -74,7 +74,16 @@ const router = createRouter({
     //動態
     {path: '/:id',component: ()=>import('../views/[id].vue')},
     //找不到頁面，要放在最後
-    {path: '/:error(.*)*',component: error},
+    {
+      path: '/404',
+      component: error,
+      name: '404'
+    },
+    {
+      path: '/:error(.*)*',
+      redirect: '/404',
+      name: 'any'
+    },
   ]
 })
 
