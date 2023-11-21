@@ -22,9 +22,15 @@ import life from '../views/life.vue'
 import vFor from '../views/vFor.vue'
 import ifShow from '../views/ifShow.vue'
 import validate from '../views/validate.vue'
+<<<<<<< HEAD
+import axioss from '../views/axioss.vue'
+import mocks from '../views/mocks.vue'
+import environment from '../views/environment.vue'
+=======
 import currentInstance from '../views/currentInstance.vue'
 import imageerror from '../views/imageerror.vue'
 import jsonserver from '../views/jsonserver.vue'
+>>>>>>> bed7dce3588e462e48c3f40fff5d2066f699278f
 
 const router = createRouter({
 // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
@@ -52,9 +58,15 @@ const router = createRouter({
     {path: '/vrouter',component: vrouter},
     {path: '/nuxt',component: nuxt},
     {path: '/validate',component: validate},
+<<<<<<< HEAD
+    {path: '/axioss',component: axioss},
+    {path: '/mocks',component: mocks},
+    {path: '/environment',component: environment},
+=======
     {path: '/currentInstance',component: currentInstance},
     {path: '/imageerror',component: imageerror},
     {path: '/jsonserver',component: jsonserver},
+>>>>>>> bed7dce3588e462e48c3f40fff5d2066f699278f
     //children
     {
       path: '/children',
