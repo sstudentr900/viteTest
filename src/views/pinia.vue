@@ -29,7 +29,7 @@
 </script>
 <template>
   <h2>Pinia 的全域資料管理</h2>
-  <p>全域傳遞資料</p>
+  <p>核心概念state getters actions</p>
   <br>
   <h3>Pinia建立</h3>
   <p>main.js </p>
@@ -40,7 +40,7 @@
   </pre>
   <hr>
   <h3>新增store檔案</h3>
-  <p>src/stores/檔案.js 新增檔案</p>
+  <p>src/stores/use檔案.js 新增檔案</p>
   <p>id 必須</p>
   <pre>
     //檔案.js
@@ -48,7 +48,7 @@
     import {computed,reactive,ref,watch} from 'vue'
     import { defineStore } from "pinia";
 
-    //options api
+    //options api 寫法
     export const useCounterStore = defineStore({
       //id 必須
       id: 'counter',
@@ -66,12 +66,14 @@
     })
 
     
-    //composition api
+    //composition api 寫法
     export const useCounterStore = defineStore('counter',()=>{
       const counter = ref(0)
+      //計算值
       const doubleCount = computed(()=>{
         return counter.valu*2
       })
+      //修改值
       const addCount = ()=>{
         counter.valu++
       }
