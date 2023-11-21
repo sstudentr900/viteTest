@@ -1,5 +1,18 @@
 <template>
   <h2>如何在 Vue3 中处理 img 标签图片无法加载的问题</h2>
+  <pre>
+    #template img
+    :src="data.img" @error.once="$defaultImage($event,'basis.png')"
+
+    #js
+    export function getUrl(url){
+      return new URL(`/src/assets/img/${url}`, import.meta.url).href
+    }
+    export function defaultImage(event,defaultImage='basis.png'){
+      // event.target.src = '/src/assets/img/basis.png';
+      event.target.src = getUrl(defaultImage);
+    }
+  </pre>
   <hr>
   <h4>參考</h4>
   <ul>
