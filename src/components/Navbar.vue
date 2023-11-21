@@ -15,12 +15,12 @@
     <router-link to="/vFor">for</router-link>
     <router-link to="/life">life</router-link>
     <router-link to="/nuxt">nuxt</router-link>
-    <router-link to="/validate">plug vee-validate</router-link>
-    <router-link to="/axioss">plug axios</router-link>
-    <router-link to="/mocks">plug mock</router-link>
     <router-link to="/environment">Vite 與環境變數</router-link>
     <router-link to="/currentInstance">掛载全局方法</router-link>
     <router-link to="/imageerror">图片无法加载</router-link>
+    <router-link to="/validate">plug vee-validate</router-link>
+    <router-link to="/axioss">plug axios</router-link>
+    <router-link to="/mocks">plug mock</router-link>
     <router-link to="/validate">plug vee-validate 表單</router-link>
     <router-link to="/jsonserver">plug JSON-SERVER</router-link>
   </div>
