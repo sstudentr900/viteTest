@@ -116,7 +116,7 @@
     </template> -->
   </pre>
   <hr>
-  <h3>push replace query</h3>
+  <h3>push replace</h3>
   <pre>
     import { useRoute,useRouter } from 'vue-router'
     //取得網址
@@ -124,11 +124,10 @@
     console.log(route.path) 
     
 
-    //push replace query
+    //push replace
     const router = useRouter()
     router.push('/') //會記錄並換頁
     router.push({path:"/"}) //同上
-    router.push({ path:"/",query:{username:'qq'} }) //帶參數(/?username=qq) 
     router.replace({path:"/"}) //不會記錄上一頁
 
 
@@ -136,6 +135,20 @@
     setTimeout(()=>{
       router.push('/') 
     },3000)
+  </pre>
+  <hr>
+  <h3>query params</h3>
+  <pre>
+    //query
+    router.push({ path:"/",query:{username:'qq'} }) //帶參數(/?username=qq) 
+
+    //params
+    const username = 'eduardo'
+    router.push({ path: `/user/${username}` }) // -> /user/eduardo
+    router.push({ name: 'user', params: { username } }) // -> /user/eduardo
+    
+    //path 和 params 不能共用
+    router.push({ path: '/user', params: { username } }) // -> /user
   </pre>
   <hr>
   <h3>useRoute useRouter</h3>

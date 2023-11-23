@@ -33,7 +33,6 @@
       </li>
     </ul>
     <hr>
-
     <h2>引入Bootstrap套件</h2>
     <pre class="prettyprint">
       <xmp>
@@ -103,12 +102,12 @@
   
         // 將路由實例導出，以便其他地方可以導入並使用它
         export default router
-        </xmp>
-      </pre>
-      <h3>修改 main.js</h3>
-      <pre class="prettyprint">
-        <xmp>
-          import { createApp } from 'vue'
+      </xmp>
+    </pre>
+    <h3>修改 main.js</h3>
+    <pre class="prettyprint">
+      <xmp>
+        import { createApp } from 'vue'
         import App from './App.vue'
         import router from './router'  // 引入路由
   
@@ -118,85 +117,6 @@
         app.use(router);
         //掛載 Vue.js 實體至 DOM
         app.mount('#app')
-<<<<<<< HEAD
-        </xmp>
-      </pre>
-      <h3>修改 src / App.vu</h3>
-      <pre class="prettyprint">
-        <xmp>
-          <template>
-            <router-view/>
-          </template>
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://book.vue.tw/CH4/4-1-vue-router-intro.html" target="_blank">Vue Router 安裝</a>
-        </li>
-        <li>
-          <a href="https://ithelp.ithome.com.tw/articles/10320594" target="_blank">試試Vue3-首頁(註冊)畫面</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>快速建立虛擬 REST API 伺服器</h2>
-      <h3>安裝 json-server</h3>
-      <pre class="prettyprint">
-        <xmp>
-          #安裝 json-server
-        npm install -g json-server 
-  
-        #檢查安裝是否完成
-        json-server
-        </xmp>
-      </pre>
-      <h3>新增 db.json 檔案建立資料</h3>
-      <p>專案根目錄下新增名為 db 的資料夾,新增 db.json 的 json 格式檔案於該資料夾。</p>
-      <pre class="prettyprint">
-        <xmp>
-          // db.json
-        {
-          "user": [
-            {
-              "name": "mary",
-              "email": "mary@gmail.com",
-              "password": "a123",
-              "id": 1
-            }
-          ]
-        }
-        </xmp>
-      </pre>
-      <h3>終端機啟動 JSON API 伺服器</h3>
-      <p>（windows系統）命令提示字元執行以下指令。</p>
-      <pre class="prettyprint">
-        <xmp>
-          cd db  #到db路徑
-        json-server --watch db.json  #啟動 JSON API 伺服器並監聽 db.json 檔案
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.npmjs.com/package/json-server#getting-started" target="_blank">JSON Server</a>
-        </li>
-        <li>
-          <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>Pinia 視為 Vuex5</h2>
-      <p>安裝 Pinia 套件</p>
-      <pre class="prettyprint">
-        <xmp>
-          npm install pinia
-        </xmp>
-      </pre>
-      <p>建立 Pinia 實例</p>
-      <pre class="prettyprint">
-        <xmp>
-          import { createPinia } from 'pinia'
-=======
       </xmp>
     </pre>
     <h3>修改 src / App.vu</h3>
@@ -250,236 +170,207 @@
       </li>
     </ul>
     <hr>
-    <h2>Pinia 視為 Vuex5</h2>
-    <p>安裝 Pinia 套件</p>
+    <h2>vite 環境</h2>
     <pre class="prettyprint">
       <xmp>
-        npm install pinia
+        vscode=> vetur
+      google=> vue devtools beta
       </xmp>
     </pre>
-    <p>建立 Pinia 實例</p>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>vite 安裝</h2>
     <pre class="prettyprint">
       <xmp>
-        import { createPinia } from 'pinia'
->>>>>>> bed7dce3588e462e48c3f40fff5d2066f699278f
-        const pinia = createPinia();
-        // 建立 Vue 實體元件
-        const app = createApp(App);
-        //使 app 的所有子元件
-        app.use(..,pinia);
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://ithelp.ithome.com.tw/articles/10326598" target="_blank">主頁歡迎訊息顯示會員名(Pinia)</a>
-        </li>
-        <li>
-          <a href="https://www.tpisoftware.com/tpu/articleDetails/2844" target="_blank">新一代狀態管理工具 Pinia</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>vite 環境</h2>
-      <pre class="prettyprint">
-        <xmp>
-          vscode=> vetur
-        google=> vue devtools beta
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>vite 安裝</h2>
-      <pre class="prettyprint">
-        <xmp>
-          npm create vite@latest
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://ithelp.ithome.com.tw/articles/10319331" target="_blank">試試用Vue建立網站吧系列</a>
-        </li>
-        <li>
-          <a href="https://cn.vitejs.dev/guide/" target="_blank">Vite 官方中文文档</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=2" target="_blank">Vue3 基礎教學</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>options API  Composition API</h2>
-      <pre class="prettyprint">
-        <xmp>
-          //options API=>vue2
-        export default {
-          data() {
-            return {
-              message: 'Hello, Vue 2!',
-            };
+        npm create vite@latest
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://ithelp.ithome.com.tw/articles/10319331" target="_blank">試試用Vue建立網站吧系列</a>
+      </li>
+      <li>
+        <a href="https://cn.vitejs.dev/guide/" target="_blank">Vite 官方中文文档</a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=2" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>options API  Composition API</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //options API=>vue2
+      export default {
+        data() {
+          return {
+            message: 'Hello, Vue 2!',
+          };
+        },
+        methods: {
+          reverseMessage() {
+            this.message = this.message.split('').reverse().join('');
           },
-          methods: {
-            reverseMessage() {
-              this.message = this.message.split('').reverse().join('');
-            },
-          },
-        };
+        },
+      };
 
-        //composition API=>vue3
-        import { ref } from 'vue';
-        export default {
-          setup() {
-            // 创建响应式数据
-            const message = ref('Hello, Vue 3!');
-        
-            // 定义一个函数来操作数据
-            function reverseMessage() {
-              message.value = message.value.split('').reverse().join('');
-            }
-        
-            return {
-              message,
-              reverseMessage,
-            };
-          },
-        };
-
-        //composition API setup=>語法糖
-          <script setup>
-          import {computed,reactive,ref,watch,watchEffect} from 'vue'
-          //obj 方式
-          const props = defineProps({
-            data:{
-              type: String,
-              default: '',
-              requires: true,
-            }
-          })
-          const msgCount = computed(()=>{
-            return props.data.length
-          })
-          </script>
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ" target="_blank">初探 Vite 專案 / Vue3 初學者應該要先知道的東西 / 剛開始寫 Composition API 會犯的錯誤 !</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>vite 資料夾</h2>
-      <pre class="prettyprint">
-        <xmp>
-          vite.config                             //vite設定檔
-        README.md                               //說明檔
-        package.json                            //專案設定檔
-        --dependencies                          //專案依賴
-        --devDependencies                       //專案開發
-        .gitignore                              //忽略
-        public                                  //靜態資源(不會被打包 完全複製)
-        .vscode                                 //vscode設定檔
-        src
-        --assets                                //會被打包
-        --main.js                               //
-        ----createApp(App).mount('#app')        //創立App(放入App組件).掛載到('html=>#app')
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>建立組件</h2>
-      <pre class="prettyprint">
-        <xmp>
-          :=>v-bind=>:src
-        @=>v-on=>@click
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=vfxWeC1PwOc&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=4" target="_blank">建立組件</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>silde-effect and pureFunc</h2>
-      <pre class="prettyprint">
-        <xmp>
-          const a = [1,2,3]
-        
-        //silde-effect 副作用/髒的/污染到變數
-        const test = (num)=>{
-          a.push(num)
-        }
-        test(4)
-        consoel.log(a) [1,2,3,4]
-
-        //pureFunc 乾淨的/純淨
-        const pureFunc = (num)=>{
-          const newA = Array.from(a)
-          newA.push(num)
-          return newA
-        }
-        const newA = pureFunc(4)
-        consoel.log(newA) [1,2,3,4]
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7" target="_blank"> computed 計算屬性</a>
-        </li>
-      </ul>
-      <hr>
-      <h2>組件生命週期</h2>
-      <pre class="prettyprint">
-        <xmp>
-          //composition API vue3
-          <script setup></script>
-          //options API vue2
-          <script>
-          import {ref} from 'vue'
-          export default{
-            name: 'App',
-            components:{},
-            data:()=>({
-              count:0
-            }),
-            computed:{},
-            methods:{},
-            warch:{},
-            setup(){
-              const userName = ref('')
-              return {unserName}
-            },
+      //composition API=>vue3
+      import { ref } from 'vue';
+      export default {
+        setup() {
+          // 创建响应式数据
+          const message = ref('Hello, Vue 3!');
+      
+          // 定义一个函数来操作数据
+          function reverseMessage() {
+            message.value = message.value.split('').reverse().join('');
           }
-          </script>
-        </xmp>
-      </pre>
-      <h3>h jsx</h3>
-      <pre class="prettyprint">
-        <xmp>
-          import {h} from 'vue'
-        //jsx程式跑html
-        h('
-          <p>hello</p>
-          ')
-        </xmp>
-      </pre>
-      <h4>參考</h4>
-      <ul>
-        <li>
-          <a href="https://www.youtube.com/watch?v=xUdWNqD5JhI&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=10" target="_blank"> 組件生命週期</a>
-        </li>
-      </ul>
-      <hr>
-    </body>
-  </html>
+      
+          return {
+            message,
+            reverseMessage,
+          };
+        },
+      };
+
+      //composition API setup=>語法糖
+        <script setup>
+        import {computed,reactive,ref,watch,watchEffect} from 'vue'
+        //obj 方式
+        const props = defineProps({
+          data:{
+            type: String,
+            default: '',
+            requires: true,
+          }
+        })
+        const msgCount = computed(()=>{
+          return props.data.length
+        })
+        </script>
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ" target="_blank">初探 Vite 專案 / Vue3 初學者應該要先知道的東西 / 剛開始寫 Composition API 會犯的錯誤 !</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>vite 資料夾</h2>
+    <pre class="prettyprint">
+      <xmp>
+        vite.config                             //vite設定檔
+      README.md                               //說明檔
+      package.json                            //專案設定檔
+      --dependencies                          //專案依賴
+      --devDependencies                       //專案開發
+      .gitignore                              //忽略
+      public                                  //靜態資源(不會被打包 完全複製)
+      .vscode                                 //vscode設定檔
+      src
+      --assets                                //會被打包
+      --main.js                               //
+      ----createApp(App).mount('#app')        //創立App(放入App組件).掛載到('html=>#app')
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>建立組件</h2>
+    <pre class="prettyprint">
+      <xmp>
+        :=>v-bind=>:src
+      @=>v-on=>@click
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=vfxWeC1PwOc&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=4" target="_blank">建立組件</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>silde-effect and pureFunc</h2>
+    <pre class="prettyprint">
+      <xmp>
+        const a = [1,2,3]
+      
+      //silde-effect 副作用/髒的/污染到變數
+      const test = (num)=>{
+        a.push(num)
+      }
+      test(4)
+      consoel.log(a) [1,2,3,4]
+
+      //pureFunc 乾淨的/純淨
+      const pureFunc = (num)=>{
+        const newA = Array.from(a)
+        newA.push(num)
+        return newA
+      }
+      const newA = pureFunc(4)
+      consoel.log(newA) [1,2,3,4]
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7" target="_blank"> computed 計算屬性</a>
+      </li>
+    </ul>
+    <hr>
+    <h2>組件生命週期</h2>
+    <pre class="prettyprint">
+      <xmp>
+        //composition API vue3
+        <script setup></script>
+        //options API vue2
+        <script>
+        import {ref} from 'vue'
+        export default{
+          name: 'App',
+          components:{},
+          data:()=>({
+            count:0
+          }),
+          computed:{},
+          methods:{},
+          warch:{},
+          setup(){
+            const userName = ref('')
+            return {unserName}
+          },
+        }
+        </script>
+      </xmp>
+    </pre>
+    <h3>h jsx</h3>
+    <pre class="prettyprint">
+      <xmp>
+        import {h} from 'vue'
+      //jsx程式跑html
+      h('
+        <p>hello</p>
+        ')
+      </xmp>
+    </pre>
+    <h4>參考</h4>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=xUdWNqD5JhI&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=10" target="_blank"> 組件生命週期</a>
+      </li>
+    </ul>
+    <hr>
+  </body>
+</html>
