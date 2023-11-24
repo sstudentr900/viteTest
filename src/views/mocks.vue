@@ -95,6 +95,9 @@
     <li>
       <a href="https://github.com/vbenjs/vite-plugin-mock/blob/main/README.zh_CN.md">vite-plugin-mock</a>
     </li>
+    <li>
+      <a href="https://github.com/vbenjs/vite-plugin-mock/blob/main/packages/playground/js-example/src/App.vue">github</a>
+    </li>
   </ul>
   <hr>
 </template>

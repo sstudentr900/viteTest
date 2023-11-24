@@ -12,11 +12,13 @@
     <router-link to="/vrouter">router</router-link>
     <router-link to="/ifShow">ifShow</router-link>
     <router-link to="/vFor">for</router-link>
+    <router-link to="/style">style</router-link>
+    <router-link to="/vhtml">vhtml</router-link>
     <router-link to="/life">life</router-link>
     <router-link to="/nuxt">nuxt</router-link>
     <router-link to="/environment">Vite 與環境變數</router-link>
     <router-link to="/currentInstance">掛载全局方法</router-link>
-    <router-link to="/imageerror">图片无法加载</router-link>
+    <router-link to="/imageerror">圖片載入</router-link>
     <router-link to="/naive">plug naive ui</router-link>
     <router-link to="/validate">plug vee-validate</router-link>
     <router-link to="/axioss">plug axios</router-link>

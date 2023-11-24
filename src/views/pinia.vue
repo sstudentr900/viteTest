@@ -31,12 +31,19 @@
   <h2>Pinia 的全域資料管理</h2>
   <p>核心概念state getters actions</p>
   <br>
-  <h3>Pinia建立</h3>
+  <h3>安裝 Pinia 套件</h3>
+  <pre class="prettyprint">
+    <xmp>
+      npm install pinia
+    </xmp>
+  </pre>
+  <hr>
+  <h3>Pinia 建立</h3>
   <p>main.js </p>
   <pre>
     //main.js
     import { createPinia } from 'pinia'
-    app.use(createPinia());     //建立 Pinia 實例
+    app.use(createPinia());    
   </pre>
   <hr>
   <h3>新增store檔案</h3>
@@ -172,6 +179,12 @@
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=_Vvi9EVtuW4">Pinia 的全域資料管理</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10326598" target="_blank">主頁歡迎訊息顯示會員名(Pinia)</a>
+    </li>
+    <li>
+      <a href="https://www.tpisoftware.com/tpu/articleDetails/2844" target="_blank">新一代狀態管理工具 Pinia</a>
     </li>
   </ul>
   <hr>
