@@ -20,6 +20,8 @@ import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
 import life from '../views/life.vue'
 import vFor from '../views/vFor.vue'
+import vHtml from '../views/vHtml.vue'
+import style from '../views/style.vue'
 import ifShow from '../views/ifShow.vue'
 import validate from '../views/validate.vue'
 import axioss from '../views/axioss.vue'
@@ -51,6 +53,8 @@ const router = createRouter({
     {path: '/login/pocket',component: Pocket},
     {path: '/life',component: life},
     {path: '/vFor',component: vFor},
+    {path: '/style',component: style},
+    {path: '/vHtml',component: vHtml},
     {path: '/ifShow',component: ifShow},
     {path: '/vrouter',component: vrouter},
     {path: '/nuxt',component: nuxt},
