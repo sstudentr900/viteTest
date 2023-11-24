@@ -73,7 +73,7 @@
       const doubleCount = computed(()=>{
         return counter.valu*2
       })
-      //修改值
+      //修改值，異布，邏輯
       const addCount = ()=>{
         counter.valu++
       }
