@@ -1,7 +1,7 @@
 <template>
   <h2>圖片無法載入</h2>
   <pre>
-      #script public.js
+    #script public.js
       export function getUrl(url){
         return new URL(`/src/assets/img/${url}`, import.meta.url).href;
         // 使用方式
@@ -121,6 +121,44 @@
     </li>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10333685" target="_blank">元件懶加載</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>Webpack images</h2>
+  <h3>assets</h3>
+  <p>Webpack 編譯 減少額外的網絡請求</p>
+  <pre>
+    <xmp>
+      //assets 基本寫法
+      img src="@/assets/home.png"
+      img src="../../assets/home.png"
+
+      //assets require 帶入值
+      img :src="require(`@/assets/${image}.svg`)"
+    </xmp>
+  </pre>
+  <h3>public</h3>
+  <p>需要使用絕對路徑</p>
+  <pre>
+    <xmp>
+      //放在public/img/i01.jpg"
+      img src="img/i01.jpg"
+    </xmp>
+  </pre>
+  <h3>new URL</h3>
+  <pre>
+    <xmp>
+      const getImgSrc = (url)=> new URL(`/src/assets/${url}`,import.meta.url).href
+    </xmp>
+  </pre>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://stackoverflow.com/questions/47313165/how-to-reference-static-assets-within-vue-javascript">vue assets</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=ureFPVghH30&ab_channel=MikeCheng">new URL</a>
     </li>
   </ul>
   <hr>

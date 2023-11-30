@@ -22,6 +22,121 @@
     </li>
   </ul>
   <hr>
+  <h2>v-if and v-show</h2>
+  <ol>
+    <li>v-if 物件會不見</li>
+    <li>v-show 都會被保留在 DOM 中</li>
+  </ol>
+  <pre class="prettyprint">
+    <xmp>
+      <div id="app">
+        <input type="checkbox" v-model="isShow">
+        <div v-if="isShow">
+          <p>v-if</p>
+        </div>
+        <div v-show="isShow">
+          <p>v-show</p>
+        </div>
+      </div>
+      <!-- <script> -->
+        var vm = Vue.createApp({
+          data() {
+            return {
+              isShow: true,
+            }
+          }
+        }).mount('#app')
+      <!-- </script> -->
+    </xmp>
+  </pre>
+
+  <h2>v-else</h2>
+  <pre class="prettyprint">
+    <xmp>
+        <input type="checkbox" v-model="isShow">
+        <div v-if="isShow">A</div>
+        <div v-else>B</div>
+        <!-- <script> -->
+          var vm = Vue.createApp({
+            data() {
+              return {
+                isShow: true,
+              }
+            }
+          }).mount('#app')
+        <!-- </script> -->
+    </xmp>
+  </pre>
+
+  <h2>v-else-if</h2>
+  <pre class="prettyprint">
+    <xmp>
+      <div id="app">
+        <input type="text" v-model="total">
+        <div v-if="total === 0">0~5</div>
+        <div v-else-if="total > 5 && total < 10">5~9</div>
+        <div v-else="total > 10">10</div>
+      </div>
+      <!-- <script> -->
+        var vm = Vue.createApp({
+          data() {
+            return {
+              total: 0,
+            }
+          }
+        }).mount('#app')
+      <!-- </script> -->
+    </xmp>
+  </pre>
+
+
+  <h2>分頁功能v-if</h2>
+  <pre class="prettyprint">
+    <xmp>
+      <div id="app">
+        <button v-for="item in tab" :key="item" @click="click(item)">
+          {{ item }}
+        </button>
+        <tab-one v-if="title === 'One'"></tab-one>
+        <tab-two v-if="title === 'Two'"></tab-two>
+      </div>
+
+      <!-- <script> -->
+        const app = Vue.createApp({
+          data() {
+            return {
+              title: 'One',
+              tab: ['One', 'Two']
+            }
+          },
+          methods: {
+            click(e) {
+              this.title = e;
+            }
+          },
+        });
+        app.component('tab-one', {
+          template: `<div>one-component</div>`
+        });
+        app.component('tab-two', {
+          template: `<div>two-component</div>`
+        });
+
+        app.mount('#app');
+      <!-- </script> -->
+    </xmp>
+  </pre>
+
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10280380">v-if 才做選擇，v-show 全都秀</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10280361" target="_blank">Vue.js 從零開始</a>
+    </li>
+  </ul>
+  <hr>
 </template>
 <script setup>
   import {ref} from '@vue/reactivity'

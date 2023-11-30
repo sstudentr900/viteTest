@@ -3,9 +3,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ref from '../views/ref.vue'
 import watch from '../views/watch.vue'
+import install from '../views/install.vue'
 import computed from '../views/computed.vue'
 import props from '../views/props.vue'
 import component from '../views/component.vue'
+import start from '../views/start.vue'
 import model from '../views/model.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
@@ -16,6 +18,7 @@ import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
 import vrouter from '../views/vrouter.vue'
+import von from '../views/von.vue'
 import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
 import life from '../views/life.vue'
@@ -30,13 +33,29 @@ import environment from '../views/environment.vue'
 import currentInstance from '../views/currentInstance.vue'
 import imageerror from '../views/imageerror.vue'
 import jsonserver from '../views/jsonserver.vue'
+import express from '../views/express.vue'
+import throttle from '../views/throttle.vue'
+import swiper from '../views/swiper.vue'
+import elementplus from '../views/elementplus.vue'
+import i18n from '../views/i18n.vue'
+import lazyload from '../views/lazyload.vue'
+import nginx from '../views/nginx.vue'
+import nprogress from '../views/nprogress.vue'
+import slide from '../views/slide.vue'
+import scrolltotop from '../views/scrolltotop.vue'
+import slide2 from '../views/slide2.vue'
+import slide3 from '../views/slide3.vue'
+import slide4 from '../views/slide4.vue'
+import transition from '../views/transition.vue'
 
 const router = createRouter({
 // import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目
 // 錄或子網站）就建議使用這個參數來設置。若無任何子目錄則可寫 history: createWebHistory()
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {path: '/',component: ref,},
+    {path: '/',component: start,},
+    {path: '/start',component: start,},
+    {path: '/install',component: install,},
     {path: '/ref',component: ref,},
     {path: '/watch',component: watch,},
     {path: '/computed',component: computed,},
@@ -57,6 +76,7 @@ const router = createRouter({
     {path: '/vHtml',component: vHtml},
     {path: '/ifShow',component: ifShow},
     {path: '/vrouter',component: vrouter},
+    {path: '/von',component: von},
     {path: '/nuxt',component: nuxt},
     {path: '/validate',component: validate},
     {path: '/axioss',component: axioss},
@@ -65,6 +85,20 @@ const router = createRouter({
     {path: '/currentInstance',component: currentInstance},
     {path: '/imageerror',component: imageerror},
     {path: '/jsonserver',component: jsonserver},
+    {path: '/express',component: express},
+    {path: '/throttle',component: throttle},
+    {path: '/swiper',component: swiper},
+    {path: '/elementplus',component: elementplus},
+    {path: '/i18n',component: i18n},
+    {path: '/lazyload',component: lazyload},
+    {path: '/nginx',component: nginx},
+    {path: '/nprogress',component: nprogress},
+    {path: '/slide',component: slide},
+    {path: '/scrolltotop',component: scrolltotop},
+    {path: '/slide2',component: slide2},
+    {path: '/slide3',component: slide3},
+    {path: '/slide4',component: slide4},
+    {path: '/transition',component: transition},
     //children
     {
       path: '/children',
