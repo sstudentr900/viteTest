@@ -56,6 +56,10 @@
     //顯示頁面
     <router-view />
 
+    //template
+    $route
+
+
   </pre>
   <hr>
   <h3>createWebHistory</h3>
