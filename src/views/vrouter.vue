@@ -170,35 +170,35 @@
     導向指定的目標路由
   </h3>
   <pre class="prettyprint">
-    <xmp>
-      <!-- 字串 -->
-      <router-link to="/" tag="li">Home</router-link>
-      <!-- 物件 -->
-      <!-- name為路由的名稱 -->
-      <!-- params為path的值 -->
-      <!-- query為?後的值 -->
-      :to="{ name: 'user', params: { userId: 123 },query:{k:12}}"
-      <!-- 指定路徑 -->
-      @click="$router.push('/member/profile')
-      <!-- 指定路由名稱 -->
-      @click="$router.push({ name: 'Profile'})
-    </xmp>
+    <!-- <xmp> -->
+    <!-- 字串 -->
+    <router-link to="/" tag="li">Home</router-link>
+    <!-- 物件 -->
+    <!-- name為路由的名稱 -->
+    <!-- params為path的值 -->
+    <!-- query為?後的值 -->
+    :to="{ name: 'user', params: { userId: 123 },query:{k:12}}"
+    <!-- 指定路徑 -->
+    @click="$router.push('/member/profile')
+    <!-- 指定路由名稱 -->
+    @click="$router.push({ name: 'Profile'})
+    <!-- </xmp> -->
   </pre>
   <h3>tag 渲染標籤</h3>
   <p>點擊的路由class名=>.router-link-exact-active 和 .router-link-active</p>
   <pre class="prettyprint">
-    <xmp>
-      //template
-      <router-link to="/" tag="li">Home</router-link>
-      //render
-      <li>Home</li>
-    </xmp>
+    <!-- <xmp> -->
+    //template
+    <router-link to="/" tag="li">Home</router-link>
+    //render
+    <li>Home</li>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>冒號「:」動態路由</h2>
   <pre class="prettyprint">
-    <xmp>
-      const router = new VueRouter({
+    <!-- <xmp> -->
+    const router = new VueRouter({
         routes: [
           { 
             path: 'member/:userName',
@@ -209,24 +209,24 @@
 
       //template
       $route.params.userName
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>取得路由</h2>
   <h3>取得path</h3>
   <pre class="prettyprint">
-    <xmp>
-      //url
+    <!-- <xmp> -->
+    //url
       /search
 
       //template
       $route.path=>'/search'
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>取得params</h3>
   <pre class="prettyprint">
-    <xmp>
-      //url
+    <!-- <xmp> -->
+    //url
       /search/key
 
       //router
@@ -237,12 +237,12 @@
 
       //template
       $route.params.keyword=> key
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>params不給值須寫成?</h3>
   <pre class="prettyprint">
-    <xmp>
-      //methods
+    <!-- <xmp> -->
+    //methods
       this.$router.push({
         params:{key:''||undefined},
       })
@@ -252,12 +252,12 @@
         //加問號是用在可傳可不傳params,否則上一頁會錯誤
         path: '/search/:key?',
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>取得query</h3>
   <pre class="prettyprint">
-    <xmp>
-      //url
+    <!-- <xmp> -->
+    //url
       ?k=b
 
       //router
@@ -268,14 +268,14 @@
 
       //template
       $route.query.k=>b
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>路由傳 props</h2>
   <h3>對象寫法</h3>
   <pre class="prettyprint">
-    <xmp>
-      //router
+    <!-- <xmp> -->
+    //router
       {
         path: '...'
         name: '...'
@@ -289,12 +289,12 @@
       export default {
         props: ['a']
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>函數寫法</h3>
   <pre class="prettyprint">
-    <xmp>
-      //router
+    <!-- <xmp> -->
+    //router
       {
         path: '...'
         name: '...'
@@ -310,14 +310,14 @@
       export default {
         props: ['params','query']
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>路由傳 meta</h2>
   <p>改變template顯示</p>
   <pre class="prettyprint">
-    <xmp>
-      //router
+    <!-- <xmp> -->
+    //router
       {
         path: '/home'
         name: 'home'
@@ -330,46 +330,46 @@
 
       //meta
       v-show="$route.meta"
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>轉址(redirect)</h2>
   <p>將/a 轉頁到 /b</p>
   <pre class="prettyprint">
-    <xmp>
-      //router
+    <!-- <xmp> -->
+    //router
       const router = new VueRouter({
         routes: [
           { path: '/a', redirect: '/b' }
         ]
       })
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>別名(alias)</h2>
   <p>和轉址差異在於，轉址是 URL 會被替換；而別名像是替路由再取另個名字，但網址列看到的 URL 不會被替換</p>
   <pre class="prettyprint">
-    <xmp>
-      const router = new VueRouter({
+    <!-- <xmp> -->
+    const router = new VueRouter({
         routes: [
           { path: '/a', alias: '/b' }
         ]
       })
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>push() replace()</h2>
   <pre class="prettyprint">
-    <xmp>
-      this.$router.push('/'); //可以返回上一頁
+    <!-- <xmp> -->
+    this.$router.push('/'); //可以返回上一頁
       this.$router.replace('/'); //不會向history留下紀錄
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>巢狀路由，區分層級</h2>
   <pre class="prettyprint">
-    <xmp>
-      const routes = [
+    <!-- <xmp> -->
+    const routes = [
         ...
         {
           path: "/member",
@@ -388,7 +388,7 @@
           ],
         },
       ];
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>history路由模式</h2>
@@ -397,10 +397,10 @@
     <li>onpopstate 事件監聽</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
-      history.pushState(state [,title][,url]); // 歷史記錄中增加一條記錄
+    <!-- <xmp> -->
+    history.pushState(state [,title][,url]); // 歷史記錄中增加一條記錄
       history.replaceState(state [,title][,url]); // 修改目前的歷史紀錄
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>hash路由模式</h2>
@@ -419,8 +419,8 @@
     <li>單一元件內的分別是beforeRouteEnter,beforeRouteUpdate,beforeRouteLeave</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
-      //router.js (全域)
+    <!-- <xmp> -->
+    //router.js (全域)
       router.beforeEach((to, from, next) => {
         if(token){
           有登入
@@ -428,12 +428,12 @@
           沒有登入
         }
       })
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>beforeEnter 進入新的路由前</h3>
   <pre class="prettyprint">
-    <xmp>
-      //router.js
+    <!-- <xmp> -->
+    //router.js
       {
         path: '/routerName',
         name: 'routerName',
@@ -447,7 +447,7 @@
           }
         }
       },
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

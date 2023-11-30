@@ -2,7 +2,7 @@
   <h2>「@」v-on：監聽事件</h2>
   <h3>v-on</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h3>{{ count }}</h3>
         <button @click="count++">Click</button>
@@ -18,11 +18,11 @@
         });
         vm.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>v-on methods</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h3>{{ count }}</h3>
         <button @click="add">Click</button>
@@ -43,11 +43,11 @@
         });
         vm.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>v-on 帶參數</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h3>{{ count }}</h3>
         <button @click="add(100,$event)">Click</button>
@@ -70,7 +70,7 @@
         });
         vm.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>事件修飾符</h3>
   <ol>
@@ -87,51 +87,51 @@
   </ol>
   <h3>指定事件只觸發一次(@click.once)</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <button type="button" @click="clicks += 1">Click it!</button>
       <button type="button" @click.once="clicks += 1">Click it!(只會被觸發一次)</button>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>prevent 阻擋預設行為 event.preventDefault()</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       form v-on:submit.prevent="onSubmit"
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>v-model</h3>
   <p>v-model = v-on:input + v-bind:value</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <input type="text" v-model="inputText" />
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>@input監聽表單元素的即時變化</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <input type="text" :value="inputText" @input="inputText = $event.target.value" />
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>v-model.lazy</h3>
   <p>v-model = v-on:change + v-bind:value</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <input type="text" v-model.lazy="inputText" />
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>@change監聽值改變</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <input type="text" :value="inputText" @change="inputText = $event.target.value" />
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>input文字框</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         var vm = Vue.createApp({
           data() {
@@ -145,12 +145,12 @@
         <input type="text" v-model="message" placeholder="input text">
         {{ message }}
       </div>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>textarea文字方塊</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         var vm = Vue.createApp({
           data() {
@@ -165,12 +165,12 @@
         <textarea v-model="message"></textarea>
       </div>
 
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>checked選擇框</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="demo">
         <input type="checkbox" id="one" value="one" v-model="checked">
         <label for="one">one</label>
@@ -190,12 +190,12 @@
           }
         }).mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>checked單選</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="demo">
         <input type="checkbox" id="one" value="one" v-model="checked">
         <label for="one">Click Me!</label>
@@ -211,12 +211,12 @@
           }
         }).mount('#demo');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>radio單選框</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="demo">
         <input type="radio" id="one" value="1" v-model="checked">
         <label for="one">one</label>
@@ -236,12 +236,12 @@
           }
         }).mount('#demo');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>select下拉式選單</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="demo">
         <select v-model="selected">
           <option disabled value="">請選擇</option>
@@ -262,7 +262,7 @@
         });
         vm.mount('#demo');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>
@@ -271,15 +271,15 @@
     ：綁定 attribute
   </h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <button type="button" :disabled="isUnclickable" @click="disabled">
         Cannot click!
       </button>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>綁定Style</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         var vm = Vue.createApp({
           data() {
@@ -298,11 +298,11 @@
         <div :style="style">{{ text }}</div>
       </div>
 
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>style 用陣列格式</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         var vm = Vue.createApp({
           data() {
@@ -323,11 +323,11 @@
         <div :style="[red,black]">{{ text }}</div>
       </div>
 
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>綁定Class</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         var vm = Vue.createApp({
           data() {
@@ -343,20 +343,20 @@
         <div class="bgblue" :class="{active: isAcrive}">{{ text }}</div>
       </div>
 
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>使用三元運算子做更多變化</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <div class="active" :class="[ isAcrive? 'bgblue' : 'bgred' ]" 
         @click="isAcrive = !isAcrive">{{ text }}</div>
       </div>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>分頁功能 v-bind:is</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <button v-for="item in tabs" :key="item" @click="titleTab = item">
           {{ item }}
@@ -436,7 +436,7 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

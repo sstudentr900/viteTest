@@ -103,7 +103,7 @@
       },
   </pre>
   <pre>
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         import {
             inject
@@ -129,7 +129,7 @@
     
         }
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

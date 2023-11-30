@@ -32,7 +32,7 @@
   <img src="https://vuex.vuejs.org/vuex.png" alt="">
   <p>主要以四個核心概念——State、Getters、Mutations、Actions——所組成， Modules 可再進行模組化</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //store
       import { createStore } from 'vuex'
       export default createStore({
@@ -75,12 +75,12 @@
               },
           },
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>路由 beforeEnter 發送 API</h3>
   <p>將導覽項目路由規劃成巢狀結構，直接在父層路由發送 API。</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       {
           path: "/urlName",
           component: urlName,
@@ -90,11 +90,11 @@
               next();
           },
       },
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>取得state的值</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //className 分類別名
       //stateName state名
       //script 引入
@@ -118,11 +118,11 @@
 
       //4.
       ...mapState('className',["stateName"]),//computed
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>取不到mapState</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       computed: {
           ...mapState('register', ["districts"]),
           areas() {
@@ -134,12 +134,12 @@
 
           },
       },
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>Mutaitions</h3>
   <p>commit 呼叫 mutation 的方法。</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
        //script 引入
       import {mapMutations} from 'vuex'
 
@@ -157,13 +157,13 @@
 
       //3.
       this.$store.commit('className/mutationsName');//methods
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>Actions</h3>
   <p>dispatch 呼叫 action 的方法</p>
   <p>這邊可以做非同步處理，例如 AJAX</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //1.
       this.$store.dispatch('className/actionsName')   //mounted 執行非同步
       ...mapState('className', ['stateName'])         //computed 取得data
@@ -181,11 +181,11 @@
       ...mapActions({
           add: "increment" // 將 `this.add()` 映射為 `this.$store.dispatch('increment')`
       })//methods
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <p>組合 actions</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Promise
       actions: {
           actionA ({ commit }) {
@@ -218,12 +218,12 @@
               commit('gotOtherData', await getOtherData())
           }
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>getters</h3>
   <p>getters對state優化取值</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //script 引入
       import {mapGetters} from "vuex";
 
@@ -247,11 +247,11 @@
       }),//computed
       //3.
       ...mapGetters('className',['getterName','getterName2'])
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <p>getters裡的stateName要有預設不然filter會報錯</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //store
       const state = {
           stateName: []
@@ -274,7 +274,7 @@
       computed: {
           ...mapGetters('className',['getterName'])
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
@@ -291,7 +291,7 @@
   <h3>pinia 寫法</h3>
   <p>位置 stores/counter.js</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> 
         import { defineStore } from 'pinia';
         import { computed,ref } from 'vue';
@@ -313,12 +313,12 @@
           }
         })
       </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>pinia 引用</h3>
   <p>位置 app.vue</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script setup> -->
         import {useCounterStore} from "./stores/counter.js";
         //執行
@@ -333,12 +333,12 @@
         <h2>取counter值: {{store2.$state.counter}}</h2>
         <button @click="clickAdd">clickAdd</button>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>pinia compositionAPI 寫法</h3>
   <p>位置 stores/counter.js</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         import { defineStore } from 'pinia';
         import { computed,ref } from 'vue';
@@ -371,12 +371,12 @@
           };
         });
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>pinia compositionAPI 引用</h3>
   <p>位置 app.vue</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script setup> -->
         import { storeToRefs } from "pinia";
         import {useCounterStore} from "./stores/counter.js";
@@ -403,7 +403,7 @@
         <h2>解構後使用方式</h2>
         <button  @click="fetchApiData">get axios data</button>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h4>參考</h4>
   <ul>
@@ -417,9 +417,9 @@
   <br>
   <h3>安裝 Pinia 套件</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       npm install pinia
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h3>Pinia 建立</h3>
@@ -574,7 +574,7 @@
   <hr>
   <h2>pinia subscribing 取的pinia狀態</h2>
   <pre>
-    <xmp>
+    <!-- <xmp> -->
       ## Store
       ```js
       //Store index.js
@@ -625,7 +625,7 @@
               next();
           },
       },
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

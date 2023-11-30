@@ -43,7 +43,7 @@
   <hr>
   <h2>各板本components</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Options comonents
       <!-- <script> -->
         import HelloWorld from "@/components/HelloWorld.vue"    
@@ -65,12 +65,12 @@
       <template>
         <HelloWorld/>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>動態切換comonents</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script setup> -->
         import propHtml from '@/components/propHtml.vue';
         import HelloWorld from '@/components/HelloWorld.vue';
@@ -98,7 +98,7 @@
           <component :is="component"/>
         </div>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
@@ -113,7 +113,7 @@
   <hr>
   <h2>component</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h4>{{ text }}</h4>
         <con-tainer></con-tainer>
@@ -152,7 +152,7 @@
         });
         app.mount("#app");
       <!-- <script> -->
-    </xmp >
+    <!-- </xmp > -->
   </pre>
   <hr>
 </template>

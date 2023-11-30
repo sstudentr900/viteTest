@@ -35,7 +35,7 @@
 <template>
   <h2>各板本Props</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Vue3 Props
       export default {
         props: ['title'],
@@ -52,13 +52,13 @@
           }
         })
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>Options_sfc_props父傳子</h2>
   <p>接收父方式可使用以下型別String,Number,Boolean,Array,Object,Date,Function,Symbol</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       //enterName1內層引用名子="外層的值"
       //: v-bind 綁定變數
@@ -90,12 +90,12 @@
           },
         }
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>Options_html_props</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h4>{{ text }}</h4>
         <con-tainer :test-props="demo"></con-tainer>
@@ -119,12 +119,12 @@
         });
         app.mount("#app");
       </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>Options_html_props型別驗證</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <area-component :pro-a="fun" :pro-b="text" pro-c="num" :pro-d="num">
         </area-component>
@@ -163,12 +163,12 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Options_sfc_emit 子傳父</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       //@ v-on 監聽事件
       <emitHtml @childName="callBack"></emitHtml>
@@ -176,12 +176,12 @@
       //子 template
       //使用$emit 傳給父元件
       <input @input="$emit('childName', $event.target.value)"/>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>Options_html_emit驗證</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         {{ text }}：{{ num }}
         <br>
@@ -236,11 +236,11 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>methods</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //子
       <emitHtml @change='searchBook'></emitHtml>
       methods: {
@@ -248,12 +248,12 @@
           this.$emit("childName", event.target.value)
         }
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Options_sfc_v-model 與元件的雙向綁定 (Vue 3.x 新增)</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       //message 子層引用名子 parentName7父層引用的名子
       <emitHtml3 v-model:message="parentName7"></emitHtml3>
@@ -269,12 +269,12 @@
           }
         },
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Options_sfc_update</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- 子元件 -->
       <label>搜尋書本：
         <input type="text" :value="keyword" @input="$emit('update:keyword', $event)" />
@@ -283,12 +283,12 @@
       <!-- 父元件 -->
       <BookList :keyword="searchText"
         @update:keyword="searchText = $event.target.value" />
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Composition_sfc_props父傳子</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父
       <!-- <script setup> -->
         import propHtml from '@/components/propHtml.vue';
@@ -326,12 +326,12 @@
       <template>
         <h2 :alt=props_array.alt>{{props_array.alt}}</h2>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Composition_sfc_emit子傳父</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //子
       <!-- <script setup> -->
         //1.array 傳父
@@ -375,12 +375,12 @@
         <propHtml @addInt="callBack"></propHtml>
         {{resInt}}
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Composition_sfc_雙向綁定</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       <!-- <script setup> -->
         import propHtml from '@/components/propHtml.vue';
@@ -413,12 +413,12 @@
           <p>{{props2.name}}</p>
           <button @click="changeName">change name</button>
         </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>Composition_sfc_v-model</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       <!-- <script setup> -->
         import propHtml from '@/components/propHtml.vue';
@@ -440,13 +440,13 @@
       <template>
         <input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>One-Way Data Flow 單向資料流</h2>
   <p>上給下,使用Props函數更新父name3</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 template
       <!-- <script setup> -->
         import propHtml from '@/components/propHtml.vue';
@@ -481,7 +481,7 @@
           <button @click="props3.updateName2('jacky')">updateName</button>
         </template>
         
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
 
@@ -546,9 +546,9 @@
     </li>
   </ul>
   <hr>
-    <!-- <h3>拋給父元件處理</h3>
+  <h3>拋給父元件處理</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
      子元件
       <label>搜尋書本：
         <input type="text" :value="inputText" @input="$emit('searchBook', $event)" />
@@ -556,15 +556,15 @@
 
      父元件
       <BookList :inputText="searchText" @searchBook="searchText = $event.target.value" />
-    </xmp>
-  </pre> -->
+    <!-- </xmp> -->
+  </pre>
 
 
-  <!-- <h2>資料傳遞</h2>
+  <h2>資料傳遞</h2>
   <p>將內層資料傳遞到外層元件上使用</p>
   <img src="https://i.imgur.com/BVjQ2Ok.png" alt="">
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h3> {{ title }} </h3>
         {{ text }}：
@@ -574,7 +574,7 @@
         <br>
         <out-text @button-click="add"></out-text>
       </div>
-      <script>
+      <!-- <script> -->
         var app = Vue.createApp({
           data() {
             return {
@@ -606,15 +606,15 @@
           }
         });
         app.mount("#app");
-      </script>
-    </xmp>
-  </pre> -->
+      <!-- </script> -->
+    <!-- </xmp> -->
+  </pre> 
 
   
 
   <h2>父傳孫(provide/nject)</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //父 script
       //傳遞出去的資料定義在 provide
       import { inject, reactive, computed } from "vue";
@@ -631,7 +631,7 @@
       export default {
       inject: ['provideMsg','provideMsg2'],
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h2>provide/inject 傳值(隔山打牛)</h2>
   <ol>
@@ -639,7 +639,7 @@
     <li>inject接收的子元件</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h2>app</h2>
         <input type="text" v-model="text">
@@ -687,7 +687,7 @@
 
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>孫傳爺（emit / listeners）</h2>
@@ -696,7 +696,7 @@
 
   <h2>全域(eventBus)</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //main.js
       import mitt from "mitt"; //引入全局跨元件通訊
       var app = createApp(App);
@@ -715,7 +715,7 @@
       console.log(msg)
       });
       },
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>mitt兩個子元件，彼此需要傳遞</h2>
@@ -726,7 +726,7 @@
     <li>定義接收emitter.on，(data)裡就是emitter.emit傳出來的值。</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h4>{{ text }}</h4>
         <con-tainer></con-tainer>
@@ -777,7 +777,7 @@
         });
         app.mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

@@ -42,7 +42,7 @@
   <h2>v-for</h2>
   <p>迭代物件中的元素，第二個參數key是鍵值，第三個參數index是索引值</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <ul>
           <li v-for="(items, key, index) in item">
@@ -63,10 +63,10 @@
           }
         }).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div v-for="(item,index) in list" :key='index'>
         <p>index:{{index}} -- id:{{item.id}} -- name:{{item.name}}</p>
       </div>
@@ -92,12 +92,12 @@
           },
         }
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>遍歷陣列資料</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <ul>
           <li v-for="(item, index) in arr">
@@ -118,12 +118,12 @@
           }
         }).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>v-for 篩選</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <ul>
           <li v-for="item in filterNum">{{ item }}</li>
@@ -145,12 +145,12 @@
           }
         }).mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>v-for 一定要加:key</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <ul>
           <li v-for="(item, index) in products" :key="item.price">
@@ -191,7 +191,7 @@
           }
         }).mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>綁定 key 值：「id」 VS 「index」</h2>
@@ -202,7 +202,7 @@
 
   <h2>methods</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id='app'>
         <h3>事件觸發：</h3>
         <button @click="clickEvent('isClickEvent')">點擊事件</button>
@@ -226,12 +226,12 @@
         };
         Vue.createApp(App).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>使用methods完成簡單購物車</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id='app'>
         <!--   <h3>事件觸發：</h3>
                 <button @click="clickEvent('isClickEvent')">點擊事件</button>
@@ -301,7 +301,7 @@
         };
         Vue.createApp(App).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

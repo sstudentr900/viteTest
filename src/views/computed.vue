@@ -34,7 +34,7 @@
   <h2>option_hml_computed</h2>
   <p>computed的更新條件是原始資料有變更才會更新</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id='app'>
         <p>methods: {{ num() }}</p>
         <p>computes: {{ run }}</p>
@@ -62,11 +62,11 @@
         };
         Vue.createApp(App).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>option_hml_搜尋</h3>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id='app'>
         <input type="search" v-model="search">
         <ul>
@@ -111,7 +111,7 @@
         };
         Vue.createApp(App).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>option_hml_getter與setter</h3>
   <ol>
@@ -119,7 +119,7 @@
     <li>setter：把資料(以下範例使用methods)運算完，傳回data</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <ul>
           <li v-for="product in products">
@@ -180,7 +180,7 @@
         };
         Vue.createApp(App).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>Composition_sfc_computed</h2>
@@ -191,7 +191,7 @@
     <li>computed 無法在template傳參,要傳參請用函數</li>
   </ul>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script setup> 
         import {computed} from "@vue/reactivity";
         import { ref,reactive,watch,computed } from 'vue';
@@ -233,7 +233,7 @@
         <h1>plusOne get{{ plusOne }}</h1>
         <h1>count2會被computed修改{{ count2 }}</h1>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

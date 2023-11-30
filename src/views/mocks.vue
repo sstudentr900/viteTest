@@ -205,9 +205,9 @@
     }
   </pre>
   <pre>
-    <xmp>
-      <!-- <script> -->
-      //引用API
+    <!-- <xmp> -->
+    <!-- <script> -->
+    //引用API
         import {
             reqCateBanner
         } from '@/api';
@@ -222,8 +222,8 @@
             },
             computed: {},
         }
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <hr>
   <a href="https://www.youtube.com/watch?v=Nrdn7nGzNSA&list=PLmOn9nNkQxJEFpabd412vGw_k7-lHlJOP&index=32">mockjs模拟数据</a>

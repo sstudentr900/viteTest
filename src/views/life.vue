@@ -17,7 +17,7 @@
   <hr>
   <h2>生命週期</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       import { onMounted, onUpdated } from 'vue'
       export default {
         name: 'HelloWorld',
@@ -27,10 +27,10 @@
           // ...
         }
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script> -->
         import {
           inject
@@ -55,7 +55,7 @@
           }
         }
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr> 
   <h2>生命週期介紹</h2>
@@ -78,7 +78,7 @@
     <li>unmounted:Vue實體被銷毀完成</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <button @click="isShowing = !isShowing">
           <span v-if="isShowing">隱藏元件</span>
@@ -133,7 +133,7 @@
         });
         app.mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr> 
   <h4>參考</h4>

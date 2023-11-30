@@ -413,9 +413,9 @@
     </div>
   </div>
   <pre>
-    <xmp>
-      <!-- <script> -->
-      import axios from "axios";
+    <!-- <script> -->
+    <!-- <script> -->
+    import axios from "axios";
         import { GET } from '@/api/api';
         import { reqCategoryList } from '@/api';
         export default {
@@ -454,8 +454,8 @@
                 // }
             // }
         }
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <hr>
   <a href="https://ithelp.ithome.com.tw/articles/10275141"> API</a>

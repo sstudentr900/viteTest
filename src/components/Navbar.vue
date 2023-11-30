@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <router-link to="/start">start</router-link>
-    <router-link to="/install">install</router-link>
+    <!-- <router-link to="/installs">installs</router-link> -->
     <router-link to="/ref">ref reactive 變數</router-link>
     <router-link to="/watch">watch 變數監聽</router-link>
     <router-link to="/computed">computed 計算函數</router-link>
@@ -46,7 +46,7 @@
 <script setup></script>
 <style scoped>
   .navbar{
-    width: 220px;
+    width: 280px;
     position: fixed;
     top: 0;
     left: 0;
@@ -57,5 +57,7 @@
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
+    height: 100%;
+    overflow: auto;
   }
 </style>

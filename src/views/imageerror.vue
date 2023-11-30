@@ -128,28 +128,28 @@
   <h3>assets</h3>
   <p>Webpack 編譯 減少額外的網絡請求</p>
   <pre>
-    <xmp>
-      //assets 基本寫法
+    <!-- <xmp> -->
+    //assets 基本寫法
       img src="@/assets/home.png"
       img src="../../assets/home.png"
 
       //assets require 帶入值
       img :src="require(`@/assets/${image}.svg`)"
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>public</h3>
   <p>需要使用絕對路徑</p>
   <pre>
-    <xmp>
-      //放在public/img/i01.jpg"
+    <!-- <xmp> -->
+    //放在public/img/i01.jpg"
       img src="img/i01.jpg"
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>new URL</h3>
   <pre>
-    <xmp>
-      const getImgSrc = (url)=> new URL(`/src/assets/${url}`,import.meta.url).href
-    </xmp>
+    <!-- <xmp> -->
+    const getImgSrc = (url)=> new URL(`/src/assets/${url}`,import.meta.url).href
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

@@ -22,14 +22,14 @@
   <hr>
   <h2>watch、watchEffect、stop</h2>
   <pre class="prettyprint">
-    <xmp>
-      <template>
-        <div>
-          <input type="text" v-model="search">
-          <input type="text" v-model="search2">
-        </div>
-      </template>
-      //js
+    <!-- <xmp> -->
+    <template>
+      <div>
+        <input type="text" v-model="search">
+        <input type="text" v-model="search2">
+      </div>
+    </template>
+    //js
       import { ref, watch, watchEffect } from 'vue'
       export default {
         name: 'HelloWorld',
@@ -50,12 +50,12 @@
           }
         }
       }
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>要停止 watch、watchEffect，如下：</h3>
   <pre class="prettyprint">
-    <xmp>
-      const search = ref('');
+    <!-- <xmp> -->
+    const search = ref('');
       const stopWatch = watch(search, (newValue, oldValue) => {
         console.log('watch search', newValue, oldValue)
       })
@@ -66,7 +66,7 @@
         stopWatch();
         stopWatchEffect();
       }, 5000)
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
@@ -90,8 +90,8 @@
   </pre>
   <p>nextTick監聽v-for完執行</p>
   <pre>
-    <xmp>
-      watch:{
+    <!-- <xmp> -->
+    watch:{
         slideData:{
           handler:function(){
             //監聽v-for完執行
@@ -99,8 +99,8 @@
           }
         }
       }
-      <!-- <script> -->
-      export default {
+    <!-- <script> -->
+    export default {
           data() {
             return {
               slideData:''
@@ -121,8 +121,8 @@
           // methods: {
           // }
         };
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
@@ -134,16 +134,16 @@
   <hr>
   <h2>watch監聽器</h2>
   <pre class="prettyprint">
-    <xmp>
-      <div id="app">
-        <h3>watch 監聽單一變數</h3>
-        <label for="name">監聽變數：</label>
-        <input type="text" id="name" v-model="tempName">
-        <P>大於五個字: {{ big }}</P>
-        <p>小於五個字: {{ small }}</p>
-      </div>
-      <!-- <script> -->
-      var App = {
+    <!-- <xmp> -->
+    <div id="app">
+      <h3>watch 監聽單一變數</h3>
+      <label for="name">監聽變數：</label>
+      <input type="text" id="name" v-model="tempName">
+      <P>大於五個字: {{ big }}</P>
+      <p>小於五個字: {{ small }}</p>
+    </div>
+    <!-- <script> -->
+    var App = {
           data() {
             return {
               small: "",
@@ -162,8 +162,8 @@
           }
         };
         Vue.createApp(App).mount("#app");
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <h2>watch與computed不同的地方</h2>
   <ol>
@@ -171,21 +171,21 @@
     <li>computed監聽多個變數事件,產生一個值</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
-      <div id="app">
-        <label for="store">店家名稱</label>
-        <input type="text" v-model="store">
-        <br>
-        <label for="productName">商品名稱</label>
-        <input type="text" v-model="productName">
-        <br>
-        <label for="productPrice">商品價格</label>
-        <input type="number" v-model.number="productPrice">
-        <p>computed: {{ comVale }}</p>
-        <p>watch: {{ watchValue }}</p>
-      </div>
-      <!-- <script> -->
-      var App = {
+    <!-- <xmp> -->
+    <div id="app">
+      <label for="store">店家名稱</label>
+      <input type="text" v-model="store">
+      <br>
+      <label for="productName">商品名稱</label>
+      <input type="text" v-model="productName">
+      <br>
+      <label for="productPrice">商品價格</label>
+      <input type="number" v-model.number="productPrice">
+      <p>computed: {{ comVale }}</p>
+      <p>watch: {{ watchValue }}</p>
+    </div>
+    <!-- <script> -->
+    var App = {
           data() {
             return {
               watchValue: "",
@@ -213,8 +213,8 @@
           }
         };
         Vue.createApp(App).mount("#app");
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <h2>使用watch監聽多個變數</h2>
   <ol>
@@ -223,20 +223,20 @@
     <li>deep也要改為true</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
-      <div id="app">
-        <label for="store">店家名稱：</label>
-        <input type="text" v-model="product.store">
-        <br>
-        <label for="productName">商品名稱：</label>
-        <input type="text" v-model="product.name">
-        <br>
-        <label for="productPrice">商品價格：</label>
-        <input type="number" v-model.number="product.price">
-        <p>value: {{ value }}</p>
-      </div>
-      <!-- <script> -->
-      var App = {
+    <!-- <xmp> -->
+    <div id="app">
+      <label for="store">店家名稱：</label>
+      <input type="text" v-model="product.store">
+      <br>
+      <label for="productName">商品名稱：</label>
+      <input type="text" v-model="product.name">
+      <br>
+      <label for="productPrice">商品價格：</label>
+      <input type="number" v-model.number="product.price">
+      <p>value: {{ value }}</p>
+    </div>
+    <!-- <script> -->
+    var App = {
           data() {
             return {
               product: {
@@ -257,8 +257,8 @@
           }
         };
         Vue.createApp(App).mount("#app");
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <hr>
 </template>

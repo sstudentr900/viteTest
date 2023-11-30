@@ -5,7 +5,7 @@
   <!-- <h1>app</h1> -->
   <Navbar/>
   <div class="app_main">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 <style scoped>
@@ -14,6 +14,6 @@ body{
   padding: 0;
 }
 .app_main{
-  padding: 20px 20px 20px 240px;
+  padding: 20px 40px 20px 320px;
 }
 </style>

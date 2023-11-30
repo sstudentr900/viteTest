@@ -3,7 +3,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ref from '../views/ref.vue'
 import watch from '../views/watch.vue'
-import install from '../views/install.vue'
+import installs from '../views/installs.vue'
 import computed from '../views/computed.vue'
 import props from '../views/props.vue'
 import component from '../views/component.vue'
@@ -55,7 +55,7 @@ const router = createRouter({
   routes: [
     {path: '/',component: start,},
     {path: '/start',component: start,},
-    {path: '/install',component: install,},
+    {path: '/installs',component: installs,},
     {path: '/ref',component: ref,},
     {path: '/watch',component: watch,},
     {path: '/computed',component: computed,},

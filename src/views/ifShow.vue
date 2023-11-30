@@ -28,7 +28,7 @@
     <li>v-show 都會被保留在 DOM 中</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <input type="checkbox" v-model="isShow">
         <div v-if="isShow">
@@ -47,12 +47,12 @@
           }
         }).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>v-else</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
         <input type="checkbox" v-model="isShow">
         <div v-if="isShow">A</div>
         <div v-else>B</div>
@@ -65,12 +65,12 @@
             }
           }).mount('#app')
         <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>v-else-if</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <input type="text" v-model="total">
         <div v-if="total === 0">0~5</div>
@@ -86,13 +86,13 @@
           }
         }).mount('#app')
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
 
   <h2>分頁功能v-if</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <button v-for="item in tab" :key="item" @click="click(item)">
           {{ item }}
@@ -124,7 +124,7 @@
 
         app.mount('#app');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h4>參考</h4>

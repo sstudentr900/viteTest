@@ -30,7 +30,7 @@
   <h3>共用函數(滑鼠位置)和使用</h3>
   <p>新增自訂useWindowPosition.js檔到Composables</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Composables/useWindowPosition.js
       <!-- <script> -->
         import { onMounted, onUnmounted,ref } from "vue";
@@ -68,12 +68,12 @@
       <template>
         <h2>pageX:{{pageX}},pageY:{{pageY}}</h2>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>限制資料只能讀取 readonly</h3>
   <p>新增自訂useSetData.js檔到Composables</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Composables/useSetData.js
       <!-- <script> -->
         import {readonly, ref} from "vue";
@@ -114,18 +114,18 @@
         <button @click="setValue(data2+1)">add</button>
         <button @click="setName('jakey')">setName</button>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h3>axios範例</h3>
   <p>安裝方式</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       npm i axios
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <p>新增自訂useAxios.js檔到Composables</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Composables/useAxios.js
       <!-- <script> -->
         import axios from "axios";
@@ -167,7 +167,7 @@
         <!-- api錯誤 -->
         <p v-if="errorMessage!==''">{{errorMessage}}</p>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>

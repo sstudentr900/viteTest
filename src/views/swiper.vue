@@ -80,9 +80,9 @@
   <input v-model="slideData" placeholder="slideData_watch">
   <p>Message is: {{ slideData }}</p>
   <pre>
-    <xmp>
-      <!-- <style> -->
-      .swiper {
+    <!-- <xmp> -->
+    <!-- <style> -->
+    .swiper {
         width: 100%;
         height: 400px;
       }
@@ -97,9 +97,9 @@
       .swiper-slide.page2{ background-color: #f9d9ca; }
       .swiper-slide.page3{ background-color: #bdc2bb; }
       .swiper-slide.page4{ background-color: #d2d5b8; }
-      <!-- </style> -->
-      <!-- <script> -->
-      import Swiper, { Navigation, Pagination } from 'swiper';
+    <!-- </style> -->
+    <!-- <script> -->
+    import Swiper, { Navigation, Pagination } from 'swiper';
       import 'swiper/css';
       import 'swiper/css/navigation';
       import 'swiper/css/pagination';
@@ -155,8 +155,8 @@
         // methods: {
         // }
       };
-      <!-- </script> -->
-    </xmp>
+    <!-- </script> -->
+    <!-- </xmp> -->
   </pre>
   <hr>
   <a href="https://ithelp.ithome.com.tw/articles/10272948">輪播套件-swiper</a>

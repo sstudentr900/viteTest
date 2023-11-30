@@ -1,7 +1,7 @@
 <template>
   <h2>各板本變數</h2>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       //Vue2 data內放變數
       data: {
         msg: 'Hello World'
@@ -17,7 +17,7 @@
       <!-- <script setup> -->
         const msg = ref('Hello World');
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>ref()</h2>
@@ -28,7 +28,7 @@
     <li>ref 被包裝後，要用.value才能取值</li>
   </ul>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <template>
         <h1>vue: {{ count }}</h1>
         <button @click="increment"> count is: {{ count }}</button>
@@ -41,7 +41,7 @@
           count.value += 1;
         }
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>reactive()</h2>
@@ -49,7 +49,7 @@
     <li>reactive 只可以包{}和[]</li>
   </ul>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <template>
         <h1>vue: {{ data }}</h1>
       </template>
@@ -61,14 +61,14 @@
           data.name = 'jacky'
         },2000)
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h2>ref vs reactive</h2>
   <p>ref 取值需要加.value</p>
   <p>watch 觀看ref(object) 深度不會被監聽</p>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <!-- <script setup> -->
         import { ref, reactive,watch } from 'vue';
         //ref包入object時watch不能被監聽
@@ -113,7 +113,7 @@
         <h1>{{ people2 }}</h1>
         <h1>{{ people3 }}</h1>
       </template>
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <h4>參考</h4>
   <ul>

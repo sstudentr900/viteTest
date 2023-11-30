@@ -62,7 +62,7 @@
     <li>打洞:顯示&lt;div class="box"&gt;&lt;p&gt; 打洞成功 !&lt;/p&gt;&lt;/div&gt;</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <h3> {{ text }} </h3> 
 
@@ -97,7 +97,7 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>slot 具名插槽(建立多個插槽)</h3>
@@ -106,7 +106,7 @@
     <li>顯示結果:&lt;div class="box"&gt;波利卡片瘋兔卡片未插卡禿鷹卡片&lt;/div&gt;</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <out-text>
           <template v-slot:header>波利卡片</template>
@@ -140,7 +140,7 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
 
@@ -150,7 +150,7 @@
     <li>外層元件模板 template v-slot:default="roprops"接收資料 ， v-slot:default 固定寫法 ， roprops為自定義名稱。</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <out-text>
           <template v-slot:default="roprops">
@@ -186,7 +186,7 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
 
   <h3>Slot Props搭配Component Props</h3>
@@ -197,7 +197,7 @@
     <li>外層模板改為物件方式接收v-slot:default="{ ro, buy }"。</li>
   </ol>
   <pre class="prettyprint">
-    <xmp>
+    <!-- <xmp> -->
       <div id="app">
         <out-text :product="product">
           <template v-slot:default="{ ro, buy }">
@@ -243,7 +243,7 @@
         });
         app.mount("#app");
       <!-- </script> -->
-    </xmp>
+    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
