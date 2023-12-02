@@ -1,120 +1,100 @@
 <template>
   <h2>各板本變數</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      //Vue2 data內放變數
-      data: {
-        msg: 'Hello World'
-      }
+    //Vue2 data內放變數
+    data: {
+      msg: 'Hello World'
+    }
 
-      //Vue3 setup內放變數,需要return
-      setup() {
-        const msg = ref('Hello World');
-        return { msg }
-      }
+    //Vue3 setup內放變數,需要return
+    setup() {
+      const msg = ref('Hello World');
+      return { msg }
+    }
 
-      //vite 搭配setup不用return
-      <!-- <script setup> -->
-        const msg = ref('Hello World');
-      <!-- </script> -->
-    <!-- </xmp> -->
+    //vite 搭配setup不用return
+      const msg = ref('Hello World');
   </pre>
-
+  <hr>
   <h2>ref()</h2>
   <ul>
+    <li>ref(動態資料監聽畫面和資料做改變)</li>
     <li>ref 可以包任何型別</li>
-    <li>ref 包裝該值讓他有響應試</li>
     <li>ref 是obj請用const</li>
-    <li>ref 被包裝後，要用.value才能取值</li>
+    <li>ref 在script要用(.value)才能取值</li>
   </ul>
+  <h3>ref包obj watch 不能監聽除非deep</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <template>
-        <h1>vue: {{ count }}</h1>
-        <button @click="increment"> count is: {{ count }}</button>
-      </template>
-      <!-- <script> -->
-        const count = ref(0); 
-        const increment = ()=>{
-          //count 被包裝後需要用.value才能取值
-          console.log(count)
-          count.value += 1;
-        }
-      <!-- </script> -->
-    <!-- </xmp> -->
+    import { ref, reactive,watch } from 'vue';
+    //ref包入object時watch不能被監聽
+    const people = ref(0);
+    const people1 = ref({
+      num: 0,
+    });
+    const people2 = reactive({
+      num: 0,
+    });
+    setTimeout(() => {
+      people.value = 50;
+      people1.value.num = 100;
+      people2.num = 200;
+    }, 2000);
+    watch(people,()=>{
+      console.log('people被監聽')
+    })
+    watch(people2,()=>{
+      console.log('people2被監聽')
+    })
+    watch(people1,()=>{
+      console.log('people1不能被監聽')
+    })
+    watch(people1,()=>{
+      console.log('people1有deep可以被監聽')
+    },{deep: true})
   </pre>
-
+  <h3>範例</h3>
+  <pre class="prettyprint">
+    #template
+    button @click="increment" 
+    
+    #script
+    const count = ref(0); 
+    const increment = ()=>{
+      console.log(count)
+      //count 被包裝後需要用.value才能取值
+      count.value += 1;
+    }
+  </pre>
+  <p>text:{{text}}</p>
+  <button @click="changeText">changeRef</button>
+  <hr>
   <h2>reactive()</h2>
-  <ul>
-    <li>reactive 只可以包{}和[]</li>
-  </ul>
+  <p>reactive 只可以包{}和[] 取值不用加value</p>
+  <p>reactive 只可以包{}和[] 取值不用加value</p>
+  <h3>reactive 會解包 ref</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <template>
-        <h1>vue: {{ data }}</h1>
-      </template>
-      <!-- <script> -->
-        const data = reactive({
-          name: 'mike'
-        }); 
-        setTimeout(()=>{
-          data.name = 'jacky'
-        },2000)
-      <!-- </script> -->
-    <!-- </xmp> -->
+    //reactive 會解包 ref
+    const num = ref(0);
+    const people3 = reactive({
+      num: num,
+    });
+    setTimeout(() => {
+      //不需要.value
+      people3.num = 300;
+    }, 2000);
   </pre>
-
-  <h2>ref vs reactive</h2>
-  <p>ref 取值需要加.value</p>
-  <p>watch 觀看ref(object) 深度不會被監聽</p>
+  <h3>範例</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script setup> -->
-        import { ref, reactive,watch } from 'vue';
-        //ref包入object時watch不能被監聽
-        const people = ref(0);
-        const people1 = ref({
-          num: 0,
-        });
-        const people2 = reactive({
-          num: 0,
-        });
-        setTimeout(() => {
-          people.value = 50;
-          people1.value.num = 100;
-          people2.num = 200;
-        }, 2000);
-        watch(people,()=>{
-          console.log('people被監聽')
-        })
-        watch(people1,()=>{
-          console.log('people1不能被監聽')
-        })
-        watch(people1,()=>{
-          console.log('people1有deep可以被監聽')
-        },{deep: true})
-        watch(people2,()=>{
-          console.log('people2被監聽')
-        })
-
-        //reactive 會解包 ref
-        const num = ref(0);
-        const people3 = reactive({
-          num: num,
-        });
-        setTimeout(() => {
-          //不需要.value
-          people3.num = 300;
-        }, 2000);
-      <!-- </script> -->
-      <template>
-        <h1>{{ people }}</h1>
-        <h1>{{ people1 }}</h1>
-        <h1>{{ people2 }}</h1>
-        <h1>{{ people3 }}</h1>
-      </template>
-    <!-- </xmp> -->
+    const data = reactive({
+      name: 'mike'
+    }); 
+    setTimeout(()=>{
+      data.name = 'jacky'
+    },2000)
   </pre>
+  <p>text:{{text3}}</p>
+  <button @click="changeText3">changeReactive</button>
+  <hr>
   <h4>參考</h4>
   <ul>
     <li>
@@ -129,25 +109,6 @@
     <li>
       <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ&ab_channel=MikeCheng" target="_blank">Vue3 + Vite 快速上手</a>
     </li>
-  </ul>
-  <hr>
-  <h2>reactive、ref</h2>
-  <br>
-  <h3>ref(動態資料監聽畫面和資料做改變)</h3>
-  <p>ref可以包任何型別的值</p>
-  <p>ref需用const接值</p>
-  <p>取值要加.vue</p>
-  <p>ref包obj watch 不能監聽除非deep</p>
-  <p>text:{{text}}</p>
-  <button @click="changeText">changeRef</button>
-  <hr>
-  <h3>reactive 只能用在物件 取值不用加value </h3>
-  <p>reactive 會解包ref直接取值</p>
-  <p>text:{{text3}}</p>
-  <button @click="changeText3">changeReactive</button>
-  <hr>
-  <h4>參考</h4>
-  <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=vfxWeC1PwOc&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=5">建立組件與基本資料綁定 v-model、ref【Proladon】</a>
     </li>
