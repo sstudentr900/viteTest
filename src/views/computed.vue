@@ -1,6 +1,5 @@
 <template>
   <h2>computed 計算屬性</h2>
-  <br>
   <h3>畫面更新會觸發一般函數</h3>
   <input type="text" v-model="test">
   <hr>
@@ -34,84 +33,76 @@
   <h2>option_hml_computed</h2>
   <p>computed的更新條件是原始資料有變更才會更新</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id='app'>
-        <p>methods: {{ num() }}</p>
-        <p>computes: {{ run }}</p>
-      </div>
-      <!-- <script> -->
-        var App = {
-          data() {
-            return {
-              count: 0,
-              four: 4,
-            }
-          },
-          methods: {
-            num() {
-              console.log('isMethods');
-              return this.four + this.count;
-            }
-          },
-          computed: {
-            run() {
-              console.log('isComputed');
-              return this.four + this.count;
-            }
-          }
-        };
-        Vue.createApp(App).mount('#app')
-      <!-- </script> -->
-    <!-- </xmp> -->
+    <!-- <div id='app'>
+      <p>methods: {{ num() }}</p>
+      <p>computes: {{ run }}</p>
+    </div> -->
+    var App = {
+      data() {
+        return {
+          count: 0,
+          four: 4,
+        }
+      },
+      methods: {
+        num() {
+          console.log('isMethods');
+          return this.four + this.count;
+        }
+      },
+      computed: {
+        run() {
+          console.log('isComputed');
+          return this.four + this.count;
+        }
+      }
+    };
+    Vue.createApp(App).mount('#app')
   </pre>
   <h3>option_hml_搜尋</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id='app'>
-        <input type="search" v-model="search">
-        <ul>
-          <li v-for="item in filter">
-            {{ item.name }}-{{ item.price }}
-          </li>
-        </ul>
-      </div>
-      <!-- <script> -->
-        var App = {
-          data() {
-            return {
-              search: '',
-              products: [
-                {
-                  name: '上衣',
-                  price: 500,
-                },
-                {
-                  name: '褲子',
-                  price: 700,
-                },
-                {
-                  name: '鞋子',
-                  price: 2000,
-                },
-                {
-                  name: '襪子',
-                  price: 450,
-                },
-              ],
-            }
-          },
-          computed: {
-            filter() {
-              console.log('isComputed');
-              return this.products.filter(item =>
-                item.name.match(this.search)
-              )
-            }
-          }
-        };
-        Vue.createApp(App).mount('#app')
-      <!-- </script> -->
-    <!-- </xmp> -->
+    <!-- <div id='app'>
+      <input type="search" v-model="search">
+      <ul>
+        <li v-for="item in filter">
+          {{ item.name }}-{{ item.price }}
+        </li>
+      </ul>
+    </div> -->
+    var App = {
+      data() {
+        return {
+          search: '',
+          products: [
+            {
+              name: '上衣',
+              price: 500,
+            },
+            {
+              name: '褲子',
+              price: 700,
+            },
+            {
+              name: '鞋子',
+              price: 2000,
+            },
+            {
+              name: '襪子',
+              price: 450,
+            },
+          ],
+        }
+      },
+      computed: {
+        filter() {
+          console.log('isComputed');
+          return this.products.filter(item =>
+            item.name.match(this.search)
+          )
+        }
+      }
+    };
+    Vue.createApp(App).mount('#app')
   </pre>
   <h3>option_hml_getter與setter</h3>
   <ol>
@@ -119,68 +110,64 @@
     <li>setter：把資料(以下範例使用methods)運算完，傳回data</li>
   </ol>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <ul>
-          <li v-for="product in products">
-            {{ product.name }} / {{ product.price }}
-            <button type="button" @click="addToCart(product)">+</button>
-          </li>
-        </ul>
-        <h3>total 的值：{{ total }}</h3>
-        <h3>Computed Getter, Setter</h3>
-        computed sum 的值:
-        <input type="number" v-model.number="num">
-        <button type="button" @click="total = num">更新</button><br>
-        total 的值：{{ total }}<br>
-        computed sum 的值:：{{ sum }}
-      </div>
-      <!-- <script> -->
-        var App = {
-          data() {
-            return {
-              products: [{
-                name: '上衣',
-                price: 500,
-              }, {
-                name: '褲子',
-                price: 700,
-              }, {
-                name: '鞋子',
-                price: 2000,
-              }, {
-                name: '襪子',
-                price: 450,
-              },],
-              carts: [],
-              sum: 0,
-              num: 20,
-            }
+    <div id="app">
+      <ul>
+        <li v-for="product in products">
+          {{ product.name }} / {{ product.price }}
+          <button type="button" @click="addToCart(product)">+</button>
+        </li>
+      </ul>
+      <h3>total 的值：{{ total }}</h3>
+      <h3>Computed Getter, Setter</h3>
+      computed sum 的值:
+      <input type="number" v-model.number="num">
+      <button type="button" @click="total = num">更新</button><br>
+      total 的值：{{ total }}<br>
+      computed sum 的值:：{{ sum }}
+    </div>
+    var App = {
+      data() {
+        return {
+          products: [{
+            name: '上衣',
+            price: 500,
+          }, {
+            name: '褲子',
+            price: 700,
+          }, {
+            name: '鞋子',
+            price: 2000,
+          }, {
+            name: '襪子',
+            price: 450,
+          },],
+          carts: [],
+          sum: 0,
+          num: 20,
+        }
+      },
+      computed: {
+        total: {
+          get() {
+            let total = 0;
+            this.carts.forEach(item => {
+              total += item.price;
+            });
+            return this.sum || total;
           },
-          computed: {
-            total: {
-              get() {
-                let total = 0;
-                this.carts.forEach(item => {
-                  total += item.price;
-                });
-                return this.sum || total;
-              },
-              set(val) {
-                console.log('val') // num 的20
-                this.sum = val; // num 的20,傳回 data 的 sum
-              }
-            },
-          },
-          methods: {
-            addToCart(product) {
-              this.carts.push(product);
-            },
+          set(val) {
+            console.log('val') // num 的20
+            this.sum = val; // num 的20,傳回 data 的 sum
           }
-        };
-        Vue.createApp(App).mount('#app')
-      <!-- </script> -->
-    <!-- </xmp> -->
+        },
+      },
+      methods: {
+        addToCart(product) {
+          this.carts.push(product);
+        },
+      }
+    };
+    Vue.createApp(App).mount('#app')
   </pre>
   <hr>
   <h2>Composition_sfc_computed</h2>
@@ -191,49 +178,45 @@
     <li>computed 無法在template傳參,要傳參請用函數</li>
   </ul>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script setup> 
-        import {computed} from "@vue/reactivity";
-        import { ref,reactive,watch,computed } from 'vue';
-        //重組
-        const name = ref('mike'); 
-        const data3 = computed(()=>{
-          return `請叫我${name.value}`;
-        });
-        setTimeout(() => {
-          data.value = 'andy';
-        }, 1000);
-        //計算
-        const idx = ref(0); 
-        const data2 = computed(()=>{
-          return idx.value > 3?'idx>3':'idx<3';
-        });
-        setTimeout(() => {
-          idx.value = 8;
-        }, 1000);
-      
-        //get,set
-        const count2 = ref(1); 
-        const plusOne = computed({
-          get:()=>`數字是${count2.value}`,
-          set:(val)=>{
-            count2.value = val
-          },
-        });
-        setTimeout(() => {
-          //plusOne 設定值
-          plusOne.value = 5;
-        }, 1000);
-      
-      </script> -->
-      
-      <template>
-        <h1>重組{{ data3 }}</h1>
-        <h1>計算{{ data2 }}</h1>
-        <h1>plusOne get{{ plusOne }}</h1>
-        <h1>count2會被computed修改{{ count2 }}</h1>
-      </template>
-    <!-- </xmp> -->
+      import {computed} from "@vue/reactivity";
+      import { ref,reactive,watch,computed } from 'vue';
+
+      //重組
+      const name = ref('mike'); 
+      const data3 = computed(()=>{
+        return `請叫我${name.value}`;
+      });
+      setTimeout(() => {
+        data.value = 'andy';
+      }, 1000);
+
+      //計算
+      const idx = ref(0); 
+      const data2 = computed(()=>{
+        return idx.value > 3 ? idx.value : 3
+      });
+      setTimeout(() => {
+        idx.value = 8;
+      }, 1000);
+    
+      //get,set
+      const count2 = ref(1); 
+      const plusOne = computed({
+        get:()=>`數字是${count2.value}`,
+        set:(val)=>{
+          count2.value = val
+        },
+      });
+      setTimeout(() => {
+        //plusOne 設定值
+        plusOne.value = 5;
+      }, 1000);
+    
+    
+    <!-- <h1>重組{{ data3 }}</h1>
+    <h1>計算{{ data2 }}</h1>
+    <h1>plusOne get{{ plusOne }}</h1>
+    <h1>count2會被computed修改{{ count2 }}</h1> -->
   </pre>
   <hr>
   <h4>參考</h4>
