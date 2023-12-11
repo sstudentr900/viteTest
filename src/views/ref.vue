@@ -1,7 +1,6 @@
 <template>
   <h2>各板本變數</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //Vue2 data內放變數
       data: {
         msg: 'Hello World'
@@ -14,10 +13,7 @@
       }
 
       //vite 搭配setup不用return
-      <!-- <script setup> -->
-        const msg = ref('Hello World');
-      <!-- </script> -->
-    <!-- </xmp> -->
+      const msg = ref('Hello World');
   </pre>
 
   <h2>ref()</h2>
@@ -25,23 +21,20 @@
     <li>ref 可以包任何型別</li>
     <li>ref 包裝該值讓他有響應試</li>
     <li>ref 是obj請用const</li>
-    <li>ref 被包裝後，要用.value才能取值</li>
+    <li>ref 在script用時要.value才能取值</li>
   </ul>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <template>
-        <h1>vue: {{ count }}</h1>
-        <button @click="increment"> count is: {{ count }}</button>
-      </template>
-      <!-- <script> -->
-        const count = ref(0); 
-        const increment = ()=>{
-          //count 被包裝後需要用.value才能取值
-          console.log(count)
-          count.value += 1;
-        }
-      <!-- </script> -->
-    <!-- </xmp> -->
+      #template
+      <h1>vue: {{ count }}</h1>
+      <button @click="increment"> count is: {{ count }}</button>
+
+      #script
+      const count = ref(0); 
+      const increment = ()=>{
+        //count 被包裝後需要用.value才能取值
+        console.log(count)
+        count.value += 1;
+      }
   </pre>
 
   <h2>reactive()</h2>
@@ -49,71 +42,65 @@
     <li>reactive 只可以包{}和[]</li>
   </ul>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <template>
-        <h1>vue: {{ data }}</h1>
-      </template>
-      <!-- <script> -->
-        const data = reactive({
-          name: 'mike'
-        }); 
-        setTimeout(()=>{
-          data.name = 'jacky'
-        },2000)
-      <!-- </script> -->
-    <!-- </xmp> -->
+      #template
+      <h1>vue: {{ data }}</h1>
+
+      #script
+      const data = reactive({
+        name: 'mike'
+      }); 
+      setTimeout(()=>{
+        data.name = 'jacky'
+      },2000)
   </pre>
 
   <h2>ref vs reactive</h2>
   <p>ref 取值需要加.value</p>
   <p>watch 觀看ref(object) 深度不會被監聽</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script setup> -->
-        import { ref, reactive,watch } from 'vue';
-        //ref包入object時watch不能被監聽
-        const people = ref(0);
-        const people1 = ref({
-          num: 0,
-        });
-        const people2 = reactive({
-          num: 0,
-        });
-        setTimeout(() => {
-          people.value = 50;
-          people1.value.num = 100;
-          people2.num = 200;
-        }, 2000);
-        watch(people,()=>{
-          console.log('people被監聽')
-        })
-        watch(people1,()=>{
-          console.log('people1不能被監聽')
-        })
-        watch(people1,()=>{
-          console.log('people1有deep可以被監聽')
-        },{deep: true})
-        watch(people2,()=>{
-          console.log('people2被監聽')
-        })
+      import { ref, reactive,watch } from 'vue';
+      //ref包入object時watch不能被監聽
+      const people = ref(0);
+      const people1 = ref({
+        num: 0,
+      });
+      const people2 = reactive({
+        num: 0,
+      });
+      setTimeout(() => {
+        people.value = 50;
+        people1.value.num = 100;
+        people2.num = 200;
+      }, 2000);
+      watch(people,()=>{
+        console.log('people被監聽')
+      })
+      watch(people1,()=>{
+        console.log('people1不能被監聽')
+      })
+      watch(people1,()=>{
+        console.log('people1有deep可以被監聽')
+      },{deep: true})
+      watch(people2,()=>{
+        console.log('people2被監聽')
+      })
 
-        //reactive 會解包 ref
-        const num = ref(0);
-        const people3 = reactive({
-          num: num,
-        });
-        setTimeout(() => {
-          //不需要.value
-          people3.num = 300;
-        }, 2000);
-      <!-- </script> -->
+      //reactive 會解包 ref
+      const num = ref(0);
+      const people3 = reactive({
+        num: num,
+      });
+      setTimeout(() => {
+        //不需要.value
+        people3.num = 300;
+      }, 2000);
+
       <template>
         <h1>{{ people }}</h1>
         <h1>{{ people1 }}</h1>
         <h1>{{ people2 }}</h1>
         <h1>{{ people3 }}</h1>
       </template>
-    <!-- </xmp> -->
   </pre>
   <h4>參考</h4>
   <ul>
