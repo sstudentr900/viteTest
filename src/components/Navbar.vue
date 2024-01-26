@@ -30,13 +30,13 @@
     <router-link to="/mocks">plug mock</router-link>
     <router-link to="/jsonserver">plug JSON-SERVER</router-link>
     <router-link to="/throttle">plug throttle節流</router-link>
-    <router-link to="/swiper">plug swiper輪播</router-link>
     <router-link to="/elementplus">plug elementplus</router-link>
     <router-link to="/i18n">plug i18n</router-link>
     <router-link to="/lazyload">plug lazyload</router-link>
     <router-link to="/nginx">plug nginx</router-link>
     <router-link to="/nprogress">plug nprogress</router-link>
     <router-link to="/scrolltotop">plug scrolltotop</router-link>
+    <router-link to="/swiper">plug swiper輪播</router-link>
     <router-link to="/slide">plug slide</router-link>
     <router-link to="/slide2">plug slide2</router-link>
     <router-link to="/slide3">plug slide3</router-link>

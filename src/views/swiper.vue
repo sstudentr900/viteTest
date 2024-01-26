@@ -5,14 +5,15 @@
     npm install swiper
   </pre>
   <h4>import</h4>
-  <p>全局</p>
+  <p>全局引用</p>
   <pre>
     //main.js
     import 'swiper/css';
+
     //script
     import Swiper from 'swiper';
   </pre>
-  <p>組件</p>
+  <p>組件引用</p>
   <pre>
     //script
     import Swiper from 'swiper';
@@ -62,25 +63,28 @@
     }
   </pre>
   <h4>實作</h4>
-  <div class="swiper mySwiper" ref="mySwiper">
-    <div class="swiper-wrapper">
-      <!--<div class="swiper-slide" v-for="(item,index) in items" :key="item.id"><img :src="item.src"></div>-->
-      <div class="swiper-slide page1">page 1</div>
-      <div class="swiper-slide page2">page 2</div>
-      <div class="swiper-slide page3">page 3</div>
-      <div class="swiper-slide page4">page 4</div>
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
-  <br>
-  <input v-model="slideData" placeholder="slideData_watch">
-  <p>Message is: {{ slideData }}</p>
   <pre>
-    <!-- <xmp> -->
+    <xml>
+      <div class="swiper mySwiper" ref="mySwiper">
+        <div class="swiper-wrapper">
+          <!--<div class="swiper-slide" v-for="(item,index) in items" :key="item.id"><img :src="item.src"></div>-->
+          <div class="swiper-slide page1">page 1</div>
+          <div class="swiper-slide page2">page 2</div>
+          <div class="swiper-slide page3">page 3</div>
+          <div class="swiper-slide page4">page 4</div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <input v-model="slideData" placeholder="slideData_watch">
+      <p>Message is: {{ slideData }}</p>
+    </xml>
+  </pre>
+  <h4>style</h4>
+  <pre>
     <!-- <style> -->
     .swiper {
         width: 100%;
@@ -98,8 +102,11 @@
       .swiper-slide.page3{ background-color: #bdc2bb; }
       .swiper-slide.page4{ background-color: #d2d5b8; }
     <!-- </style> -->
+  </pre>
+  <h4>script</h4>
+  <pre>
     <!-- <script> -->
-    import Swiper, { Navigation, Pagination } from 'swiper';
+      import Swiper, { Navigation, Pagination } from 'swiper';
       import 'swiper/css';
       import 'swiper/css/navigation';
       import 'swiper/css/pagination';
@@ -156,10 +163,22 @@
         // }
       };
     <!-- </script> -->
-    <!-- </xmp> -->
   </pre>
   <hr>
-  <a href="https://ithelp.ithome.com.tw/articles/10272948">輪播套件-swiper</a>
-  <a href="https://swiperjs.com/get-started">官網</a>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://codepen.io/MikeCheng1208/pen/eYRKwWp" target="_blank">codepen範例</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10272948" target="_blank">輪播套件-swiper</a>
+    </li>
+    <li>
+      <a href="https://swiperjs.com/get-started" target="_blank">官網</a>
+    </li>
+    <li>
+      <a href="https://www.swiper.com.cn/demo/index.html#slides-per-view" target="_blank">官網</a>
+    </li>
+  </ul>
   <hr>
 </template>
