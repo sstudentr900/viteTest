@@ -1,6 +1,6 @@
 <template>
   <h2>各板本變數</h2>
-  <pre class="prettyprint">
+  <pre>
     //Vue2 data內放變數
     data: {
       msg: 'Hello World'
@@ -12,8 +12,9 @@
       return { msg }
     }
 
-    //vite 搭配setup不用return
-      const msg = ref('Hello World');
+    //搭配setup不用return
+    script setup
+    const msg = ref('Hello World');
   </pre>
   <hr>
   <h2>ref()</h2>
@@ -24,7 +25,7 @@
     <li>ref 在script要用(.value)才能取值</li>
   </ul>
   <h3>ref包obj watch 不能監聽除非deep</h3>
-  <pre class="prettyprint">
+  <pre>
     import { ref, reactive,watch } from 'vue';
     //ref包入object時watch不能被監聽
     const people = ref(0);
@@ -53,7 +54,7 @@
     },{deep: true})
   </pre>
   <h3>範例</h3>
-  <pre class="prettyprint">
+  <pre>
     #template
     button @click="increment" 
     
@@ -72,8 +73,9 @@
   <p>reactive 只可以包{}和[] 取值不用加value</p>
   <p>reactive 只可以包{}和[] 取值不用加value</p>
   <h3>reactive 會解包 ref</h3>
-  <pre class="prettyprint">
+  <pre>
     //reactive 會解包 ref
+    import { reactive } from 'vue';
     const num = ref(0);
     const people3 = reactive({
       num: num,
@@ -84,7 +86,7 @@
     }, 2000);
   </pre>
   <h3>範例</h3>
-  <pre class="prettyprint">
+  <pre>
     const data = reactive({
       name: 'mike'
     }); 
@@ -117,6 +119,29 @@
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=gJF5Cf2fz1A">定義資料 ref、reactive、computed 深度探討</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>獲取dome</h2>
+  <pre>
+    #script setup
+    import { ref,onMounted } from 'vue';
+    const h1Ref = ref(null)
+
+    //須掛載完畢才能獲取
+    onMounted(()=>{
+      console.log(h1Ref.value)
+    })
+
+    #template
+    綁定ref對象
+    <h1 ref="h1Ref">h1</h1>  
+  </pre>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=4DEbi_DBjUM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=13" target="_blank">模版引用</a>
     </li>
   </ul>
   <hr>

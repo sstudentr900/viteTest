@@ -1,6 +1,9 @@
 <template>
   <div class="navbar">
     <router-link to="/start">start</router-link>
+    <router-link to="/environment">Vite 與環境變數</router-link>
+    <router-link to="/currentInstance">掛载全局方法</router-link>
+    <router-link to="/life">生命週期</router-link>
     <!-- <router-link to="/installs">installs</router-link> -->
     <router-link to="/ref">ref reactive 變數</router-link>
     <router-link to="/watch">watch 變數監聽</router-link>
@@ -17,10 +20,8 @@
     <router-link to="/von">von</router-link>
     <router-link to="/style">style</router-link>
     <router-link to="/vhtml">vhtml</router-link>
-    <router-link to="/life">生命週期</router-link>
-    <router-link to="/environment">Vite 與環境變數</router-link>
-    <router-link to="/currentInstance">掛载全局方法</router-link>
     <router-link to="/imageerror">圖片載入</router-link>
+    <router-link to="/imglazy">圖片懶加載</router-link>
     <router-link to="/transition">transition</router-link>
     <router-link to="/express">express</router-link>
     <router-link to="/nuxt">nuxt</router-link>
