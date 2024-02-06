@@ -1,10 +1,18 @@
 <template>
   <h2>各板本變數</h2>
+<<<<<<< HEAD
   <pre>
     //Vue2 data內放變數
     data: {
       msg: 'Hello World'
     }
+=======
+  <pre class="prettyprint">
+      //Vue2 data內放變數
+      data: {
+        msg: 'Hello World'
+      }
+>>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
 
     //Vue3 setup內放變數,需要return
     setup() {
@@ -12,9 +20,14 @@
       return { msg }
     }
 
+<<<<<<< HEAD
     //搭配setup不用return
     script setup
     const msg = ref('Hello World');
+=======
+      //vite 搭配setup不用return
+      const msg = ref('Hello World');
+>>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
   </pre>
   <hr>
   <h2>ref()</h2>
@@ -22,10 +35,95 @@
     <li>ref(動態資料監聽畫面和資料做改變)</li>
     <li>ref 可以包任何型別</li>
     <li>ref 是obj請用const</li>
-    <li>ref 在script要用(.value)才能取值</li>
+    <li>ref 在script用時要.value才能取值</li>
   </ul>
   <h3>ref包obj watch 不能監聽除非deep</h3>
+<<<<<<< HEAD
   <pre>
+=======
+  <pre class="prettyprint">
+      #template
+      <h1>vue: {{ count }}</h1>
+      <button @click="increment"> count is: {{ count }}</button>
+
+      #script
+      const count = ref(0); 
+      const increment = ()=>{
+        //count 被包裝後需要用.value才能取值
+        console.log(count)
+        count.value += 1;
+      }
+      import { ref, reactive,watch } from 'vue';
+      //ref包入object時watch不能被監聽
+      const people = ref(0);
+      const people1 = ref({
+        num: 0,
+      });
+      const people2 = reactive({
+        num: 0,
+      });
+      setTimeout(() => {
+        people.value = 50;
+        people1.value.num = 100;
+        people2.num = 200;
+      }, 2000);
+      watch(people,()=>{
+        console.log('people被監聽')
+      })
+      watch(people2,()=>{
+        console.log('people2被監聽')
+      })
+      watch(people1,()=>{
+        console.log('people1不能被監聽')
+      })
+      watch(people1,()=>{
+        console.log('people1有deep可以被監聽')
+      },{deep: true})
+  </pre>
+  <h3>範例</h3>
+  <pre class="prettyprint">
+    #template
+    button @click="increment" 
+    
+    #script
+    const count = ref(0); 
+    const increment = ()=>{
+      console.log(count)
+      //count 被包裝後需要用.value才能取值
+      count.value += 1;
+    }
+  </pre>
+  <p>text:{{text}}</p>
+  <button @click="changeText">changeRef</button>
+  <hr>
+  <h2>reactive()</h2>
+  <p>reactive 只可以包{}和[] 取值不用加value</p>
+  <p>reactive 只可以包{}和[] 取值不用加value</p>
+  <h3>reactive 會解包 ref</h3>
+  <pre class="prettyprint">
+      #template
+      <h1>vue: {{ data }}</h1>
+
+      #script
+      const data = reactive({
+        name: 'mike'
+      }); 
+      setTimeout(()=>{
+        data.name = 'jacky'
+      },2000)
+      //reactive 會解包 ref
+      const num = ref(0);
+      const people3 = reactive({
+        num: num,
+      });
+      setTimeout(() => {
+        //不需要.value
+        people3.num = 300;
+      }, 2000);
+  </pre>
+  <h3>範例</h3>
+  <pre class="prettyprint">
+>>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
     import { ref, reactive,watch } from 'vue';
     //ref包入object時watch不能被監聽
     const people = ref(0);
@@ -43,15 +141,13 @@
     watch(people,()=>{
       console.log('people被監聽')
     })
-    watch(people2,()=>{
-      console.log('people2被監聽')
-    })
     watch(people1,()=>{
       console.log('people1不能被監聽')
     })
     watch(people1,()=>{
       console.log('people1有deep可以被監聽')
     },{deep: true})
+<<<<<<< HEAD
   </pre>
   <h3>範例</h3>
   <pre>
@@ -74,6 +170,12 @@
   <p>reactive 只可以包{}和[] 取值不用加value</p>
   <h3>reactive 會解包 ref</h3>
   <pre>
+=======
+    watch(people2,()=>{
+      console.log('people2被監聽')
+    })
+
+>>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
     //reactive 會解包 ref
     import { reactive } from 'vue';
     const num = ref(0);
@@ -84,9 +186,19 @@
       //不需要.value
       people3.num = 300;
     }, 2000);
+<<<<<<< HEAD
   </pre>
   <h3>範例</h3>
   <pre>
+=======
+
+    <template>
+      <h1>{{ people }}</h1>
+      <h1>{{ people1 }}</h1>
+      <h1>{{ people2 }}</h1>
+      <h1>{{ people3 }}</h1>
+    </template>
+>>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
     const data = reactive({
       name: 'mike'
     }); 

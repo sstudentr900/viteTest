@@ -165,6 +165,16 @@
     </li>
   </ul>
   <hr>
+  <h2>go back</h2>
+  <p>a @click="$router.go(-1)" </p>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://stackoverflow.com/questions/48104842/how-can-i-go-back-route-back-on-vue-router">go back</a>
+    </li>
+  </ul>
+  <hr>
   <h2>router-link</h2>
   <h3>
     <span>to</span>
