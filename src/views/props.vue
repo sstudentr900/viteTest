@@ -353,16 +353,10 @@
       const updateName = (newName)=>{
         name.value =newName
       }
-<<<<<<< HEAD
     
     <!-- <template>
       <propHtml :name='name' @change-name='updateName'/>
     </template> -->
-=======
-      <template>
-        <propHtml :name='name' @change-name='updateName'/>
-      </template>
->>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
       
 
       //子 template
@@ -376,17 +370,10 @@
       const changeName = ()=>{
         emit2('change-name','jacky')
       }
-<<<<<<< HEAD
       <!-- <template>
         <p>{{props2.name}}</p>
         <button @click="changeName">change name</button>
       </template> -->
-=======
-      <template>
-        <p>{{props2.name}}</p>
-        <button @click="changeName">change name</button>
-      </template>
->>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
   </pre>
 
   <h2>Composition_sfc_v-model</h2>
@@ -395,38 +382,24 @@
     import propHtml from '@/components/propHtml.vue';
     import {ref,computed} from 'vue';
     const num = ref('123');
-<<<<<<< HEAD
     
     <!-- <template>
       <propHtml v-model='num'/>
       <p>{{num}}</p>
     </template> -->
-=======
-    <template>
-      <propHtml v-model='num'/>
-      <p>{{num}}</p>
-    </template>
->>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
     
 
     //子 template
     const props = defineProps(['modelValue']);
     const emit = defineEmits(['update:modelValue']);
-<<<<<<< HEAD
     <!-- <template>
       <input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
     </template> -->
-=======
-    <template>
-      <input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
-    </template>
->>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
   </pre>
 
   <h2>One-Way Data Flow 單向資料流</h2>
   <p>上給下,使用Props函數更新父name3</p>
   <pre class="prettyprint">
-<<<<<<< HEAD
     //父 template
     import propHtml from '@/components/propHtml.vue';
     import {ref,computed} from 'vue';
@@ -456,35 +429,6 @@
       <p>{{props3.name}}</p>
       <button @click="props3.updateName2('jacky')">updateName</button>
     </template> -->
-=======
-      //父 template
-      import propHtml from '@/components/propHtml.vue';
-      import {ref,computed} from 'vue';
-      const name3 = ref('mike');
-      const updateName2 = (newName)=>{
-        name3.value =newName
-      }
-      <template>
-        <propHtml :name='name3' :updateName3='updateName2'/>
-      </template>
-      
-
-      //子 template
-      const props3 = defineProps({
-        name:{
-          type: String,
-          default: '',
-        },
-        updateName3:{
-          type:Function,
-          default: ()=>{},
-        }
-      });
-      <template>
-        <p>{{props3.name}}</p>
-        <button @click="props3.updateName2('jacky')">updateName</button>
-      </template>
->>>>>>> 5fbb86212f936a405f61360fa4c95dd82f8c168b
   </pre>
 
 
