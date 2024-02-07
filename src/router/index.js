@@ -18,6 +18,7 @@ import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
 import vrouter from '../views/vrouter.vue'
+import vroutercatch from '../views/vroutercatch.vue'
 import von from '../views/von.vue'
 import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
@@ -25,6 +26,7 @@ import life from '../views/life.vue'
 import vFor from '../views/vFor.vue'
 import vHtml from '../views/vHtml.vue'
 import style from '../views/style.vue'
+import active from '../views/active.vue'
 import ifShow from '../views/ifShow.vue'
 import validate from '../views/validate.vue'
 import axioss from '../views/axioss.vue'
@@ -74,9 +76,11 @@ const router = createRouter({
     {path: '/life',component: life},
     {path: '/vFor',component: vFor},
     {path: '/style',component: style},
+    {path: '/active',component: active},
     {path: '/vHtml',component: vHtml},
     {path: '/ifShow',component: ifShow},
     {path: '/vrouter',component: vrouter},
+    {path: '/vroutercatch',component: vroutercatch},
     {path: '/von',component: von},
     {path: '/nuxt',component: nuxt},
     {path: '/validate',component: validate},

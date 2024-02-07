@@ -1,47 +1,49 @@
 <template>
   <div class="navbar">
-    <router-link to="/start">start</router-link>
-    <router-link to="/environment">Vite 與環境變數</router-link>
-    <router-link to="/currentInstance">掛载全局方法</router-link>
-    <router-link to="/life">生命週期</router-link>
-    <!-- <router-link to="/installs">installs</router-link> -->
-    <router-link to="/ref">ref reactive 變數</router-link>
-    <router-link to="/watch">watch 變數監聽</router-link>
-    <router-link to="/computed">computed 計算函數</router-link>
-    <router-link to="/composables">composables js共用邏輯</router-link>
-    <router-link to="/slot">slot</router-link>
-    <router-link to="/component">component 組件</router-link>
-    <router-link to="/props">props emit 資料傳遞</router-link>
-    <router-link to="/pinia">pinia 資料傳遞</router-link>
-    <router-link to="/model">v-model 相向綁定</router-link>
-    <router-link to="/vrouter">router</router-link>
-    <router-link to="/ifShow">ifShow</router-link>
-    <router-link to="/vFor">for</router-link>
-    <router-link to="/von">von</router-link>
-    <router-link to="/style">style</router-link>
-    <router-link to="/vhtml">vhtml</router-link>
-    <router-link to="/imageerror">圖片載入</router-link>
-    <router-link to="/imglazy">圖片懶加載</router-link>
-    <router-link to="/transition">transition</router-link>
-    <router-link to="/express">express</router-link>
-    <router-link to="/nuxt">nuxt</router-link>
-    <router-link to="/naive">plug naive ui</router-link>
-    <router-link to="/validate">plug vee-validate</router-link>
-    <router-link to="/axioss">plug axios</router-link>
-    <router-link to="/mocks">plug mock</router-link>
-    <router-link to="/jsonserver">plug JSON-SERVER</router-link>
-    <router-link to="/throttle">plug throttle節流</router-link>
-    <router-link to="/elementplus">plug elementplus</router-link>
-    <router-link to="/i18n">plug i18n</router-link>
-    <router-link to="/lazyload">plug lazyload</router-link>
-    <router-link to="/nginx">plug nginx</router-link>
-    <router-link to="/nprogress">plug nprogress</router-link>
-    <router-link to="/scrolltotop">plug scrolltotop</router-link>
-    <router-link to="/swiper">plug swiper輪播</router-link>
-    <router-link to="/slide">plug slide</router-link>
-    <router-link to="/slide2">plug slide2</router-link>
-    <router-link to="/slide3">plug slide3</router-link>
-    <router-link to="/slide4">plug slide4</router-link>
+    <router-link active-class='active' to="/start">start</router-link>
+    <router-link active-class='active' to="/environment">Vite 與環境變數</router-link>
+    <router-link active-class='active' to="/currentInstance">掛载全局方法</router-link>
+    <router-link active-class='active' to="/life">生命週期</router-link>
+    <!-- <router-link active-class='active' to="/installs">installs</router-link> -->
+    <router-link active-class='active' to="/ref">ref reactive 變數</router-link>
+    <router-link active-class='active' to="/watch">watch 變數監聽</router-link>
+    <router-link active-class='active' to="/computed">computed 計算函數</router-link>
+    <router-link active-class='active' to="/composables">composables js共用邏輯</router-link>
+    <router-link active-class='active' to="/slot">slot</router-link>
+    <router-link active-class='active' to="/component">component 組件</router-link>
+    <router-link active-class='active' to="/props">props emit 資料傳遞</router-link>
+    <router-link active-class='active' to="/pinia">pinia 資料傳遞</router-link>
+    <router-link active-class='active' to="/model">v-model 相向綁定</router-link>
+    <router-link active-class='active' to="/vrouter">router</router-link>
+    <router-link active-class='active' to="/vroutercatch">router catch 路由缓存</router-link>
+    <router-link active-class='active' to="/ifShow">ifShow</router-link>
+    <router-link active-class='active' to="/vFor">for</router-link>
+    <router-link active-class='active' to="/von">von</router-link>
+    <router-link active-class='active' to="/style">style</router-link>
+    <router-link active-class='active' to="/vhtml">vhtml</router-link>
+    <router-link active-class='active' to="/active">active</router-link>
+    <router-link active-class='active' to="/imageerror">圖片載入</router-link>
+    <router-link active-class='active' to="/imglazy">圖片懶加載</router-link>
+    <router-link active-class='active' to="/transition">transition</router-link>
+    <router-link active-class='active' to="/express">plug express</router-link>
+    <router-link active-class='active' to="/nuxt">plug nuxt</router-link>
+    <router-link active-class='active' to="/naive">plug naive ui</router-link>
+    <router-link active-class='active' to="/validate">plug vee-validate</router-link>
+    <router-link active-class='active' to="/axioss">plug axios</router-link>
+    <router-link active-class='active' to="/mocks">plug mock</router-link>
+    <router-link active-class='active' to="/jsonserver">plug JSON-SERVER</router-link>
+    <router-link active-class='active' to="/throttle">plug throttle節流</router-link>
+    <router-link active-class='active' to="/elementplus">plug elementplus</router-link>
+    <router-link active-class='active' to="/i18n">plug i18n</router-link>
+    <router-link active-class='active' to="/lazyload">plug lazyload</router-link>
+    <router-link active-class='active' to="/nginx">plug nginx</router-link>
+    <router-link active-class='active' to="/nprogress">plug nprogress</router-link>
+    <router-link active-class='active' to="/scrolltotop">plug scrolltotop</router-link>
+    <router-link active-class='active' to="/swiper">plug swiper輪播</router-link>
+    <router-link active-class='active' to="/slide">plug slide</router-link>
+    <router-link active-class='active' to="/slide2">plug slide2</router-link>
+    <router-link active-class='active' to="/slide3">plug slide3</router-link>
+    <router-link active-class='active' to="/slide4">plug slide4</router-link>
   </div>
 </template>
 <script setup></script>
@@ -60,5 +62,8 @@
     flex-flow: column;
     height: 100%;
     overflow: auto;
+  }
+  .navbar a.active{
+    color:#fff;
   }
 </style>
