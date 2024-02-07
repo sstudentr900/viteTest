@@ -167,6 +167,25 @@
     Vue.createApp(App).mount("#app");
   </pre>
   <hr>
+  <h2>vue3监听路由变化</h2>
+  <pre>
+    #script setup
+    import { useRoute } from 'vue-router'
+    const route = useRoute()
+    watch(
+      () => route.path,
+      (newPath, oldPath) => { console.log(newPath) },
+      { immediate: true }
+    );
+  </pre>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://juejin.cn/post/7171489778230100004">vue3监听路由变化</a>
+    </li>
+  </ul>
+  <hr>
 </template>
 <script setup>
   import watch1 from '../components/watch1.vue'

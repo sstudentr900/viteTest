@@ -104,7 +104,7 @@
       bindName() {
           return this.$store.state.className.stateName;
       },//computed
-      <tageName :items="stateName"></tageName>        //template 使用data
+      <!-- <tageName :items="stateName"></tageName>        //template 使用data -->
 
       //2.
       ...mapState({
@@ -167,7 +167,7 @@
       //1.
       this.$store.dispatch('className/actionsName')   //mounted 執行非同步
       ...mapState('className', ['stateName'])         //computed 取得data
-      <tageName :items="stateName"></tageName>        //template 使用
+      <!-- <tageName :items="stateName"></tageName>        //template 使用 -->
 
       //2.
       ...mapActions([
@@ -287,128 +287,132 @@
     </li>
   </ul>
   <hr>
-  <h2>pinia</h2>
-  <h3>pinia 寫法</h3>
+
+  <h3>pinia 創建store</h3>
   <p>位置 stores/counter.js</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script> 
-        import { defineStore } from 'pinia';
-        import { computed,ref } from 'vue';
-        import axios from 'axios';
-        
-        //pinia 寫法
-        export const useCounterStore = defineStore({
-          id: 'counter',//必須
-          state: () => ({
-            counter: 0
-          }),
-          getters: {
-            doubleCount: (state) => state.counter * 2
-          },
-          actions: {
-            increment() {
-              this.counter++
-            }
-          }
-        })
-      </script> -->
-    <!-- </xmp> -->
+    #stores/counter.js
+    import { defineStore } from 'pinia';
+    import { computed,ref } from 'vue';
+    import axios from 'axios';
+
+    export const useCounterStore = defineStore('counter',{
+      state: () => ({
+        counter: 0
+      }),
+      //計算屬性getters==computed
+      getters: {
+        doubleCount: (state) => state.counter * 2
+      },
+      actions: {
+        increment() {
+          this.counter++
+        }
+      }
+    })
   </pre>
   <h3>pinia 引用</h3>
   <p>位置 app.vue</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script setup> -->
-        import {useCounterStore} from "./stores/counter.js";
-        //執行
-        const store2 = useCounterStore();
-        //累加
-        const clickAdd = ()=>{
-          store2.increment();
-        }
-        console.log(store2.increment());
-      <!-- </script> -->
-      <template>
-        <h2>取counter值: {{store2.$state.counter}}</h2>
-        <button @click="clickAdd">clickAdd</button>
-      </template>
-    <!-- </xmp> -->
+    import {useCounterStore} from "./stores/counter.js";
+    //執行
+    const store2 = useCounterStore();
+
+    //累加
+    const clickAdd = ()=>{
+      store2.increment();
+    }
+    console.log(store2.increment());
+
+    //template
+    <!-- <template>
+      <h2>取counter值: {{store2.$state.counter}}</h2>
+      <button @click="clickAdd">clickAdd</button>
+    </template> -->
   </pre>
   <h3>pinia compositionAPI 寫法</h3>
   <p>位置 stores/counter.js</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script> -->
-        import { defineStore } from 'pinia';
-        import { computed,ref } from 'vue';
-        import axios from 'axios';
-        
-        //compositionAPI 寫法
-        export const useCounterStore2 = defineStore('counter',()=>{
-          const counter = ref(0); 
-          const cardList = ref([]);
-          const doubleCount = computed(()=>{
-            return counter*2
-          });
-          const increment= ()=>{
-            counter.value++
-          }
-          const fetchApiData = async ()=>{
-            try{
-              const res = await axios.get('https:/60bd9841ace4d50017aab3ec.mockapi.io/api/post_card');
-              cardList.value = res.data;
-            }catch(error){
-              console.log(error)
-            }
-          }
-          return {
-            counter,
-            increment,
-            doubleCount,
-            cardList,
-            fetchApiData
-          };
-        });
-      <!-- </script> -->
-    <!-- </xmp> -->
+    import { defineStore } from 'pinia';
+    import { computed,ref } from 'vue';
+    import axios from 'axios';
+    
+    //compositionAPI 寫法
+    export const useCounterStore2 = defineStore('counter',()=>{
+      const counter = ref(0); 
+      const cardList = ref([]);
+      //computed 計算屬性
+      const doubleCount = computed(()=>{
+        return counter*2
+      });
+      const increment= ()=>{
+        counter.value++
+      }
+      const fetchApiData = async ()=>{
+        try{
+          const res = await axios.get('https:/60bd9841ace4d50017aab3ec.mockapi.io/api/post_card');
+          cardList.value = res.data;
+        }catch(error){
+          console.log(error)
+        }
+      }
+      return {
+        counter,
+        increment,
+        doubleCount,
+        cardList,
+        fetchApiData
+      };
+    });
   </pre>
   <h3>pinia compositionAPI 引用</h3>
-  <p>位置 app.vue</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <!-- <script setup> -->
-        import { storeToRefs } from "pinia";
-        import {useCounterStore} from "./stores/counter.js";
-        const store = useCounterStore();
-        // console.log(store.counter);
-        // console.log(store);
-        //解構ref後會失效響應所以要在重新包裝響應(storeToRefs)
-        const {cardList} = storeToRefs(store);
+      import { storeToRefs } from "pinia";
+      import {useCounterStore} from "./stores/counter.js";
+      //執行方法得到store實例對象
+      const store = useCounterStore();
+      // console.log(store.counter);
+      // console.log(store);
       
-        //或是區分ref要包裝,函數不用
-        // const {increment} = store;
-      <!-- </script> -->
-      
-      <template>
+      <!-- <template>
         <h2>取counter值: {{store.counter}}</h2>
         <button @click="store.increment">clickAdd</button>
 
-        <h2>get axios data</h2>
+        <h2>store get axios data</h2>
         <pre>
           {{store.cardList}}
         </pre>
         <button  @click="store.fetchApiData">get axios data</button>
+      </template> -->
+  </pre>
+  <h3>pinia 解構ref、ref、ref要重新包裝響應，函數不用</h3>
+  <pre class="prettyprint">
+      import { storeToRefs } from "pinia";
+      import {useCounterStore} from "./stores/counter.js";
+      //執行方法得到store實例對象
+      const store = useCounterStore();
 
-        <h2>解構後使用方式</h2>
+      //store解構cardList因是ref會失效響應所以要使用storeToRefs重新包裝響應
+      const {cardList} = storeToRefs(store);
+    
+      //函數不用重新包裝響應
+      // const {fetchApiData} = store;
+      
+      <!-- <template>
+        <h2>解構後store使用方式</h2>
+        <p>
+          {{cardList}}
+        </p>
         <button  @click="fetchApiData">get axios data</button>
-      </template>
-    <!-- </xmp> -->
+      </template> -->
   </pre>
   <h4>參考</h4>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=_Vvi9EVtuW4&ab_channel=MikeCheng" target="_blank"> Pinia 的全域資料管理</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=uQ4f8KoWuWE&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=20" target="_blank"> Pinia-storeToRefs和调试</a>
     </li>
   </ul>
   <hr>
@@ -417,9 +421,7 @@
   <br>
   <h3>安裝 Pinia 套件</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       npm install pinia
-    <!-- </xmp> -->
   </pre>
   <hr>
   <h3>Pinia 建立</h3>
@@ -548,16 +550,12 @@
   <p>{{ store.data }}</p>
   <button @click="store.fetchInit">fetchInit</button>
   <hr>
-  <h3>pinia 解構</h3>
+  <h3>pinia 解構會響應丟失 </h3>
   <p>解構資料響應式會出問題需要加storeToRefs</p>
   <p>只能接變數不能接函數</p>
   <p>{{ counter }}</p>
   <p>{{ doubleCount }}</p>
   <button @click="addCount">解構函數</button>
-  <hr>
-  <h3>pinia 監聽</h3>
-  <hr>
-  <h3>pinia subscribing 取的pinia狀態</h3>
   <hr>
   <h4>參考</h4>
   <ul>
@@ -570,11 +568,13 @@
     <li>
       <a href="https://www.tpisoftware.com/tpu/articleDetails/2844" target="_blank">新一代狀態管理工具 Pinia</a>
     </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=WONpWvoKzME&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=18" target="_blank">Pinia-counter基础使用</a>
+    </li>
   </ul>
   <hr>
   <h2>pinia subscribing 取的pinia狀態</h2>
   <pre>
-    <!-- <xmp> -->
       ## Store
       ```js
       //Store index.js
@@ -625,7 +625,6 @@
               next();
           },
       },
-    <!-- </xmp> -->
   </pre>
   <hr>
   <h4>參考</h4>
