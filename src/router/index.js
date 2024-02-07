@@ -32,6 +32,7 @@ import mocks from '../views/mocks.vue'
 import environment from '../views/environment.vue'
 import currentInstance from '../views/currentInstance.vue'
 import imageerror from '../views/imageerror.vue'
+import imglazy from '../views/imglazy.vue'
 import jsonserver from '../views/jsonserver.vue'
 import express from '../views/express.vue'
 import throttle from '../views/throttle.vue'
@@ -84,6 +85,7 @@ const router = createRouter({
     {path: '/environment',component: environment},
     {path: '/currentInstance',component: currentInstance},
     {path: '/imageerror',component: imageerror},
+    {path: '/imglazy',component: imglazy},
     {path: '/jsonserver',component: jsonserver},
     {path: '/express',component: express},
     {path: '/throttle',component: throttle},

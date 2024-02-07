@@ -1,4 +1,100 @@
 <template>
+  <h2>vue3 watch 單個監聽</h2>
+  <p>第一個參數count不用加value</p>
+  <pre>
+    #script setup
+    import {ref,watch} form 'vue'
+    const count = ref(0)
+
+    //監聽
+    watch(count,(newValue,oldValue)=>{
+      console.log(`監聽值:count,舊值${oldValue},新值${newValue}`)
+    })
+  </pre>
+  <hr>
+  <h2>vue3 watch 多個監聽</h2>
+  <pre>
+    #script setup
+    import {ref,watch} form 'vue'
+    const count = ref(0)
+    const name =ref('jack')
+
+    //監聽
+    watch(
+      [count,name],
+      ([newCount,newName],[oldCount,oldName])=>{
+        console.log(`監聽多值:[count,name],舊值${[oldCount,oldName]},新值${[newCount,newName]}`)
+      }
+    )
+  </pre>
+  <hr>
+  <h2>vue3 watch immediate 監聽值沒改變前立即執行函數</h2>
+  <pre>
+    #script setup
+    import {ref,watch} form 'vue'
+    const count = ref(0)
+
+    //監聽
+    watch(count,(newValue,oldValue)=>{
+      console.log(`監聽值:count,舊值${oldValue},新值${newValue}`)
+    },{
+      immediate: true
+    })
+  </pre>
+  <hr>
+  <h2>vue3 watch deep 深度監聽</h2>
+  <p>ref是對象需要deep才能監聽</p>
+  <p>deep是監聽全部會造成資源浪費</p>
+  <pre>
+    #script setup
+    import {ref,watch} form 'vue'
+    const state = ref({count:0})
+    const changCount=()=>{
+      state.value.count++
+    }
+
+    //監聽
+    watch(state,(newValue,oldValue)=>{
+      console.log(`count變化`)
+    },{
+      deep: true
+    })
+
+    #template
+    state.count
+    button @click="changCount"
+  </pre>
+  <hr>
+  <h2>vue3 watch 精確監聽</h2>
+  <p>不使用deep監聽</p>
+  <pre>
+    #script setup
+    import {ref,watch} form 'vue'
+    const state = ref({count:0})
+    const changCount=()=>{
+      state.value.count++
+    }
+
+    //監聽
+    watch(
+      ()=>state.value.count,
+      ()=>console.log(`count變化`)
+    )
+
+    #template
+    state.count
+    button @click="changCount"
+  </pre>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=ngbNJX0-1xo&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=8">API-watch</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=_MNg54De_ts&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=9">API-watch</a>
+    </li>
+  </ul>
   <watch1/>
   <h2>watch</h2>
   <pre>

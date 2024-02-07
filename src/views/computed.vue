@@ -1,4 +1,53 @@
 <template>
+  <h2>Composition_sfc_computed</h2>
+  <ul>
+    <li>computed 是用來重組或計算資料不應該異步請求或修改dom</li>
+    <li>computed 會自動響應ref</li>
+    <li>computed 屬性因該是只讀</li>
+    <li>computed 無法在template傳參,要傳參請用函數傳直</li>
+  </ul>
+  <pre class="prettyprint">
+      import {computed} from "@vue/reactivity";
+      import { ref,reactive,watch,computed } from 'vue';
+
+      //重組
+      const name = ref('mike'); 
+      const data3 = computed(()=>{
+        return `請叫我${name.value}`;
+      });
+      setTimeout(() => {
+        data.value = 'andy';
+      }, 1000);
+
+      //計算
+      const idx = ref(0); 
+      const data2 = computed(()=>{
+        return idx.value > 3 ? idx.value : 3
+      });
+      setTimeout(() => {
+        idx.value = 8;
+      }, 1000);
+    
+      //get,set
+      const count2 = ref(1); 
+      const plusOne = computed({
+        get:()=>`數字是${count2.value}`,
+        set:(val)=>{
+          count2.value = val
+        },
+      });
+      setTimeout(() => {
+        //plusOne 設定值
+        plusOne.value = 5;
+      }, 1000);
+    
+    
+    <!-- <h1>重組{{ data3 }}</h1>
+    <h1>計算{{ data2 }}</h1>
+    <h1>plusOne get{{ plusOne }}</h1>
+    <h1>count2會被computed修改{{ count2 }}</h1> -->
+  </pre>
+  <hr>
   <h2>computed 計算屬性</h2>
   <h3>畫面更新會觸發一般函數</h3>
   <input type="text" v-model="test">
@@ -36,7 +85,7 @@
     <!-- <div id='app'>
       <p>methods: {{ num() }}</p>
       <p>computes: {{ run }}</p>
-    </div> -->
+    </div>
     var App = {
       data() {
         return {
@@ -57,7 +106,7 @@
         }
       }
     };
-    Vue.createApp(App).mount('#app')
+    Vue.createApp(App).mount('#app') -->
   </pre>
   <h3>option_hml_搜尋</h3>
   <pre class="prettyprint">
@@ -68,7 +117,7 @@
           {{ item.name }}-{{ item.price }}
         </li>
       </ul>
-    </div> -->
+    </div> 
     var App = {
       data() {
         return {
@@ -102,7 +151,7 @@
         }
       }
     };
-    Vue.createApp(App).mount('#app')
+    Vue.createApp(App).mount('#app')-->
   </pre>
   <h3>option_hml_getter與setter</h3>
   <ol>
@@ -110,7 +159,7 @@
     <li>setter：把資料(以下範例使用methods)運算完，傳回data</li>
   </ol>
   <pre class="prettyprint">
-    <div id="app">
+    <!-- <div id="app">
       <ul>
         <li v-for="product in products">
           {{ product.name }} / {{ product.price }}
@@ -167,58 +216,10 @@
         },
       }
     };
-    Vue.createApp(App).mount('#app')
+    Vue.createApp(App).mount('#app') -->
   </pre>
   <hr>
-  <h2>Composition_sfc_computed</h2>
-  <ul>
-    <li>computed 需透過函數傳直</li>
-    <li>computed 是用來重組或計算資料</li>
-    <li>computed 會自動響應ref</li>
-    <li>computed 無法在template傳參,要傳參請用函數</li>
-  </ul>
-  <pre class="prettyprint">
-      import {computed} from "@vue/reactivity";
-      import { ref,reactive,watch,computed } from 'vue';
-
-      //重組
-      const name = ref('mike'); 
-      const data3 = computed(()=>{
-        return `請叫我${name.value}`;
-      });
-      setTimeout(() => {
-        data.value = 'andy';
-      }, 1000);
-
-      //計算
-      const idx = ref(0); 
-      const data2 = computed(()=>{
-        return idx.value > 3 ? idx.value : 3
-      });
-      setTimeout(() => {
-        idx.value = 8;
-      }, 1000);
-    
-      //get,set
-      const count2 = ref(1); 
-      const plusOne = computed({
-        get:()=>`數字是${count2.value}`,
-        set:(val)=>{
-          count2.value = val
-        },
-      });
-      setTimeout(() => {
-        //plusOne 設定值
-        plusOne.value = 5;
-      }, 1000);
-    
-    
-    <!-- <h1>重組{{ data3 }}</h1>
-    <h1>計算{{ data2 }}</h1>
-    <h1>plusOne get{{ plusOne }}</h1>
-    <h1>count2會被computed修改{{ count2 }}</h1> -->
-  </pre>
-  <hr>
+  
   <h4>參考</h4>
   <ul>
     <li>

@@ -35,35 +35,30 @@
 <template>
   <h2>各板本Props</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      //Vue3 Props
+      //Props Options
       export default {
         props: ['title'],
         setup(props) {
         }
       }
 
-      //vite Props
-      <!-- <script setup> -->
+      //Props Composition API(組合式api)
         const props = defineProps({
           data:{
             type: object,
             default:()=>({})
           }
         })
-      <!-- </script> -->
-    <!-- </xmp> -->
   </pre>
   <hr>
   <h2>Options_sfc_props父傳子</h2>
   <p>接收父方式可使用以下型別String,Number,Boolean,Array,Object,Date,Function,Symbol</p>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //父 template
       //enterName1內層引用名子="外層的值"
       //: v-bind 綁定變數
       //childName1內層引用名子,parentName1外層引用的名子
-      <propHtml enterName1="All" :childName1="parentName1"></propHtml>
+      <!-- <propHtml enterName1="All" :childName1="parentName1"></propHtml> -->
 
       //子 script
       export default {
@@ -90,176 +85,158 @@
           },
         }
       }
-    <!-- </xmp> -->
   </pre>
 
   <h3>Options_html_props</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
+      <!-- <div id="app">
         <h4>{{ text }}</h4>
         <con-tainer :test-props="demo"></con-tainer>
-      </div>
-      <!-- <script> 
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外部元件",
-              demo: "外部元件傳遞的文字"
-            };
-          }
-        });
-        app.component("ConTainer", {
-          props: ["testProps"],
-          template: `<div>
-            <h4>{{ text }}</h4><h3>{{ testProps }}<h3>
-            <h3>value: {{ typeof testProps }} </h3>
-            <input type="text" v-model="testProps">
-          </div>`
-        });
-        app.mount("#app");
-      </script> -->
-    <!-- </xmp> -->
+      </div> 
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外部元件",
+            demo: "外部元件傳遞的文字"
+          };
+        }
+      });
+      app.component("ConTainer", {
+        props: ["testProps"],
+        template: `<div>
+          <h4>{{ text }}</h4><h3>{{ testProps }}<h3>
+          <h3>value: {{ typeof testProps }} </h3>
+          <input type="text" v-model="testProps">
+        </div>`
+      });
+      app.mount("#app");-->
   </pre>
 
   <h3>Options_html_props型別驗證</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
+      <!-- <div id="app">
         <area-component :pro-a="fun" :pro-b="text" pro-c="num" :pro-d="num">
         </area-component>
-      </div>
-      <!-- <script> -->
-        const areaComponent = {
-          props: {
-            proA: Function,
-            proB: [String, Number],   //多個型別檢查
-            proC: {
-              type: String,
-              required: true //必要值 物件形式可以設立多個條件
-            },
-            proD: {
-              type: Number,
-              default: "hello"  //預設值
-            }
+      </div> 
+      const areaComponent = {
+        props: {
+          proA: Function,
+          proB: [String, Number],   //多個型別檢查
+          proC: {
+            type: String,
+            required: true //必要值 物件形式可以設立多個條件
           },
-          template: `{{ proA }} <br> {{ proB }} <br> {{ proC }} <br> {{ proD }}`
-        };
-        var app = Vue.createApp({
-          data() {
-            return {
-              num: 500,
-              text: "小明",
-              boo: true,
-              fun: () => {
-                return "a";
-              },
-              test: 100
-            };
-          },
-          components: {
-            areaComponent
+          proD: {
+            type: Number,
+            default: "hello"  //預設值
           }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+        },
+        template: `{{ proA }} <br> {{ proB }} <br> {{ proC }} <br> {{ proD }}`
+      };
+      var app = Vue.createApp({
+        data() {
+          return {
+            num: 500,
+            text: "小明",
+            boo: true,
+            fun: () => {
+              return "a";
+            },
+            test: 100
+          };
+        },
+        components: {
+          areaComponent
+        }
+      });
+      app.mount("#app");-->
   </pre>
 
   <h2>Options_sfc_emit 子傳父</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //父 template
       //@ v-on 監聽事件
-      <emitHtml @childName="callBack"></emitHtml>
+      <!-- <emitHtml @childName="callBack"></emitHtml> -->
 
       //子 template
       //使用$emit 傳給父元件
-      <input @input="$emit('childName', $event.target.value)"/>
-    <!-- </xmp> -->
+      <!-- <input @input="$emit('childName', $event.target.value)"/> -->
   </pre>
 
   <h3>Options_html_emit驗證</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
+      <!-- <div id="app">
         {{ text }}：{{ num }}
         <br>
         <br>
         <out-text @button-click="add"></out-text>
         <br>
         <out-text2 @button-click="add"></out-text2>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外部 num",
-              num: 0,
-            }
-          },
-          methods: {
-            add(num) {
-              this.num = this.num + num;
-            }
+      </div> 
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外部 num",
+            num: 0,
           }
-        });
-        app.component("outText", {
-          template: `{{ text }}：<button @click="$emit('buttonClick', num)">emit add</button>`,
-          data() {
-            return {
-              text: "內部元件",
-              num: 3,
-            };
-          },
-          //因為無法正確追蹤你帶入的變數內層的num，就會跳出這個警告提示，
-          //這時只要加上emits:['buttonClick']就能消除警告。
-          emits: ['buttonClick']
-        });
-        app.component("outText2", {
-          template: `{{ text }}：<button @click="$emit('buttonClick', '1')">test</button>`,
-          data() {
-            return {
-              text: "emits",
-              num: 3,
-            };
-          },
-          //驗證事件參數傳出去的值，是否符合預期的型別
-          emits: {
-            buttonClick: (num) => {
-              if (typeof num !== 'string') {
-                console.warn('buttonClick 事件參數型別須為 String')
-              }
-              return typeof num === 'string'
-            }
+        },
+        methods: {
+          add(num) {
+            this.num = this.num + num;
           }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+        }
+      });
+      app.component("outText", {
+        template: `{{ text }}：<button @click="$emit('buttonClick', num)">emit add</button>`,
+        data() {
+          return {
+            text: "內部元件",
+            num: 3,
+          };
+        },
+        //因為無法正確追蹤你帶入的變數內層的num，就會跳出這個警告提示，
+        //這時只要加上emits:['buttonClick']就能消除警告。
+        emits: ['buttonClick']
+      });
+      app.component("outText2", {
+        template: `{{ text }}：<button @click="$emit('buttonClick', '1')">test</button>`,
+        data() {
+          return {
+            text: "emits",
+            num: 3,
+          };
+        },
+        //驗證事件參數傳出去的值，是否符合預期的型別
+        emits: {
+          buttonClick: (num) => {
+            if (typeof num !== 'string') {
+              console.warn('buttonClick 事件參數型別須為 String')
+            }
+            return typeof num === 'string'
+          }
+        }
+      });
+      app.mount("#app");-->
   </pre>
   <h3>methods</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //子
-      <emitHtml @change='searchBook'></emitHtml>
+      <!-- <emitHtml @change='searchBook'></emitHtml> -->
       methods: {
         searchBook(event) {
           this.$emit("childName", event.target.value)
         }
       }
-    <!-- </xmp> -->
   </pre>
 
   <h2>Options_sfc_v-model 與元件的雙向綁定 (Vue 3.x 新增)</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //父 template
       //message 子層引用名子 parentName7父層引用的名子
-      <emitHtml3 v-model:message="parentName7"></emitHtml3>
+      <!-- <emitHtml3 v-model:message="parentName7"></emitHtml3> -->
 
       //子 template
-      <button @click="clickFn"></button>
+      <!-- <button @click="clickFn"></button> -->
       //子 script
       export default {
         props: ['message'],
@@ -269,113 +246,102 @@
           }
         },
       }
-    <!-- </xmp> -->
   </pre>
 
   <h2>Options_sfc_update</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       <!-- 子元件 -->
-      <label>搜尋書本：
+      <!-- <label>搜尋書本：
         <input type="text" :value="keyword" @input="$emit('update:keyword', $event)" />
-      </label>
+      </label> -->
 
       <!-- 父元件 -->
-      <BookList :keyword="searchText"
-        @update:keyword="searchText = $event.target.value" />
-    <!-- </xmp> -->
+      <!-- <BookList :keyword="searchText"
+      @update:keyword="searchText = $event.target.value" /> -->
   </pre>
+
+  <hr>
 
   <h2>Composition_sfc_props父傳子</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //父
-      <!-- <script setup> -->
-        import propHtml from '@/components/propHtml.vue';
-      <!-- </script> -->
-      <template>
+      import propHtml from '@/components/propHtml.vue';
+      <!-- <template>
         <propHtml alt="logo"></propHtml>
-      </template>
+      </template> -->
+
       //子
-      <!-- <script setup> -->
-        //1.array 接收父值
-        const props_array = defineProps(['alt']);
-      
-        //2.object 接收父值
-        const props_object = defineProps({
-          str:{
-            type: String,
-            default: '',
-          },
-          bool:{
-            type: Boolean,
-            default: false,
-          },
-          obj:{
-            type: Object,
-            //obj 定義{}
-            default: ()=>({}),
-          },
-          arr:{
-            type: Array,
-            //arr 定義[]
-            default: ()=>[],
-          }
-        });
-      <!-- </script> -->
-      <template>
+      //1.array 接收父值
+      const props_array = defineProps(['alt']);
+    
+      //2.object 接收父值
+      const props_object = defineProps({
+        str:{
+          type: String,
+          default: '',
+        },
+        bool:{
+          type: Boolean,
+          default: false,
+        },
+        obj:{
+          type: Object,
+          //obj 定義{}
+          default: ()=>({}),
+        },
+        arr:{
+          type: Array,
+          //arr 定義[]
+          default: ()=>[],
+        }
+      });
+      <!-- <template>
         <h2 :alt=props_array.alt>{{props_array.alt}}</h2>
-      </template>
-    <!-- </xmp> -->
+      </template> -->
   </pre>
 
   <h2>Composition_sfc_emit子傳父</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //子
-      <!-- <script setup> -->
-        //1.array 傳父
-        //defineEmits 定義監聽addInt
-        const emit_array = defineEmits(['addInt'])
-      
-        //2.object 傳父
-        const emit_object = defineEmits({
-          addInt:(value)=>{
-            if(value==3){
-              console.log('emit_true',value)
-              return true;
-            }else{
-              //還是可以往上傳但回出現錯誤訊息
-              console.log('emit_false',value)
-              return false;
-            }
+      //1.array 傳父
+      //defineEmits 定義監聽addInt
+      const emit_array = defineEmits(['addInt'])
+    
+      //2.object 傳父
+      const emit_object = defineEmits({
+        addInt:(value)=>{
+          if(value==3){
+            console.log('emit_true',value)
+            return true;
+          }else{
+            //還是可以往上傳但回出現錯誤訊息
+            console.log('emit_false',value)
+            return false;
           }
-        })
-
-        const handleAddClick = ()=>{
-          const coin = 3+4;
-          emit_array('addInt',coin)
         }
-      <!-- </script> -->
-      <template>
-        <button @click="handleAddClick">click</button>
-      </template>
+      })
 
-      //父 監聽addInt
-      <!-- <script setup> -->
-        import propHtml from '@/components/propHtml.vue';
-        import {ref} from 'vue';
-        const resInt = ref(0)
-        const callBack =(res)=>{
-          resInt.value = res;
-          console.log('callBack=>',res)
-        }
-      <!-- </script> -->
-      <template>
-        <propHtml @addInt="callBack"></propHtml>
-        {{resInt}}
-      </template>
-    <!-- </xmp> -->
+      //子傳父
+      const handleAddClick = ()=>{
+        const coin = 3+4;
+        emit_array('addInt',coin)
+      }
+    <!-- <template>
+      <button @click="handleAddClick">click</button>
+    </template> -->
+
+    //父 監聽addInt
+    import propHtml from '@/components/propHtml.vue';
+    import {ref} from 'vue';
+    const resInt = ref(0)
+    const callBack =(res)=>{
+      resInt.value = res;
+      console.log('callBack=>',res)
+    }
+    <!-- <template>
+      <propHtml @addInt="callBack"></propHtml>
+      {{resInt}}
+    </template> -->
   </pre>
 
   <h2>Composition_sfc_雙向綁定</h2>
@@ -387,9 +353,10 @@
       const updateName = (newName)=>{
         name.value =newName
       }
-      <template>
-        <propHtml :name='name' @change-name='updateName'/>
-      </template>
+    
+    <!-- <template>
+      <propHtml :name='name' @change-name='updateName'/>
+    </template> -->
       
 
       //子 template
@@ -403,10 +370,10 @@
       const changeName = ()=>{
         emit2('change-name','jacky')
       }
-      <template>
+      <!-- <template>
         <p>{{props2.name}}</p>
         <button @click="changeName">change name</button>
-      </template>
+      </template> -->
   </pre>
 
   <h2>Composition_sfc_v-model</h2>
@@ -415,50 +382,53 @@
     import propHtml from '@/components/propHtml.vue';
     import {ref,computed} from 'vue';
     const num = ref('123');
-    <template>
+    
+    <!-- <template>
       <propHtml v-model='num'/>
       <p>{{num}}</p>
-    </template>
+    </template> -->
     
 
     //子 template
     const props = defineProps(['modelValue']);
     const emit = defineEmits(['update:modelValue']);
-    <template>
+    <!-- <template>
       <input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
-    </template>
+    </template> -->
   </pre>
 
   <h2>One-Way Data Flow 單向資料流</h2>
   <p>上給下,使用Props函數更新父name3</p>
   <pre class="prettyprint">
-      //父 template
-      import propHtml from '@/components/propHtml.vue';
-      import {ref,computed} from 'vue';
-      const name3 = ref('mike');
-      const updateName2 = (newName)=>{
-        name3.value =newName
-      }
-      <template>
-        <propHtml :name='name3' :updateName3='updateName2'/>
-      </template>
-      
+    //父 template
+    import propHtml from '@/components/propHtml.vue';
+    import {ref,computed} from 'vue';
+    const name3 = ref('mike');
+    const updateName2 = (newName)=>{
+      name3.value =newName
+    }
+    
+    <!-- <template>
+      <propHtml :name='name3' :updateName3='updateName2'/>
+    </template> -->
+    
+    
 
-      //子 template
-      const props3 = defineProps({
-        name:{
-          type: String,
-          default: '',
-        },
-        updateName3:{
-          type:Function,
-          default: ()=>{},
-        }
-      });
-      <template>
-        <p>{{props3.name}}</p>
-        <button @click="props3.updateName2('jacky')">updateName</button>
-      </template>
+    //子 template
+    const props3 = defineProps({
+      name:{
+        type: String,
+        default: '',
+      },
+      updateName3:{
+        type:Function,
+        default: ()=>{},
+      }
+    });
+    <!-- <template>
+      <p>{{props3.name}}</p>
+      <button @click="props3.updateName2('jacky')">updateName</button>
+    </template> -->
   </pre>
 
 
@@ -480,7 +450,44 @@
       <a href="https://www.youtube.com/watch?v=ureFPVghH30&ab_channel=MikeCheng" target="_blank">Vue3 + Vite 快速上手 Get Startrd EP3 - props</a>
     </li>
   </ul>
+
   <hr>
+
+  <h3>defineExpose 子組件暴露變數給父組件使用</h3>
+  <pre>
+    //父組件
+    #script setup
+    import {ref} form 'vue'
+    import sontemplate form './sontemplate.vue' //子組件
+    const comRef = ref(null)
+
+    //組件掛載完才能獲取
+    onMounted(()=>{
+      console.log(comRef) //取得子組件name值
+    })
+
+    #template
+    <!-- <sontemplate ref='comRef'>    -->
+
+
+    //子組件
+    #script setup
+    import {ref} form 'vue'
+    const name=ref('name')
+    defineExpose({
+      name
+    })
+  </pre>
+  <hr>
+  <h4>參考</h4>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=4DEbi_DBjUM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=13">API-模版引用</a>
+    </li>
+  </ul>
+
+  <hr>
+
   <h2>父子組件溝通、傳資料</h2>
   <p>defindProps接父值</p>
   <p>defineEmits傳父值</p>
@@ -522,76 +529,68 @@
       <a href="https://www.youtube.com/watch?v=firPRbhoX7o">v-model 資料的雙向綁定 / 自訂義組件的資料綁定 / One-Way Data Flow 單向資料流</a>
     </li>
   </ul>
+
   <hr>
+
   <h3>拋給父元件處理</h3>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-     子元件
-      <label>搜尋書本：
-        <input type="text" :value="inputText" @input="$emit('searchBook', $event)" />
-      </label>
+    //子元件
+    <!-- <label>搜尋書本：
+      <input type="text" :value="inputText" @input="$emit('searchBook', $event)" />
+    </label> -->
 
-     父元件
-      <BookList :inputText="searchText" @searchBook="searchText = $event.target.value" />
-    <!-- </xmp> -->
+    //父元件
+    <!-- <BookList :inputText="searchText" @searchBook="searchText = $event.target.value" /> -->
   </pre>
-
 
   <h2>資料傳遞</h2>
   <p>將內層資料傳遞到外層元件上使用</p>
-  <img src="https://i.imgur.com/BVjQ2Ok.png" alt="">
+  <!-- <img src="https://i.imgur.com/BVjQ2Ok.png" alt=""> -->
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <h3> {{ title }} </h3>
-        {{ text }}：
-        <button type="button" @click="add">add</button>
-        {{ num }}
-        <br>
-        <br>
-        <out-text @button-click="add"></out-text>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              title: "",
-              text: "外部元件",
-              num: 0,
-            }
-          },
-          methods: {
-            add(addtext) {
-              this.num++;
-              this.title = addtext;
-              //addtext 沒有值傳起來就會變成 事件物件 [object PointerEvent]
-            }
-          }
-        });
-        app.component("outText", {
-          template: `<button @click="click">emit add</button>`,
-          data() {
-            return {
-              text: "內部元件",
-              insideText: "內部元件傳遞文字"
-            };
-          },
-          methods: {
-            click() {
-              this.$emit('buttonClick', this.insideText);
-            }
-          }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+    <!-- <div id="app">
+      <h3> {{ title }} </h3>
+      {{ text }}：
+      <button type="button" @click="add">add</button>
+      {{ num }}
+      <br>
+      <br>
+      <out-text @button-click="add"></out-text>
+    </div> 
+    var app = Vue.createApp({
+      data() {
+        return {
+          title: "",
+          text: "外部元件",
+          num: 0,
+        }
+      },
+      methods: {
+        add(addtext) {
+          this.num++;
+          this.title = addtext;
+          //addtext 沒有值傳起來就會變成 事件物件 [object PointerEvent]
+        }
+      }
+    });
+    app.component("outText", {
+      template: `<button @click="click">emit add</button>`,
+      data() {
+        return {
+          text: "內部元件",
+          insideText: "內部元件傳遞文字"
+        };
+      },
+      methods: {
+        click() {
+          this.$emit('buttonClick', this.insideText);
+        }
+      }
+    });
+    app.mount("#app");-->
   </pre> 
-
-  
 
   <h2>父傳孫(provide/nject)</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //父 script
       //傳遞出去的資料定義在 provide
       import { inject, reactive, computed } from "vue";
@@ -608,7 +607,6 @@
       export default {
       inject: ['provideMsg','provideMsg2'],
       }
-    <!-- </xmp> -->
   </pre>
   <h2>provide/inject 傳值(隔山打牛)</h2>
   <ol>
@@ -616,55 +614,51 @@
     <li>inject接收的子元件</li>
   </ol>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
+      <!-- <div id="app">
         <h2>app</h2>
         <input type="text" v-model="text">
         <list-header></list-header>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "隔山打牛"
-            };
-          },
-          provide() {
-            return {
-              provideText: this.text,
-              //provide輸出的資料並不會隨著父層資料更新而改變，要透過Vue.computed()
-              provideText2: Vue.computed(() => this.text)
-            };
-          }
-        });
-        app.component("list-header", {
-          template: `
-            <div v-for="i in 3">
-              list-header:
-              <list-main></list-main>
+      </div> 
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "隔山打牛"
+          };
+        },
+        provide() {
+          return {
+            provideText: this.text,
+            //provide輸出的資料並不會隨著父層資料更新而改變，要透過Vue.computed()
+            provideText2: Vue.computed(() => this.text)
+          };
+        }
+      });
+      app.component("list-header", {
+        template: `
+          <div v-for="i in 3">
+            list-header:
+            <list-main></list-main>
+          </div>`,
+        components: {
+          "list-main": {
+            template: `
+            <div>
+              list-main:
+              <list-footer></list-footer>
             </div>`,
-          components: {
-            "list-main": {
-              template: `
-              <div>
-                list-main:
-                <list-footer></list-footer>
-              </div>`,
-              components: {
-                "list-footer": {
-                  inject: ["provideText", "provideText2"],
-                  template: `
-                  <div>list-footer: {{ provideText }} </div>
-                  <div>list-footer-computed: {{ provideText2.value }}</div>`
-                }
+            components: {
+              "list-footer": {
+                inject: ["provideText", "provideText2"],
+                template: `
+                <div>list-footer: {{ provideText }} </div>
+                <div>list-footer-computed: {{ provideText2.value }}</div>`
               }
             }
           }
-        });
+        }
+      });
 
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+      app.mount("#app");-->
   </pre>
 
   <h2>孫傳爺（emit / listeners）</h2>
@@ -673,7 +667,6 @@
 
   <h2>全域(eventBus)</h2>
   <pre class="prettyprint">
-    <!-- <xmp> -->
       //main.js
       import mitt from "mitt"; //引入全局跨元件通訊
       var app = createApp(App);
@@ -692,7 +685,6 @@
       console.log(msg)
       });
       },
-    <!-- </xmp> -->
   </pre>
 
   <h2>mitt兩個子元件，彼此需要傳遞</h2>
@@ -703,13 +695,11 @@
     <li>定義接收emitter.on，(data)裡就是emitter.emit傳出來的值。</li>
   </ol>
   <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
+      <!-- <div id="app">
         <h4>{{ text }}</h4>
         <con-tainer></con-tainer>
         <con-tainer2></con-tainer2>
-      </div>
-      <!-- <script> -->
+      </div> 
         const emitter = mitt();
         var app = Vue.createApp({
           data() {
@@ -752,9 +742,7 @@
               <h4>{{ componentText }}</h4>
             </div>`
         });
-        app.mount('#app');
-      <!-- </script> -->
-    <!-- </xmp> -->
+        app.mount('#app');-->
   </pre>
   <hr>
   <h4>參考</h4>
