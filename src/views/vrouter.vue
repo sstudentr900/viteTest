@@ -1,6 +1,5 @@
 <template>
   <h2>Vue-Router</h2>
-  <br>
   <h3>main安裝</h3>
   <pre>
     //main
@@ -50,15 +49,18 @@
   <h3>引用router</h3>
   <pre>
     #template
+
     //連結
-    <router-link to="/">home</router-link>
+    &lt;router-link to="/"&gt;home&lt;/router-link&gt;
+
     //顯示頁面
-    <router-view/>
+    &lt;router-view/&gt;
   </pre>
   <hr>
-  <h3>router資訊</h3>
+  <h3>template取router資訊</h3>
   <pre>
-    //template
+    #$template
+
     $route
   </pre>
   <hr>
@@ -79,42 +81,7 @@
     history: createWebHasHistory()
   </pre>
   <hr>
-  <h2>嵌套路由 children</h2>
-  <pre>
-    #src/router/index.js
-    const router = createRouter({
-      routes: [
-        //父
-        {
-          path: '/children',
-          component: ()=>import('../views/children.vue'),
-          //子
-          children: [
-            {
-              //path不用斜線
-              path: 'childrenA',
-              component: ()=>import('../views/children/childrenA.vue'),
-            },
-            {
-              path: 'childrenB',
-              component: ()=>import('../views/children/childrenB.vue'),
-            },
-          ]
-        },
-      ]
-    })
-
-
-    #children.vue
-    //script
-    import {RouterLink,RouterView} from 'vue-router'
-    //template
-    //開頭要斜線 /children/childrenA
-    <RouterLink to="/children/childrenA">childrenA</RouterLink>
-    <RouterLink to="/children/childrenB">childrenB</RouterLink>
-    <RouterView/>
-  </pre>
-  <hr>
+  
   <h2>push replace</h2>
   <pre>
     import { useRoute,useRouter } from 'vue-router'
@@ -127,7 +94,6 @@
     const router = useRouter()
     router.push('/') //會記錄並換頁
     router.push({path:"/"}) //同上
-    router.push({ name:'src', params:{id:1} }) //src?id=1
     router.replace({path:"/"}) //不會記錄上一頁
 
 
@@ -157,8 +123,7 @@
   <h2>useRoute useRouter</h2>
   <p>useRoute 局部對象可獲取name path params querr</p>
   <p>useRouter 全局對象 push replace</p>
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=5YzSuKfwWv4"> Vue-Router 基礎入門，SPA網頁輕鬆上手 !</a>
@@ -166,9 +131,11 @@
   </ul>
   <hr>
   <h2>go back</h2>
-  <p>a @click="$router.go(-1)" </p>
-  <hr>
-  <h4>參考</h4>
+  <pre>
+    #template
+    &lt;a @click="$router.go(-1)"&gt;home&lt;/a&gt;
+  </pre>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://stackoverflow.com/questions/48104842/how-can-i-go-back-route-back-on-vue-router">go back</a>
@@ -180,30 +147,34 @@
     <span>to</span>
     導向指定的目標路由
   </h3>
-  <pre class="prettyprint">
-    <!-- 字串 -->
-    <!-- <router-link to="/" tag="li">Home</router-link> -->
-    <!-- 物件 -->
-    <!-- name為路由的名稱 -->
-    <!-- params為path的值 -->
-    <!-- query為?後的值 -->
-    <!-- :to="{ name: 'user', params: { userId: 123 },query:{k:12}}" -->
-    <!-- 指定路徑 -->
+  <pre>
+    //字串
+    <router-link to="/" tag="li">Home</router-link>
+
+    //物件
+    //name為路由的名稱
+    //params為path的值
+    //query為?後的值
+    :to="{ name: 'user', params: { userId: 123 },query:{k:12}}"
+
+    //指定路徑
     @click="$router.push('/member/profile')
-    <!-- 指定路由名稱 -->
+
+    //指定路由名稱
     @click="$router.push({ name: 'Profile'})
   </pre>
   <h3>tag 渲染標籤</h3>
   <p>點擊的路由class名=>.router-link-exact-active 和 .router-link-active</p>
-  <pre class="prettyprint">
+  <pre>
     //template
-    <!-- <router-link to="/" tag="li">Home</router-link> -->
+    &lt;router-link to="/" tag="li"&gt;Home&lt;/router-link&gt; 
+
     //render
-    <!-- <li>Home</li> -->
+    &lt;li&gt;Home&lt;/li&gt;
   </pre>
   <hr>
   <h2>冒號「:」動態路由</h2>
-  <pre class="prettyprint">
+  <pre>
     const router = new VueRouter({
         routes: [
           { 
@@ -219,7 +190,7 @@
   <hr>
   <h2>取得路由</h2>
   <h3>取得path</h3>
-  <pre class="prettyprint">
+  <pre>
     //url
     /search
 
@@ -227,151 +198,128 @@
     $route.path=>'/search'
   </pre>
   <h3>取得params</h3>
-  <pre class="prettyprint">
+  <pre>
     //url
-      /search/key
+    /search/key
 
-      //router
-      {
-        path: '/search/:key',
-        name: 'search',
-      }
+    //router
+    {
+      path: '/search/:key',
+      name: 'search',
+    }
 
-      //template
-      $route.params.keyword=> key
+    //template
+    $route.params.keyword=> key
   </pre>
   <h3>params不給值須寫成?</h3>
-  <pre class="prettyprint">
+  <pre>
     //methods
-      this.$router.push({
-        params:{key:''||undefined},
-      })
+    this.$router.push({
+      params:{key:''||undefined},
+    })
 
-      //router
-      {
-        //加問號是用在可傳可不傳params,否則上一頁會錯誤
-        path: '/search/:key?',
-      }
+    //router
+    {
+      //加問號是用在可傳可不傳params,否則上一頁會錯誤
+      path: '/search/:key?',
+    }
   </pre>
   <h3>取得query</h3>
-  <pre class="prettyprint">
+  <pre>
     //url
-      ?k=b
+    ?k=b
 
-      //router
-      {
-        path: '/search/:key',
-        name: 'search',
-      }
+    //router
+    {
+      path: '/search/:key',
+      name: 'search',
+    }
 
-      //template
-      $route.query.k=>b
+    //template
+    $route.query.k=>b
   </pre>
   <hr>
   <h2>路由傳 props</h2>
   <h3>對象寫法</h3>
-  <pre class="prettyprint">
+  <pre>
     //router
-      {
-        path: '...'
-        name: '...'
-        props: {a:'1'}
-      }
+    {
+      path: '...'
+      name: '...'
+      props: {a:'1'}
+    }
 
-      //template
-      {{a}}
+    //template
+    {{a}}
 
-      //script
-      export default {
-        props: ['a']
-      }
+    //script
+    export default {
+      props: ['a']
+    }
   </pre>
   <h3>函數寫法</h3>
-  <pre class="prettyprint">
+  <pre>
     //router
-      {
-        path: '...'
-        name: '...'
-        props: ($route)=>{
-          return {params:$route.params.key,query:$route.query.k}
-        }
+    {
+      path: '...'
+      name: '...'
+      props: ($route)=>{
+        return {params:$route.params.key,query:$route.query.k}
       }
+    }
 
-      //template
-      {{params}}
+    //template
+    {{params}}
 
-      //script
-      export default {
-        props: ['params','query']
-      }
+    //script
+    export default {
+      props: ['params','query']
+    }
   </pre>
   <hr>
   <h2>路由傳 meta</h2>
   <p>改變template顯示</p>
-  <pre class="prettyprint">
+  <pre>
     //router
-      {
-        path: '/home'
-        name: 'home'
-        meta: {show:true}
-      }
-      
-      //template
-      //判斷路徑
-      v-show="$route.path=='/home'"
+    {
+      path: '/home'
+      name: 'home'
+      meta: {show:true}
+    }
+    
+    //template
+    //判斷路徑
+    v-show="$route.path=='/home'"
 
-      //meta
-      v-show="$route.meta"
+    //meta
+    v-show="$route.meta"
   </pre>
   <hr>
   <h2>轉址(redirect)</h2>
   <p>將/a 轉頁到 /b</p>
-  <pre class="prettyprint">
+  <pre>
     //router
-      const router = new VueRouter({
-        routes: [
-          { path: '/a', redirect: '/b' }
-        ]
-      })
+    const router = new VueRouter({
+      routes: [
+        { path: '/a', redirect: '/b' }
+      ]
+    })
   </pre>
   <hr>
   <h2>別名(alias)</h2>
   <p>和轉址差異在於，轉址是 URL 會被替換；而別名像是替路由再取另個名字，但網址列看到的 URL 不會被替換</p>
-  <pre class="prettyprint">
+  <pre>
     const router = new VueRouter({
-        routes: [
-          { path: '/a', alias: '/b' }
-        ]
-      })
+      routes: [
+        { path: '/a', alias: '/b' }
+      ]
+    })
   </pre>
   <hr>
   <h2>push() replace()</h2>
-  <pre class="prettyprint">
+  <pre>
     this.$router.push('/'); //可以返回上一頁
-      this.$router.replace('/'); //不會向history留下紀錄
-  </pre>
-  <hr>
-  <h2>巢狀路由，區分層級</h2>
-  <pre class="prettyprint">
-    const routes = [
-        ...
-        {
-          path: "/member",
-          component: MemberPage,
-          children: [
-            {
-              path: "profile",
-              name: "Profile",
-              component: Profile,
-            },
-            {
-              path: "collection",
-              name: "Collection",
-              component: Collection,
-            },
-          ],
-        },
-      ];
+    this.$router.replace('/'); //不會向history留下紀錄
   </pre>
   <hr>
   <h2>history路由模式</h2>
@@ -379,7 +327,7 @@
     <li>HTML 5 的 pushState() 和 replaceState() (History API)</li>
     <li>onpopstate 事件監聽</li>
   </ol>
-  <pre class="prettyprint">
+  <pre>
     history.pushState(state [,title][,url]); // 歷史記錄中增加一條記錄
       history.replaceState(state [,title][,url]); // 修改目前的歷史紀錄
   </pre>
@@ -398,7 +346,7 @@
     <li>afterEach 路由跳轉結束後才會觸發(全域)</li>
     <li>單一元件內的分別是beforeRouteEnter,beforeRouteUpdate,beforeRouteLeave</li>
   </ol>
-  <pre class="prettyprint">
+  <pre>
     #router.js (全域)
     router.beforeEach((to, from, next) => {
       if(token){
@@ -411,7 +359,7 @@
   <hr>
   <h2>beforeEnter 不是全域只能在 route 物件內註冊</h2>
   <h3>beforeEnter 進入新的路由前</h3>
-  <pre class="prettyprint">
+  <pre>
     {
       path: '/routerName',
       name: 'routerName',
@@ -426,8 +374,7 @@
       }
     },
   </pre>
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10278913">頁面切換好夥伴- Vue Router</a>
@@ -445,7 +392,7 @@
       <a href="https://book.vue.tw/CH4/4-4-navigation-guards.html">路由守衛</a>
     </li>
   </ul>
-  <hr>
+  <!-- <hr> -->
   <!-- <script>
     export default {
         beforeRouteEnter(to, from, next) {

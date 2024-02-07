@@ -15,6 +15,7 @@
     <router-link active-class='active' to="/pinia">pinia 資料傳遞</router-link>
     <router-link active-class='active' to="/model">v-model 相向綁定</router-link>
     <router-link active-class='active' to="/vrouter">router</router-link>
+    <router-link active-class='active' to="/vroutes">routes 巢狀路由</router-link>
     <router-link active-class='active' to="/vroutercatch">router catch 路由缓存</router-link>
     <router-link active-class='active' to="/ifShow">ifShow</router-link>
     <router-link active-class='active' to="/vFor">for</router-link>

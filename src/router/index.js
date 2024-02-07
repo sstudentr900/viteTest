@@ -18,6 +18,9 @@ import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
 import vrouter from '../views/vrouter.vue'
+import vroutes from '../views/vroutes.vue'
+import vroutes1 from '../views/vroutes1.vue'
+import vroutes2 from '../views/vroutes2.vue'
 import vroutercatch from '../views/vroutercatch.vue'
 import von from '../views/von.vue'
 import nuxt from '../views/nuxt.vue'
@@ -56,6 +59,20 @@ const router = createRouter({
 // 錄或子網站）就建議使用這個參數來設置。若無任何子目錄則可寫 history: createWebHistory()
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/vroutes',
+      component: vroutes,
+      children:[
+        {
+          path: '',
+          component: vroutes1,
+        },
+        {
+          path: 'vroutes2',
+          component: vroutes2,
+        }
+      ]
+    },
     {path: '/',component: start,},
     {path: '/start',component: start,},
     {path: '/installs',component: installs,},
