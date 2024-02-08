@@ -2,15 +2,13 @@
   <h2>Vue-Router</h2>
   <h3>main安裝</h3>
   <pre>
-    //main
+    #main.js
     import router from './router'  
     app.use(router);
   </pre>
-  <hr>
   <h3>新增router</h3>
-  <p>history</p>
   <pre>
-    src/router/index.js
+    #src/router/index.js
 
     import { createRouter, createWebHistory } from 'vue-router'
     import home from '../views/home.vue'
@@ -45,7 +43,6 @@
     // 將路由實例導出，以便其他地方可以導入並使用它
     export default router
   </pre>
-  <hr>
   <h3>引用router</h3>
   <pre>
     #template
@@ -55,69 +52,6 @@
 
     //顯示頁面
     &lt;router-view/&gt;
-  </pre>
-  <hr>
-  <h3>template取router資訊</h3>
-  <pre>
-    #$template
-
-    $route
-  </pre>
-  <hr>
-  <h2>createWebHistory</h2>
-  <p>需要服務器去配置</p>
-  <p>import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目 錄或子網站）就建議使用這個參數來設置。</p>
-  <p>若無任何子目錄則可寫 history: createWebHistory()</p>
-  <pre>
-    const router = createRouter({
-      history: createWebHistory(import.meta.env.BASE_URL),
-      routes: [
-      ]
-    })
-  </pre>
-  <h3>createWebHasHistory</h3>
-  <p>網址會有#字號</p>
-  <pre>
-    history: createWebHasHistory()
-  </pre>
-  <hr>
-  
-  <h2>push replace</h2>
-  <pre>
-    import { useRoute,useRouter } from 'vue-router'
-    //取得網址
-    const route = useRoute()
-    console.log(route.path) 
-    
-
-    //push replace
-    const router = useRouter()
-    router.push('/') //會記錄並換頁
-    router.push({path:"/"}) //同上
-    router.replace({path:"/"}) //不會記錄上一頁
-
-
-    //錯誤跳頁
-    setTimeout(()=>{
-      router.push('/') 
-    },3000)
-  </pre>
-  <hr>
-  <h2>query params</h2>
-  <pre>
-    //hash
-    router.push({ path: '/about', hash: '#team' }) /about#team
-
-    //query
-    router.push({ path:"/",query:{username:'qq'} }) //帶參數(/?username=qq) 
-
-    //params
-    const username = 'eduardo'
-    router.push({ path: `/user/${username}` }) // -> /user/eduardo
-    router.push({ name: 'user', params: { username } }) // -> /user/eduardo
-    
-    //path 和 params 不能共用
-    router.push({ path: '/user', params: { username } }) // -> /user
   </pre>
   <hr>
   <h2>useRoute useRouter</h2>
@@ -142,38 +76,7 @@
     </li>
   </ul>
   <hr>
-  <h2>router-link</h2>
-  <h3>
-    <span>to</span>
-    導向指定的目標路由
-  </h3>
-  <pre>
-    //字串
-    <router-link to="/" tag="li">Home</router-link>
-
-    //物件
-    //name為路由的名稱
-    //params為path的值
-    //query為?後的值
-    :to="{ name: 'user', params: { userId: 123 },query:{k:12}}"
-
-    //指定路徑
-    @click="$router.push('/member/profile')
-
-    //指定路由名稱
-    @click="$router.push({ name: 'Profile'})
-  </pre>
-  <h3>tag 渲染標籤</h3>
-  <p>點擊的路由class名=>.router-link-exact-active 和 .router-link-active</p>
-  <pre>
-    //template
-    &lt;router-link to="/" tag="li"&gt;Home&lt;/router-link&gt; 
-
-    //render
-    &lt;li&gt;Home&lt;/li&gt;
-  </pre>
-  <hr>
-  <h2>冒號「:」動態路由</h2>
+  <h3>冒號「:」動態路由</h3>
   <pre>
     const router = new VueRouter({
         routes: [
@@ -188,27 +91,44 @@
       $route.params.userName
   </pre>
   <hr>
-  <h2>取得路由</h2>
-  <h3>取得path</h3>
+
+  <h3>script query params</h3>
   <pre>
-    //url
+    //hash
+    router.push({ path: '/about', hash: '#team' }) /about#team
+
+    //query
+    router.push({ path:"/",query:{username:'qq'} }) //帶參數(/?username=qq) 
+
+    //params
+    const username = 'eduardo'
+    router.push({ path: `/user/${username}` }) // -> /user/eduardo
+    router.push({ name: 'user', params: { username } }) // -> /user/eduardo
+    
+    //path 和 params 不能共用
+    router.push({ path: '/user', params: { username } }) // -> /user
+  </pre>
+  <hr>
+  <h3>template取得路由path</h3>
+  <pre>
+    #url
     /search
 
-    //template
+    #template
     $route.path=>'/search'
   </pre>
-  <h3>取得params</h3>
+  <h3>template取得params</h3>
   <pre>
-    //url
+    #url
     /search/key
 
-    //router
+    #router
     {
       path: '/search/:key',
       name: 'search',
     }
 
-    //template
+    #template
     $route.params.keyword=> key
   </pre>
   <h3>params不給值須寫成?</h3>
@@ -224,7 +144,7 @@
       path: '/search/:key?',
     }
   </pre>
-  <h3>取得query</h3>
+  <h3>template取得取得query</h3>
   <pre>
     //url
     ?k=b
@@ -238,6 +158,23 @@
     //template
     $route.query.k=>b
   </pre>
+  <h3>template to push</h3>
+  <pre>
+    //字串
+    &lt;router-link to="/" tag="li">Home&lt;/router-link>
+
+    //物件
+    //name為路由的名稱
+    //params為path的值
+    //query為?後的值
+    :to="{ name: 'user', params: { userId: 123 },query:{k:12}}"
+
+    //指定路徑
+    @click="$router.push('/member/profile')
+
+    //指定路由名稱
+    @click="$router.push({ name: 'Profile'})
+  </pre>
   <hr>
   <h2>路由傳 props</h2>
   <h3>對象寫法</h3>
@@ -250,7 +187,7 @@
     }
 
     //template
-    {{a}}
+    &lbrace;&lbrace;a&rbrace;&rbrace;
 
     //script
     export default {
@@ -269,7 +206,7 @@
     }
 
     //template
-    {{params}}
+    &lbrace;&lbrace;params&rbrace;&rbrace;
 
     //script
     export default {
@@ -318,8 +255,43 @@
   <hr>
   <h2>push() replace()</h2>
   <pre>
+    import { useRoute,useRouter } from 'vue-router'
+    //取得網址
+    const route = useRoute()
+    console.log(route.path) 
+    
+
+    //push replace
+    const router = useRouter()
+    router.push('/') //會記錄並換頁
+    router.push({path:"/"}) //同上
+    router.replace({path:"/"}) //不會記錄上一頁
+
+    //
     this.$router.push('/'); //可以返回上一頁
     this.$router.replace('/'); //不會向history留下紀錄
+
+    //錯誤跳頁
+    setTimeout(()=>{
+      router.push('/') 
+    },3000)
+  </pre>
+  <hr>
+  <h2>createWebHistory</h2>
+  <p>需要服務器去配置</p>
+  <p>import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目 錄或子網站）就建議使用這個參數來設置。</p>
+  <p>若無任何子目錄則可寫 history: createWebHistory()</p>
+  <pre>
+    const router = createRouter({
+      history: createWebHistory(import.meta.env.BASE_URL),
+      routes: [
+      ]
+    })
+  </pre>
+  <h3>createWebHasHistory</h3>
+  <p>網址會有#字號</p>
+  <pre>
+    history: createWebHasHistory()
   </pre>
   <hr>
   <h2>history路由模式</h2>
@@ -329,9 +301,8 @@
   </ol>
   <pre>
     history.pushState(state [,title][,url]); // 歷史記錄中增加一條記錄
-      history.replaceState(state [,title][,url]); // 修改目前的歷史紀錄
+    history.replaceState(state [,title][,url]); // 修改目前的歷史紀錄
   </pre>
-  <hr>
   <h2>hash路由模式</h2>
   <ol>
     <li>URL 中的 # 符號，例如: https://www.example.com/#yoyoyo</li>

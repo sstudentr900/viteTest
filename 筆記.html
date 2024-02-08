@@ -7,31 +7,36 @@
   </head>
   <body>
     <h2>名詞解釋</h2>
-    <pre class="prettyprint">
-      <xmp>
-        pureFunc              乾淨的/純淨
-        silde-effect          副作用/髒的/污染到變數
-        composition API       vue3
-        options API           vue2
-        Dynamite              動態
-        components            組件
-      </xmp>
+    <pre>
+      pureFunc              乾淨的/純淨
+      silde-effect          副作用/髒的/污染到變數
+      composition API       vue3
+      options API           vue2
+      Dynamite              動態
+      components            組件
     </pre>
     <hr>
     <h2>快捷</h2>
-    <pre class="prettyprint">
-      <xmp>
-        執行專案  npm run dev
-        打包   npm run build
-      </xmp>
+    <pre>
+      執行專案  npm run dev
+      打包   npm run build
+    </pre>
+    <hr>
+    <h2>字符編碼</h2>
+    <pre>
+      `&` 和號    ：&amp;
+      `<` 小於號  ：&lt;
+      `>` 大於號  ：&gt;
+      `"` 雙引號  ：&quot;
+      `'` 單引號  ：&#39; 或 &apos;
+      `{` 左大括號：&lbrace;
+      `}` 左大括號：&rbrace;
     </pre>
     <hr>
     <h2>圖片 api</h2>
-    <pre class="prettyprint">
-      <xmp>
-        https://picsum.photos/寬度/高度
-        https://picsum.photos/200/300
-      </xmp>
+    <pre>
+      https://picsum.photos/寬度/高度
+      https://picsum.photos/200/300
     </pre>
     <h4>參考</h4>
     <ul>
@@ -41,11 +46,9 @@
     </ul>
     <hr>
     <h2>引入Bootstrap套件</h2>
-    <pre class="prettyprint">
-      <xmp>
-        //安裝
-        npm install bootstrap@v5.3.1
-      </xmp>
+    <pre>
+      //安裝
+      npm install bootstrap@v5.3.1
     </pre>
     <h4>參考</h4>
     <ul>
@@ -60,35 +63,26 @@
       根目錄/ src / assets 底下新增 all.scss 檔案內引入 bootstrap 。
       下面語法會讓系統透過專案根目錄的相對路徑找到 node_modules ，再從中尋找 bootstrap 的 scss 文件並引入。
     </p>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         @import "bootstrap/scss/bootstrap.scss";   #scss環境裡可以省略.scss
-      </xmp>
     </pre>
     <h3>安裝 sass 套件</h3>
     <p>系統跳出「Passing percentage units to the global abs() function is deprecated...」錯誤訊息。是因為 Sass 從 1.65.0 版本開始，不建議將百分比單位傳遞給全域 abs()</p>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         npm i -D sass@1.64.2  #在終端機輸入
-      </xmp>
     </pre>
     <h3>與進入點建立關係</h3>
     <p>進入點 main.js 檔案內寫 import 引入專案根目錄下的 bootstrap。</p>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         import './assets/all.scss';
-      </xmp>
     </pre>
     <hr>
     <h2>路由</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         npm install vue-router@4
-      </xmp>
     </pre>
     <h3>新增 route.js</h3>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         // Vue Router 的實例必須有 createRouter 和 createWebHistory 這兩個函數。
         // 有了 Vue Router 的實例就可以使用
         <router-view>
@@ -109,11 +103,9 @@
   
         // 將路由實例導出，以便其他地方可以導入並使用它
         export default router
-      </xmp>
     </pre>
     <h3>修改 main.js</h3>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         import { createApp } from 'vue'
         import App from './App.vue'
         import router from './router'  // 引入路由
@@ -124,15 +116,12 @@
         app.use(router);
         //掛載 Vue.js 實體至 DOM
         app.mount('#app')
-      </xmp>
     </pre>
     <h3>修改 src / App.vu</h3>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         <template>
           <router-view />
         </template>
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -145,30 +134,24 @@
     </ul>
     <hr>
     <h2>安裝 axios 套件</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         #安裝
         npm i axios
-      </xmp>
     </pre>
     <h3>全局引入 axios 套件</h3>
     <p>src / main.js</p>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         //src / main.js
         import axios from 'axios';
         
         // axios套件必須使用vue3版本。使用插件方式運用
         app.use(axios)
-      </xmp>
     </pre>
     <h3>組件引入 axios 套件</h3>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         <script>
           import axios from "axios";
         </script>
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -178,11 +161,9 @@
     </ul>
     <hr>
     <h2>vite 環境</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         vscode=> vetur
       google=> vue devtools beta
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -192,10 +173,8 @@
     </ul>
     <hr>
     <h2>vite 安裝</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         npm create vite@latest
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -211,8 +190,7 @@
     </ul>
     <hr>
     <h2>options API  Composition API</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         //options API=>vue2
       export default {
         data() {
@@ -261,7 +239,6 @@
           return props.data.length
         })
         </script>
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -271,8 +248,7 @@
     </ul>
     <hr>
     <h2>vite 資料夾</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         vite.config                             //vite設定檔
       README.md                               //說明檔
       package.json                            //專案設定檔
@@ -285,7 +261,6 @@
       --assets                                //會被打包
       --main.js                               //
       ----createApp(App).mount('#app')        //創立App(放入App組件).掛載到('html=>#app')
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -295,11 +270,9 @@
     </ul>
     <hr>
     <h2>建立組件</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         :=>v-bind=>:src
       @=>v-on=>@click
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -309,8 +282,7 @@
     </ul>
     <hr>
     <h2>silde-effect and pureFunc</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         const a = [1,2,3]
       
       //silde-effect 副作用/髒的/污染到變數
@@ -328,7 +300,6 @@
       }
       const newA = pureFunc(4)
       consoel.log(newA) [1,2,3,4]
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
@@ -338,8 +309,7 @@
     </ul>
     <hr>
     <h2>組件生命週期</h2>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         //composition API vue3
         <script setup></script>
         //options API vue2
@@ -360,17 +330,14 @@
           },
         }
         </script>
-      </xmp>
     </pre>
     <h3>h jsx</h3>
-    <pre class="prettyprint">
-      <xmp>
+    <pre>
         import {h} from 'vue'
       //jsx程式跑html
       h('
         <p>hello</p>
         ')
-      </xmp>
     </pre>
     <h4>參考</h4>
     <ul>
