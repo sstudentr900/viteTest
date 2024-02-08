@@ -1,5 +1,5 @@
 <template>
-  <h2>巢狀 routes2</h2>
+  <p>巢狀 routes2</p>
 </template>
 <script setup></script>
 <style scoped></style>

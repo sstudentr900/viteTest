@@ -54,7 +54,7 @@
     &lt;router-view/&gt;
   </pre>
   <hr>
-  <h2>useRoute useRouter</h2>
+  <h3>useRoute useRouter</h3>
   <p>useRoute 局部對象可獲取name path params querr</p>
   <p>useRouter 全局對象 push replace</p>
   <h3>參考</h3>
@@ -64,7 +64,16 @@
     </li>
   </ul>
   <hr>
-  <h2>go back</h2>
+  <h3>修改tag</h3>
+  <pre>
+    #template
+    &lt;router-link to="/" tag="li"&gt;Home&lt;/router-link&gt; 
+
+    #render 因tag="li"
+    &lt;li>Home&lt;/li>
+  </pre>
+  <hr>
+  <h3>go back</h3>
   <pre>
     #template
     &lt;a @click="$router.go(-1)"&gt;home&lt;/a&gt;
@@ -76,22 +85,35 @@
     </li>
   </ul>
   <hr>
-  <h3>冒號「:」動態路由</h3>
+  <h3>路由「:」</h3>
   <pre>
     const router = new VueRouter({
-        routes: [
-          { 
-            path: 'member/:userName',
-            component: member
-          }
-        ]
-      })
+      routes: [
+        { 
+          //動態變數 「:」 必填
+          path: 'search/:key',
+          component: member
+        },
+      ]
+    })
+  </pre>
+  <h3>路由「?」</h3>
+  <pre>
+    const router = new VueRouter({
+      routes: [
+        {
+          //「?」非必填
+          path: '/search/:key?',
+        }
+      ]
+    })
 
-      //template
-      $route.params.userName
+    //methods
+    this.$router.push({
+      params:{key:''||undefined},
+    })
   </pre>
   <hr>
-
   <h3>script query params</h3>
   <pre>
     //hash
@@ -109,7 +131,7 @@
     router.push({ path: '/user', params: { username } }) // -> /user
   </pre>
   <hr>
-  <h3>template取得路由path</h3>
+  <h3>template path</h3>
   <pre>
     #url
     /search
@@ -117,7 +139,7 @@
     #template
     $route.path=>'/search'
   </pre>
-  <h3>template取得params</h3>
+  <h3>template params</h3>
   <pre>
     #url
     /search/key
@@ -131,20 +153,7 @@
     #template
     $route.params.keyword=> key
   </pre>
-  <h3>params不給值須寫成?</h3>
-  <pre>
-    //methods
-    this.$router.push({
-      params:{key:''||undefined},
-    })
-
-    //router
-    {
-      //加問號是用在可傳可不傳params,否則上一頁會錯誤
-      path: '/search/:key?',
-    }
-  </pre>
-  <h3>template取得取得query</h3>
+  <h3>template query</h3>
   <pre>
     //url
     ?k=b
@@ -157,6 +166,30 @@
 
     //template
     $route.query.k=>b
+  </pre>
+  <hr>
+  <h3>script push() replace()</h3>
+  <pre>
+    import { useRoute,useRouter } from 'vue-router'
+    //取得網址
+    const route = useRoute()
+    console.log(route.path) 
+    
+
+    //push replace
+    const router = useRouter()
+    router.push('/') //會記錄並換頁
+    router.push({path:"/"}) //同上
+    router.replace({path:"/"}) //不會記錄上一頁
+
+    //
+    this.$router.push('/'); //可以返回上一頁
+    this.$router.replace('/'); //不會向history留下紀錄
+
+    //錯誤跳頁
+    setTimeout(()=>{
+      router.push('/') 
+    },3000)
   </pre>
   <h3>template to push</h3>
   <pre>
@@ -176,8 +209,7 @@
     @click="$router.push({ name: 'Profile'})
   </pre>
   <hr>
-  <h2>路由傳 props</h2>
-  <h3>對象寫法</h3>
+  <h3>路由傳 props 對象寫法</h3>
   <pre>
     //router
     {
@@ -194,7 +226,7 @@
       props: ['a']
     }
   </pre>
-  <h3>函數寫法</h3>
+  <h3>路由傳 props 函數寫法</h3>
   <pre>
     //router
     {
@@ -213,8 +245,7 @@
       props: ['params','query']
     }
   </pre>
-  <hr>
-  <h2>路由傳 meta</h2>
+  <h3>路由傳 meta</h3>
   <p>改變template顯示</p>
   <pre>
     //router
@@ -243,7 +274,7 @@
     })
   </pre>
   <hr>
-  <h2>別名(alias)</h2>
+  <h3>別名(alias)</h3>
   <p>和轉址差異在於，轉址是 URL 會被替換；而別名像是替路由再取另個名字，但網址列看到的 URL 不會被替換</p>
   <pre>
     const router = new VueRouter({
@@ -253,34 +284,10 @@
     })
   </pre>
   <hr>
-  <h2>push() replace()</h2>
-  <pre>
-    import { useRoute,useRouter } from 'vue-router'
-    //取得網址
-    const route = useRoute()
-    console.log(route.path) 
-    
-
-    //push replace
-    const router = useRouter()
-    router.push('/') //會記錄並換頁
-    router.push({path:"/"}) //同上
-    router.replace({path:"/"}) //不會記錄上一頁
-
-    //
-    this.$router.push('/'); //可以返回上一頁
-    this.$router.replace('/'); //不會向history留下紀錄
-
-    //錯誤跳頁
-    setTimeout(()=>{
-      router.push('/') 
-    },3000)
-  </pre>
-  <hr>
-  <h2>createWebHistory</h2>
+  <h3>createWebHistory</h3>
   <p>需要服務器去配置</p>
-  <p>import.meta.env.BASE_URL 用於指定應用程序的根路徑。如果應用程序可能在不同的 URL 路徑下運行（如子目 錄或子網站）就建議使用這個參數來設置。</p>
-  <p>若無任何子目錄則可寫 history: createWebHistory()</p>
+  <p>import.meta.env.BASE_URL 應用程序在不同 URL路徑下運行（如子目 錄或子網站）建議使用這個參數來設置。</p>
+  <p>若無任何子目錄則可寫 history: createWebHistory(),網址會有#字號</p>
   <pre>
     const router = createRouter({
       history: createWebHistory(import.meta.env.BASE_URL),
@@ -288,13 +295,8 @@
       ]
     })
   </pre>
-  <h3>createWebHasHistory</h3>
-  <p>網址會有#字號</p>
-  <pre>
-    history: createWebHasHistory()
-  </pre>
   <hr>
-  <h2>history路由模式</h2>
+  <h3>history路由模式</h3>
   <ol>
     <li>HTML 5 的 pushState() 和 replaceState() (History API)</li>
     <li>onpopstate 事件監聽</li>

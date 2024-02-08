@@ -1,5 +1,5 @@
 <template>
-  <h2>>圖片懶加載</h2>
+  <h2>圖片懶加載</h2>
   <h3>註冊全域指令</h3>
   <p>圖片進入可視視窗載入</p>
   <pre>
@@ -41,7 +41,7 @@
     </li>
   </ul>
   <hr>
-  <h2>>圖片懶加載優化</h2>
+  <h2>>圖片懶加載優化 注册全局</h2>
   <p>新增 lazyPlugin.js</p>
   <pre>
     #新增 lazyPlugin.js
@@ -49,6 +49,7 @@
     export const lazyPlugin = {
       install(app){
         //懶加載指令
+        //（directives）用於向 DOM 元素應用特定的行為 指令以 v- 開頭
         app.directive('img-lazy',{
           mounted(el,binding){
             //el:綁定元素 img

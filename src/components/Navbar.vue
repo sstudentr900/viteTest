@@ -8,9 +8,9 @@
     <router-link active-class='active' to="/ref">ref reactive 變數</router-link>
     <router-link active-class='active' to="/watch">watch 變數監聽</router-link>
     <router-link active-class='active' to="/computed">computed 計算函數</router-link>
-    <router-link active-class='active' to="/composables">composables js共用邏輯</router-link>
+    <router-link active-class='active' to="/composables">composables 共用函數</router-link>
+    <router-link active-class='active' to="/component">component 共用組件</router-link>
     <router-link active-class='active' to="/slot">slot</router-link>
-    <router-link active-class='active' to="/component">component 組件</router-link>
     <router-link active-class='active' to="/props">props emit 資料傳遞</router-link>
     <router-link active-class='active' to="/pinia">pinia 資料傳遞</router-link>
     <router-link active-class='active' to="/model">v-model 相向綁定</router-link>

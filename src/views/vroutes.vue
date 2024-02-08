@@ -37,18 +37,17 @@
     //顯示頁面
     &lt;RouterView/&gt;
   </pre>
-  <hr>
-  <p>nav</p>
+  <h3>範例</h3>
   <div class="nav">
-    <ul>
-      <li><router-link to='/vroutes'>vroutes1</router-link></li>
-      <li><router-link to='/vroutes/vroutes2'>vroutes2</router-link></li>
-    </ul>
+    <button>
+      <router-link to='/vroutes'>vroutes1</router-link>
+    </button>
+    <button>
+      <router-link to='/vroutes/vroutes2'>vroutes2</router-link>
+    </button>
   </div>
   <router-view></router-view>
-  <div class="footer">footer</div>
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=6Xzcgr1bB84&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=26">整体路由设计</a>
@@ -63,7 +62,10 @@
 </template>
 <script setup></script>
 <style scoped>
-  a.router-link-exact-active{
-    color:#fff;
+  .nav a{
+    color:#666;
+  }
+  .nav a.router-link-exact-active{
+    color:red;
   }
 </style>
