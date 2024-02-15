@@ -77,6 +77,30 @@
   <h3>範例</h3>
   <axioss3/>
   <hr>
+  <h3>數據渲染問題</h3>
+  <pre>
+    #template
+
+    Q.找不到 data 會報錯?
+    &lt;a :to='{ path:`/${data[1].id}` }>link&lt;a>
+    &lt;a :to='{ path:`/${data.id}` }>link&lt;a>
+
+    A1.用鏈語法
+    &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
+
+    a2.v-if
+    &lt;div v-if='data'&gt;
+      &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
+    &lt;/div&gt;
+
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=XcADwfqpj8g&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=55">基础数据渲染</a>
+    </li>
+  </ul>
+  <hr>
   <h3>pinia fetch</h3>
   <pre>
     //stores/fetch.js
