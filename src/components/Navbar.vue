@@ -12,7 +12,6 @@
     <router-link active-class='active' to="/component">component 共用組件</router-link>
     <router-link active-class='active' to="/slot">slot</router-link>
     <router-link active-class='active' to="/props">props emit 資料傳遞</router-link>
-    <router-link active-class='active' to="/pinia">pinia 資料傳遞</router-link>
     <router-link active-class='active' to="/model">v-model 相向綁定</router-link>
     <router-link active-class='active' to="/vrouter">router</router-link>
     <router-link active-class='active' to="/vroutes">routes 巢狀路由</router-link>
@@ -26,13 +25,15 @@
     <router-link active-class='active' to="/imageerror">圖片載入</router-link>
     <router-link active-class='active' to="/imglazy">圖片懶加載</router-link>
     <router-link active-class='active' to="/transition">transition</router-link>
+    <router-link active-class='active' to="/shoppingcart">shoppingcart 購物車</router-link>
+    <router-link active-class='active' to="/pinia">plug pinia 資料傳遞</router-link>
     <router-link active-class='active' to="/express">plug express</router-link>
     <router-link active-class='active' to="/nuxt">plug nuxt</router-link>
     <router-link active-class='active' to="/naive">plug naive ui</router-link>
     <router-link active-class='active' to="/validate">plug vee-validate</router-link>
     <router-link active-class='active' to="/axioss">plug axios</router-link>
     <router-link active-class='active' to="/mocks">plug mock</router-link>
-    <router-link active-class='active' to="/jsonserver">plug JSON-SERVER</router-link>
+    <router-link active-class='active' to="/jsonserver">plug json-sever 虛擬API</router-link>
     <router-link active-class='active' to="/throttle">plug throttle節流</router-link>
     <router-link active-class='active' to="/elementplus">plug elementplus</router-link>
     <router-link active-class='active' to="/i18n">plug i18n</router-link>

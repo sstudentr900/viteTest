@@ -64,38 +64,21 @@
     </li>
   </ul>
   <hr>
-  <h2>分頁功能v-if</h2>
+  <h3>v-if template</h3>
   <pre>
-    &lt;div id="app"&gt;
-      &lt;button v-for="item in tab" :key="item" @click="click(item)"&gt;
-        &lbrace;&lbrace; item &rbrace;&rbrace;
-      &lt;/button&gt;
-      &lt;tab-one v-if="title === 'One'"&gt;&lt;/tab-one&gt;
-      &lt;tab-two v-if="title === 'Two'"&gt;&lt;/tab-two&gt;
-    &lt;/div&gt;
-
-      const app = Vue.createApp({
-        data() {
-          return {
-            title: 'One',
-            tab: ['One', 'Two']
-          }
-        },
-        methods: {
-          click(e) {
-            this.title = e;
-          }
-        },
-      });
-      app.component('tab-one', {
-        template: `&lt;div&gt;one-component&lt;/div&gt;`
-      });
-      app.component('tab-two', {
-        template: `&lt;div&gt;two-component&lt;/div&gt;`
-      });
-
-      app.mount('#app');
+    &lt;template v-if="true">
+      &lt;div>&lbrace;&lbrace; aa &rbrace;&rbrace;&lt;/div>
+    &lt;/template>
+    &lt;template v-else>
+      &lt;div>&lbrace;&lbrace; bb &rbrace;&rbrace;&lt;/div>
+    &lt;/template>
   </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=t1CH1L7lbcc&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=64">v-if template</a>
+    </li>
+  </ul>
   <hr>
   <h3>數據渲染問題</h3>
   <pre>
@@ -133,6 +116,39 @@
       <a href="https://www.youtube.com/watch?v=9Fp35MZDADM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=58">小图切换大图显示</a>
     </li>
   </ul>
+  <hr>
+  <h2>分頁功能v-if</h2>
+  <pre>
+    &lt;div id="app"&gt;
+      &lt;button v-for="item in tab" :key="item" @click="click(item)"&gt;
+        &lbrace;&lbrace; item &rbrace;&rbrace;
+      &lt;/button&gt;
+      &lt;tab-one v-if="title === 'One'"&gt;&lt;/tab-one&gt;
+      &lt;tab-two v-if="title === 'Two'"&gt;&lt;/tab-two&gt;
+    &lt;/div&gt;
+
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: 'One',
+            tab: ['One', 'Two']
+          }
+        },
+        methods: {
+          click(e) {
+            this.title = e;
+          }
+        },
+      });
+      app.component('tab-one', {
+        template: `&lt;div&gt;one-component&lt;/div&gt;`
+      });
+      app.component('tab-two', {
+        template: `&lt;div&gt;two-component&lt;/div&gt;`
+      });
+
+      app.mount('#app');
+  </pre>
   <!-- <h2>v-if、v-else顯示 (物件會不顯示在html裡)</h2>
   <button v-on:click="changeView(1)">區塊1</button>
   <button @click="changeView(2)">區塊2</button>

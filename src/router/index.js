@@ -22,6 +22,7 @@ import vroutes from '../views/vroutes.vue'
 import vroutes1 from '../views/vroutes1.vue'
 import vroutes2 from '../views/vroutes2.vue'
 import vroutercatch from '../views/vroutercatch.vue'
+import shoppingcart from '../views/shoppingcart.vue'
 import von from '../views/von.vue'
 import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
@@ -98,6 +99,7 @@ const router = createRouter({
     {path: '/ifShow',component: ifShow},
     {path: '/vrouter',component: vrouter},
     {path: '/vroutercatch',component: vroutercatch},
+    {path: '/shoppingcart',component: shoppingcart},
     {path: '/von',component: von},
     {path: '/nuxt',component: nuxt},
     {path: '/validate',component: validate},
