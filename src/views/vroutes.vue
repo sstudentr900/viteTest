@@ -7,13 +7,19 @@
         //父
         {
           path: '/children',
-          component: ()=>import('../views/children.vue'),
+          component: ()=>import('../views/layout.vue'),
+          meta:{
+            title: '父模板',
+          },
           //子
           children: [
             {
               //path不用斜線
               path: 'childrenA',
               component: ()=>import('../views/children/childrenA.vue'),
+              meta:{
+                title: '子模板',
+              },
             },
             {
               path: 'childrenB',
@@ -23,6 +29,21 @@
         },
       ]
     })
+
+
+    #layout.vue
+    //template
+    &lt;div class="_dif" :class="$route.meta.title">
+      //選單
+      &lt;banav/>
+      //內容 如:childrenA
+      &lt;RouterView/>
+    &lt;/div>
+
+
+    #childrenA.vue
+    //template
+    &lt;h1> childrenA &lt;/h1>
 
 
     #children.vue

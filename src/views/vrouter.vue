@@ -54,37 +54,6 @@
     &lt;router-view/&gt;
   </pre>
   <hr>
-  <h3>useRoute useRouter</h3>
-  <p>useRoute 局部對象可獲取name path params querr</p>
-  <p>useRouter 全局對象 push replace</p>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=5YzSuKfwWv4"> Vue-Router 基礎入門，SPA網頁輕鬆上手 !</a>
-    </li>
-  </ul>
-  <hr>
-  <h3>修改tag</h3>
-  <pre>
-    #template
-    &lt;router-link to="/" tag="li"&gt;Home&lt;/router-link&gt; 
-
-    #render 因tag="li"
-    &lt;li>Home&lt;/li>
-  </pre>
-  <hr>
-  <h3>go back</h3>
-  <pre>
-    #template
-    &lt;a @click="$router.go(-1)"&gt;home&lt;/a&gt;
-  </pre>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://stackoverflow.com/questions/48104842/how-can-i-go-back-route-back-on-vue-router">go back</a>
-    </li>
-  </ul>
-  <hr>
   <h3>路由「:」</h3>
   <pre>
     const router = new VueRouter({
@@ -114,6 +83,15 @@
     })
   </pre>
   <hr>
+  <h3>script useRoute useRouter</h3>
+  <p>useRoute 局部對象可獲取name path params querr</p>
+  <p>useRouter 全局對象 push replace</p>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=5YzSuKfwWv4"> Vue-Router 基礎入門，SPA網頁輕鬆上手 !</a>
+    </li>
+  </ul>
   <h3>script query params</h3>
   <pre>
     //hash
@@ -130,44 +108,6 @@
     //path 和 params 不能共用
     router.push({ path: '/user', params: { username } }) // -> /user
   </pre>
-  <hr>
-  <h3>template path</h3>
-  <pre>
-    #url
-    /search
-
-    #template
-    $route.path=>'/search'
-  </pre>
-  <h3>template params</h3>
-  <pre>
-    #url
-    /search/key
-
-    #router
-    {
-      path: '/search/:key',
-      name: 'search',
-    }
-
-    #template
-    $route.params.keyword=> key
-  </pre>
-  <h3>template query</h3>
-  <pre>
-    //url
-    ?k=b
-
-    //router
-    {
-      path: '/search/:key',
-      name: 'search',
-    }
-
-    //template
-    $route.query.k=>b
-  </pre>
-  <hr>
   <h3>script push() replace()</h3>
   <pre>
     import { useRoute,useRouter } from 'vue-router'
@@ -191,6 +131,61 @@
       router.push('/') 
     },3000)
   </pre>
+  <hr>
+  <h3>template path</h3>
+  <pre>
+    #url
+    /search
+
+    #template
+    $route.path=>'/search'
+  </pre>
+  <h3>template 取得 params</h3>
+  <pre>
+    #url
+    /search/key
+
+    #router
+    {
+      path: '/search/:key',
+      name: 'search',
+    }
+
+    #template
+    $route.params.keyword=> key
+  </pre>
+  <h3>template 取得 query</h3>
+  <pre>
+    //url
+    ?k=b
+
+    //router
+    {
+      path: '/search/:key',
+      name: 'search',
+    }
+
+    //template
+    $route.query.k=>b
+  </pre>
+  <h3>template 取得 meta</h3>
+  <p>改變template顯示</p>
+  <pre>
+    //router
+    {
+      path: '/home'
+      name: 'home'
+      meta: {show:true}
+    }
+    
+    //template
+    //判斷路徑
+    v-show="$route.path=='/home'"
+
+    //meta
+    v-show="$route.meta"
+  </pre>
+  <hr>
   <h3>template to push</h3>
   <pre>
     //字串
@@ -208,6 +203,25 @@
     //指定路由名稱
     @click="$router.push({ name: 'Profile'})
   </pre>
+  <h3>template 修改tag</h3>
+  <pre>
+    #template
+    &lt;router-link to="/" tag="li"&gt;Home&lt;/router-link&gt; 
+
+    #render 因tag="li"
+    &lt;li>Home&lt;/li>
+  </pre>
+  <h3>template go back</h3>
+  <pre>
+    #template
+    &lt;a @click="$router.go(-1)"&gt;home&lt;/a&gt;
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://stackoverflow.com/questions/48104842/how-can-i-go-back-route-back-on-vue-router">go back</a>
+    </li>
+  </ul>
   <hr>
   <h3>路由傳 props 對象寫法</h3>
   <pre>
@@ -244,23 +258,6 @@
     export default {
       props: ['params','query']
     }
-  </pre>
-  <h3>路由傳 meta</h3>
-  <p>改變template顯示</p>
-  <pre>
-    //router
-    {
-      path: '/home'
-      name: 'home'
-      meta: {show:true}
-    }
-    
-    //template
-    //判斷路徑
-    v-show="$route.path=='/home'"
-
-    //meta
-    v-show="$route.meta"
   </pre>
   <hr>
   <h2>轉址(redirect)</h2>
