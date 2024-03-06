@@ -100,9 +100,6 @@
       useAsiosInit()
     })
   </pre>
-<<<<<<< HEAD
-  <h3>pinia包裝引入使用</h3>
-=======
   <h3>範例</h3>
   <axioss3/>
   <hr>
@@ -131,7 +128,6 @@
   </ul>
   <hr>
   <h3>pinia fetch</h3>
->>>>>>> eaa72fbf7757da48ac918b7a055dac8e5816ad03
   <pre>
     //stores/fetch.js
     import { defineStore } from "pinia";
