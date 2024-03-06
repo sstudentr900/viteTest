@@ -35,14 +35,14 @@
 <template>
   <h2>各板本Props</h2>
   <pre class="prettyprint">
-      //Props Options
+      //Options
       export default {
         props: ['title'],
         setup(props) {
         }
       }
 
-      //Props Composition API(組合式api)
+      //Composition API(組合式api)
         const props = defineProps({
           data:{
             type: object,
@@ -54,13 +54,13 @@
   <h2>Options_sfc_props父傳子</h2>
   <p>接收父方式可使用以下型別String,Number,Boolean,Array,Object,Date,Function,Symbol</p>
   <pre class="prettyprint">
-      //父 template
+      #父 template
       //enterName1內層引用名子="外層的值"
       //: v-bind 綁定變數
       //childName1內層引用名子,parentName1外層引用的名子
-      <!-- <propHtml enterName1="All" :childName1="parentName1"></propHtml> -->
+      &lt;propHtml enterName1="All" :childName1="parentName1">&lt;/propHtml>
 
-      //子 script
+      #子 script
       export default {
         //1.接收父的值方法[]
         props: [
@@ -156,11 +156,11 @@
   <pre class="prettyprint">
       //父 template
       //@ v-on 監聽事件
-      <!-- <emitHtml @childName="callBack"></emitHtml> -->
+      &lt;emitHtml @childName="callBack">&lt;/emitHtml>
 
       //子 template
       //使用$emit 傳給父元件
-      <!-- <input @input="$emit('childName', $event.target.value)"/> -->
+      &lt;input @input="$emit('childName', $event.target.value)"/>
   </pre>
 
   <h3>Options_html_emit驗證</h3>
@@ -221,7 +221,7 @@
   <h3>methods</h3>
   <pre class="prettyprint">
       //子
-      <!-- <emitHtml @change='searchBook'></emitHtml> -->
+      &lt;emitHtml @change='searchBook'>&lt;/emitHtml>
       methods: {
         searchBook(event) {
           this.$emit("childName", event.target.value)
@@ -233,10 +233,10 @@
   <pre class="prettyprint">
       //父 template
       //message 子層引用名子 parentName7父層引用的名子
-      <!-- <emitHtml3 v-model:message="parentName7"></emitHtml3> -->
+      &lt;emitHtml3 v-model:message="parentName7">&lt;emitHtml3>
 
       //子 template
-      <!-- <button @click="clickFn"></button> -->
+      &lt;button @click="clickFn">&lt;button>
       //子 script
       export default {
         props: ['message'],
@@ -295,9 +295,9 @@
           default: ()=>[],
         }
       });
-      <!-- <template>
-        <h2 :alt=props_array.alt>{{props_array.alt}}</h2>
-      </template> -->
+      &lt;template>
+        &lt;h2 :alt=props_array.alt>&lbrace;&lbrace;props_array.alt&rbrace;&rbrace;&lt;/h2>
+      &lt;/template>
   </pre>
 
   <h2>Composition_sfc_emit子傳父</h2>
@@ -346,20 +346,20 @@
 
   <h2>Composition_sfc_雙向綁定</h2>
   <pre class="prettyprint">
-      //父 template
-      import propHtml from '@/components/propHtml.vue';
-      import {ref,computed} from 'vue';
-      const name = ref('mike');
-      const updateName = (newName)=>{
-        name.value =newName
-      }
+    #父 template
+    import propHtml from '@/components/propHtml.vue';
+    import {ref,computed} from 'vue';
+    const name = ref('mike');
+    const updateName = (newName)=>{
+      name.value =newName
+    }
     
-    <!-- <template>
-      <propHtml :name='name' @change-name='updateName'/>
-    </template> -->
+    &lt;template>
+      &lt;propHtml :name='name' @change-name='updateName'/>
+    &lt;/template>
       
 
-      //子 template
+      #子 template
       const props2 = defineProps({
         name:{
           type:String,
@@ -370,10 +370,10 @@
       const changeName = ()=>{
         emit2('change-name','jacky')
       }
-      <!-- <template>
-        <p>{{props2.name}}</p>
-        <button @click="changeName">change name</button>
-      </template> -->
+      &lt;template>
+        &lt;p>&lbrace;&lbrace;props2.name&rbrace;&rbrace;&lt;/p>
+        &lt;button @click="changeName">change name&lt;/button>
+      &lt;/template>
   </pre>
 
   <h2>Composition_sfc_v-model</h2>
@@ -392,9 +392,9 @@
     //子 template
     const props = defineProps(['modelValue']);
     const emit = defineEmits(['update:modelValue']);
-    <!-- <template>
-      <input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
-    </template> -->
+    &lt;template>
+      &lt;input type="text" :value="props.modelValue" @input="emit('update:modelValue',$event.target.value)">
+    &lt;/template>
   </pre>
 
   <h2>One-Way Data Flow 單向資料流</h2>
@@ -408,9 +408,9 @@
       name3.value =newName
     }
     
-    <!-- <template>
-      <propHtml :name='name3' :updateName3='updateName2'/>
-    </template> -->
+    &lt;template>
+      &lt;propHtml :name='name3' :updateName3='updateName2'/>
+    &lt;/template>
     
     
 
@@ -425,10 +425,10 @@
         default: ()=>{},
       }
     });
-    <!-- <template>
-      <p>{{props3.name}}</p>
-      <button @click="props3.updateName2('jacky')">updateName</button>
-    </template> -->
+    &lt;template>
+      &lt;p>&lbrace;&lbrace;props3.name&rbrace;&rbrace;&lt;/p>
+      &lt;button @click="props3.updateName2('jacky')">updateName&lt;/button>
+    &lt;/template>
   </pre>
 
 
@@ -467,7 +467,7 @@
     })
 
     #template
-    <!-- <sontemplate ref='comRef'>    -->
+    &lt;sontemplate ref='comRef'&gt;
 
 
     //子組件
