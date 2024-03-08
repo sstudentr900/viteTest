@@ -126,6 +126,9 @@
     <li>
       <a href="https://www.youtube.com/watch?v=wKZIgMZP7-c&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=75">加入购物车实现</a>
     </li>
+    <li>
+      <a href="https://www.digitalocean.com/community/tutorials/how-to-build-a-shopping-cart-with-vue-3-and-vuex">購物車</a>
+    </li>
   </ul>
 </template>
 <script setup>

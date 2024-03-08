@@ -43,7 +43,7 @@
     <p>123</p>
   </Slot5>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=ISBoRHyHm_w&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=13">Slot 插槽</a>
@@ -246,7 +246,7 @@
     <!-- </xmp> -->
   </pre>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10278322" target="_blank">Vue.js 從零開始：Slot</a>

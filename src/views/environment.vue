@@ -1,6 +1,5 @@
 <template>
   <h2>Vite 與環境變數</h2>
-  <br>
   <h3>新增2個檔案</h3>
   <p>新增1 .env.development 測試</p>
   <p>新增2 .env.production 正試</p>
@@ -45,14 +44,32 @@
         resolve:{
           alias: {
             '@img': '/src/assets/img', //圖片路徑
-            '@': '/src',
+            '@': '/src', //路徑
           }
         }
       }
     })
   </pre>
-  <hr>
-  <h4>參考</h4>
+  <h3>預設vite.config</h3>
+  <p></p>
+  <pre>
+    import {fileURLToPath,URL} from 'node:url'
+    import { defineConfig, loadEnv } from 'vite'
+    import vue from '@vitejs/plugin-vue'
+    export default defineConfig({
+      plugins: [vue()],
+      resolve:{
+        alias: {
+          '@': fileURLToPath(new URL('./src',import.meta.url))
+        }
+      }
+    })
+
+    &lt;script setup>
+      import name from @/components/name.vue
+    &lt;/script>
+  </pre>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://editor.leonh.space/2021/vite/">Vite 與環境變數</a>
@@ -60,8 +77,16 @@
     <li>
       <a href="https://hackmd.io/@Jui-Cheng/Hk9fJ5bKi">Vite 與環境變數設定</a>
     </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=rc-BE6Mjn9I&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=4">前端Vue3小兔鲜实战项目-Day1-04-熟悉项目目录和关键文件</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/m/articles/10270465" target="_blank">Day_11 : 讓 Vite 來開啟你的 Vue 之 Config 常見配置 (Vite 最終篇 XD)</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/users/20139636/ironman/3890" target="_blank">前端黑洞計畫 (一) : 讓 Vite 來開啟你的Vue </a>
+    </li>
   </ul>
-  <hr>
 </template>
 <script setup></script>
 <style></style>

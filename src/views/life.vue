@@ -17,7 +17,7 @@
     <li>unmounted:Vue實體被銷毀完成</li>
   </ol>
   <pre class="prettyprint">
-    選項式api                 組合式api
+    選項式api                 組合式api              
     beforeCreate/created      setup
     beforeMount               onBeforeMount
     mounted                   onMounted
@@ -58,8 +58,7 @@
       console.log('life1_onUnmounted 移除')
     })
   </pre>
-  <hr> 
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=SyARKyBfWEc&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=10" target="_blank">生命周期函数</a>
@@ -70,21 +69,18 @@
   </ul>
   <hr>  
   <h2>組件生命週期</h2>
-  <br>
   <h3>onUpdated 畫面更新</h3>
   <button @click="count++"> add num</button>
   {{ count }}
   <h3>onUnmounted 組件刪除</h3>
   <button @click='showLife2 = !showLife2 '>showLife2 toggle</button>
   <life2 v-if='showLife2' />
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=UWcXzh9DhRY&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=12">組件生命週期</a>
     </li>
   </ul>
-  <hr> 
 </template>
 <script setup>
   import life2 from '../components/life2.vue'

@@ -17,6 +17,8 @@ import composables from '../views/composables.vue'
 import pinia from '../views/pinia.vue'
 import naive from '../views/naive.vue'
 import slot from '../views/slot.vue'
+import setup from '../views/setup.vue'
+import addtable from '../views/addtable.vue'
 import vrouter from '../views/vrouter.vue'
 import vroutes from '../views/vroutes.vue'
 import vroutes1 from '../views/vroutes1.vue'
@@ -76,6 +78,7 @@ const router = createRouter({
     },
     {path: '/',component: start,},
     {path: '/start',component: start,},
+    {path: '/setup',component: setup,},
     {path: '/installs',component: installs,},
     {path: '/ref',component: ref,},
     {path: '/watch',component: watch,},
@@ -124,6 +127,8 @@ const router = createRouter({
     {path: '/slide3',component: slide3},
     {path: '/slide4',component: slide4},
     {path: '/transition',component: transition},
+    {path: '/addtable',component: addtable},
+    {path: '/sass',component: ()=>import('../views/sass.vue')},
     //children
     {
       path: '/children',

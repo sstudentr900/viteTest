@@ -16,12 +16,6 @@
       components            組件
     </pre>
     <hr>
-    <h2>快捷</h2>
-    <pre>
-      執行專案  npm run dev
-      打包   npm run build
-    </pre>
-    <hr>
     <h2>html字符編碼</h2>
     <pre>
       `&` 和號    ：&amp;
@@ -33,12 +27,18 @@
       `}` 左大括號：&rbrace;
     </pre>
     <hr>
+    <h2>快捷</h2>
+    <pre>
+      執行專案  npm run dev
+      打包   npm run build
+    </pre>
+    <hr>
     <h2>圖片 api</h2>
     <pre>
       https://picsum.photos/寬度/高度
       https://picsum.photos/200/300
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://picsum.photos/" target="_blank">圖片 api</a>
@@ -50,7 +50,7 @@
       //安裝
       npm install bootstrap@v5.3.1
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://www.npmjs.com/package/bootstrap" target="_blank">bootstrap</a>
@@ -123,7 +123,7 @@
           <router-view />
         </template>
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://book.vue.tw/CH4/4-1-vue-router-intro.html" target="_blank">Vue Router 安裝</a>
@@ -133,148 +133,12 @@
       </li>
     </ul>
     <hr>
-    <h2>安裝 axios 套件</h2>
-    <pre>
-        #安裝
-        npm i axios
-    </pre>
-    <h3>全局引入 axios 套件</h3>
-    <p>src / main.js</p>
-    <pre>
-        //src / main.js
-        import axios from 'axios';
-        
-        // axios套件必須使用vue3版本。使用插件方式運用
-        app.use(axios)
-    </pre>
-    <h3>組件引入 axios 套件</h3>
-    <pre>
-        <script>
-          import axios from "axios";
-        </script>
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://ithelp.ithome.com.tw/articles/10322620" target="_blank">快速建立虛擬 REST API 伺服器</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>vite 環境</h2>
-    <pre>
-        vscode=> vetur
-      google=> vue devtools beta
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>vite 安裝</h2>
-    <pre>
-        npm create vite@latest
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://ithelp.ithome.com.tw/articles/10319331" target="_blank">試試用Vue建立網站吧系列</a>
-      </li>
-      <li>
-        <a href="https://cn.vitejs.dev/guide/" target="_blank">Vite 官方中文文档</a>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=2" target="_blank">Vue3 基礎教學</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>options API  Composition API</h2>
-    <pre>
-        //options API=>vue2
-      export default {
-        data() {
-          return {
-            message: 'Hello, Vue 2!',
-          };
-        },
-        methods: {
-          reverseMessage() {
-            this.message = this.message.split('').reverse().join('');
-          },
-        },
-      };
-
-      //composition API=>vue3
-      import { ref } from 'vue';
-      export default {
-        setup() {
-          // 创建响应式数据
-          const message = ref('Hello, Vue 3!');
-      
-          // 定义一个函数来操作数据
-          function reverseMessage() {
-            message.value = message.value.split('').reverse().join('');
-          }
-      
-          return {
-            message,
-            reverseMessage,
-          };
-        },
-      };
-
-      //composition API setup=>語法糖
-        <script setup>
-        import {computed,reactive,ref,watch,watchEffect} from 'vue'
-        //obj 方式
-        const props = defineProps({
-          data:{
-            type: String,
-            default: '',
-            requires: true,
-          }
-        })
-        const msgCount = computed(()=>{
-          return props.data.length
-        })
-        </script>
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ" target="_blank">初探 Vite 專案 / Vue3 初學者應該要先知道的東西 / 剛開始寫 Composition API 會犯的錯誤 !</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>vite 資料夾</h2>
-    <pre>
-        vite.config                             //vite設定檔
-      README.md                               //說明檔
-      package.json                            //專案設定檔
-      --dependencies                          //專案依賴
-      --devDependencies                       //專案開發
-      .gitignore                              //忽略
-      public                                  //靜態資源(不會被打包 完全複製)
-      .vscode                                 //vscode設定檔
-      src
-      --assets                                //會被打包
-      --main.js                               //
-      ----createApp(App).mount('#app')        //創立App(放入App組件).掛載到('html=>#app')
-    </pre>
-    <h4>參考</h4>
-    <ul>
-      <li>
-        <a href="https://www.youtube.com/watch?v=07fMN5nL-FA&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=3" target="_blank">Vue3 基礎教學</a>
-      </li>
-    </ul>
-    <hr>
     <h2>建立組件</h2>
     <pre>
         :=>v-bind=>:src
-      @=>v-on=>@click
+        @=>v-on=>@click
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://www.youtube.com/watch?v=vfxWeC1PwOc&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=4" target="_blank">建立組件</a>
@@ -301,36 +165,13 @@
       const newA = pureFunc(4)
       consoel.log(newA) [1,2,3,4]
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7" target="_blank"> computed 計算屬性</a>
       </li>
     </ul>
     <hr>
-    <h2>組件生命週期</h2>
-    <pre>
-        //composition API vue3
-        <script setup></script>
-        //options API vue2
-        <script>
-        import {ref} from 'vue'
-        export default{
-          name: 'App',
-          components:{},
-          data:()=>({
-            count:0
-          }),
-          computed:{},
-          methods:{},
-          warch:{},
-          setup(){
-            const userName = ref('')
-            return {unserName}
-          },
-        }
-        </script>
-    </pre>
     <h3>h jsx</h3>
     <pre>
         import {h} from 'vue'
@@ -339,12 +180,25 @@
         <p>hello</p>
         ')
     </pre>
-    <h4>參考</h4>
+    <h3>參考</h3>
     <ul>
       <li>
         <a href="https://www.youtube.com/watch?v=xUdWNqD5JhI&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=10" target="_blank"> 組件生命週期</a>
       </li>
     </ul>
     <hr>
+    <h2>官網</h2>
+    <h3>參考</h3>
+    <ul>
+      <li>
+        <a href="https://vuejs.org/tutorial/#step-2" target="_blank">vue 官網</a>
+      </li>
+      <li>
+        <a href="https://cn.vitejs.dev/guide/#scaffolding-your-first-vite-project" target="_blank">vite 官網</a>
+      </li>
+      <li>
+        <a href="https://ithelp.ithome.com.tw/articles/10280361" target="_blank">Vue.js 從零開始</a>
+      </li>
+    </ul>
   </body>
 </html>

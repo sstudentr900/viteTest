@@ -89,6 +89,24 @@
   </pre>
   <h3>composables包裝引入使用</h3>
   <pre>
+    #useAsios.js
+    import axios from 'axios'
+    import {ref} from 'vue'
+    export function useAsios(obj){
+      const data = ref([]);
+      const errorMessage = ref('');
+      const useAsiosInit = async()=>{
+        try{
+          const res = await axios.get(obj.url);
+          data.value = res.data
+        }catch(error){
+          errorMessage.value = 'api 錯誤'
+        }
+      }
+      return {data,errorMessage,useAsiosInit}
+    }
+
+    #
     import {onMounted,reactive,ref,getCurrentInstance,watchEffect} from 'vue'
     //引入自訂asios封裝
     import { useAsios } from '../composables/useAsios.js'
@@ -100,33 +118,8 @@
       useAsiosInit()
     })
   </pre>
-  <h3>範例</h3>
-  <axioss3/>
-  <hr>
-  <h3>數據渲染問題</h3>
-  <pre>
-    #template
-
-    Q.找不到 data 會報錯?
-    &lt;a :to='{ path:`/${data[1].id}` }>link&lt;a>
-    &lt;a :to='{ path:`/${data.id}` }>link&lt;a>
-
-    A1.用鏈語法
-    &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
-
-    a2.v-if
-    &lt;div v-if='data'&gt;
-      &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
-    &lt;/div&gt;
-
-  </pre>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=XcADwfqpj8g&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=55">基础数据渲染</a>
-    </li>
-  </ul>
-  <hr>
+  <!-- <h3>範例</h3>
+  <axioss3/> -->
   <h3>pinia fetch</h3>
   <pre>
     //stores/fetch.js
@@ -222,7 +215,7 @@
     
     export default request;
   </pre>
-  <h3>template 引用</h3>
+  <h3>axios封装引用</h3>
   <pre>
     import request from '../request'
     import {onMounted} from 'vue'
@@ -236,43 +229,14 @@
       })
     })
   </pre>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=lztwTFjq_Ig&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=72" target="_blank">请求拦截器携带Token</a>
-    </li>
-    <li>
-      <a href="https://www.tiven.cn/p/7f7ba3b2/" target="_blank">Vue3学习与实战 · 全局挂载使用Axios</a>
-    </li>
-    <li>
-      <a href="https://developer.aliyun.com/article/1126987" target="_blank">Vue3中全局配置 axios 的两种方式</a>
-    </li>
-    <li>
-      <a href="https://medium.com/web-design-zone/%E5%9C%A8vue-js%E4%B8%AD%E4%BD%BF%E7%94%A8axios%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99-8db6aec9157d" target="_blank">在Vue.js中使用Axios取得資料</a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=bl8yqDyc99k&list=PLmOn9nNkQxJECrx-JlaaJaC2gthMP7B7r&index=28" target="_blank">axios二次封装</a>
-    </li>
-    <li>
-      <a href="https://developer.aliyun.com/article/1126987" target="_blank">axios二次封装</a>
-    </li>
-    <li>
-      <a href="https://muki.tw/tech/vue/vue3-vuex-axios-interceptor/" target="_blank">axios二次封装</a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=Uwrz2XP3J44&list=PLmOn9nNkQxJEFpabd412vGw_k7-lHlJOP&index=16"> 封裝axios</a>
-    </li>
-  </ul>
-  <hr>
   <h3>api封裝</h3>
   <pre>
-    #新增api.js api.js
+    #新增api.js
     import requests from './request'; //引入axios封装
     export const reqCategoryList = () => requests({ url: '/api', method: 'get' });
-    //沒有值要給空對象
-    export const reqHomeAdPost = (params) => requests({ url: '/api', method: 'post',data:params});
+    export const reqHomeAdPost = (params) => requests({ url: '/api', method: 'post', data:params});
   </pre>
-  <h3>在store 引入 api</h3>
+  <h3>api封裝在pinia引用</h3>
   <pre>
     import { reqCategoryList } from '@/api';
     const state = {
@@ -310,7 +274,7 @@
       getters,
     }
   </pre>
-  <h3>在script 引入 api</h3>
+  <h3>api封裝在script引用</h3>
   <pre>
     import { reqCategoryList } from '@/api';
     import {onMounted} from 'vue'
@@ -320,7 +284,6 @@
       })
     })
   </pre>
-  <hr>
   <h3>跨域</h3>
   <p>跨域解決 jsonp,cros,代理</p>
   <p>瀏欄器有跨域問題服務端代理沒有</p>
@@ -347,6 +310,39 @@
     import { reqCategoryList } from '@/api';
     reqCategoryList()
   </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=2bSP5u9bUpY&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=25" target="_blank">【黑马程序员】前端Vue3小兔鲜实战项目-Day2-09-项目起步-axios基础配置</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=lztwTFjq_Ig&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=72" target="_blank">请求拦截器携带Token</a>
+    </li>
+    <li>
+      <a href="https://www.tiven.cn/p/7f7ba3b2/" target="_blank">Vue3学习与实战 · 全局挂载使用Axios</a>
+    </li>
+    <li>
+      <a href="https://developer.aliyun.com/article/1126987" target="_blank">Vue3中全局配置 axios 的两种方式</a>
+    </li>
+    <li>
+      <a href="https://medium.com/web-design-zone/%E5%9C%A8vue-js%E4%B8%AD%E4%BD%BF%E7%94%A8axios%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99-8db6aec9157d" target="_blank">在Vue.js中使用Axios取得資料</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=bl8yqDyc99k&list=PLmOn9nNkQxJECrx-JlaaJaC2gthMP7B7r&index=28" target="_blank">axios二次封装</a>
+    </li>
+    <li>
+      <a href="https://developer.aliyun.com/article/1126987" target="_blank">axios二次封装</a>
+    </li>
+    <li>
+      <a href="https://muki.tw/tech/vue/vue3-vuex-axios-interceptor/" target="_blank">axios二次封装</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=Uwrz2XP3J44&list=PLmOn9nNkQxJEFpabd412vGw_k7-lHlJOP&index=16"> 封裝axios</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10275141"> 在生命週期呼喊 API</a>
+    </li>
+  </ul>
   <hr>
   <h3>進度條(nprogress)</h3>
   <pre>
@@ -397,7 +393,31 @@
     </li>
   </ul>
   <hr>
-  <h3>options api axios</h3>
+  <h3>數據渲染問題</h3>
+  <pre>
+    #template
+
+    Q.找不到 data 會報錯?
+    &lt;a :to='{ path:`/${data[1].id}` }>link&lt;a>
+    &lt;a :to='{ path:`/${data.id}` }>link&lt;a>
+
+    A1.用鏈語法
+    &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
+
+    a2.v-if
+    &lt;div v-if='data'&gt;
+      &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
+    &lt;/div&gt;
+
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=XcADwfqpj8g&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=55">基础数据渲染</a>
+    </li>
+  </ul>
+
+  <!-- <h3>options api axios</h3>
   <pre>
     import axios from "axios";
     import { GET } from '@/api/api';
@@ -437,14 +457,8 @@
       // 	console.log(books.list); // 所有書單資料
           // }
       // }
-    }
-  </pre>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://ithelp.ithome.com.tw/articles/10275141"> API</a>
-    </li>
-  </ul>
+    } 
+  </pre>-->
 </template>
 <script setup>
   import axioss2 from '../components/axioss2.vue'

@@ -13,7 +13,7 @@
     });
   </pre>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10203646">v-bind綁定class及style</a>
@@ -91,7 +91,7 @@
       }
     <!-- </xmp> -->
   </pre>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10266005" target="_blank">scoped、deep selector 的作用</a>

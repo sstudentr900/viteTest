@@ -1,75 +1,56 @@
 <template>
-  <h2>Composition_sfc_computed</h2>
+  <h2>Composition computed</h2>
+  <h3></h3>
+  <p></p>
   <ul>
-    <li>computed 是用來重組或計算資料不應該異步請求或修改dom</li>
-    <li>computed 會自動響應ref</li>
-    <li>computed 屬性因該是只讀</li>
-    <li>computed 無法在template傳參,要傳參請用函數傳直</li>
+    <li>silde-effect 副作用?是用來重組或計算資料不應該異步請求或修改dom</li>
+    <li>會自動響應ref</li>
+    <li>屬性因該是只讀</li>
+    <li>無法在template傳參,要傳參請用函數傳直</li>
+    <li>一般函數更新都會觸發函數,computed監聽變數改變才會觸發函數</li>
   </ul>
-  <pre class="prettyprint">
-      import {computed} from "@vue/reactivity";
-      import { ref,reactive,watch,computed } from 'vue';
+  <pre>
+    &lt;script setup>
+      import {ref,computed} from 'vue'
+      //原數組
+      const list = ref([1,2,3,4])
 
-      //重組
-      const name = ref('mike'); 
-      const data3 = computed(()=>{
-        return `請叫我${name.value}`;
-      });
-      setTimeout(() => {
-        data.value = 'andy';
-      }, 1000);
+      //計算後數組
+      const computedList = computed(()=>{
+        return list.value.filter(item=>item>2)
+      })
 
-      //計算
-      const idx = ref(0); 
-      const data2 = computed(()=>{
-        return idx.value > 3 ? idx.value : 3
-      });
-      setTimeout(() => {
-        idx.value = 8;
-      }, 1000);
-    
-      //get,set
-      const count2 = ref(1); 
-      const plusOne = computed({
-        get:()=>`數字是${count2.value}`,
-        set:(val)=>{
-          count2.value = val
-        },
-      });
-      setTimeout(() => {
-        //plusOne 設定值
-        plusOne.value = 5;
-      }, 1000);
-    
-    
-    <!-- <h1>重組{{ data3 }}</h1>
-    <h1>計算{{ data2 }}</h1>
-    <h1>plusOne get{{ plusOne }}</h1>
-    <h1>count2會被computed修改{{ count2 }}</h1> -->
+      //修改數組
+      setTimeout(()=>{
+        list.value.push(9,10)
+      },3000)
+    &lt;/script>
+
+    &lt;template>
+      &lt;div>原數組,&lbrace;&lbrace; list &rbrace;&rbrace;&lt;/div>
+      &lt;div>計算後數組,&lbrace;&lbrace; computedList &rbrace;&rbrace;&lt;/div>
+    &lt;/template>
   </pre>
+  <div>{{ list }}</div>
+  <div>{{ computedList }}</div>
+  <h3>參考</h3>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=O1BfveCr6HA&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=7">【黑马程序员】前端Vue3小兔鲜实战项目-Day1-07-组合式API-computed
+    </a></li>
+  </ul>
   <hr>
-  <h2>computed 計算屬性</h2>
-  <h3>畫面更新會觸發一般函數</h3>
-  <input type="text" v-model="test">
-  <hr>
-  <h3>數字轉百分比(一般函數)</h3>
-  <p>一般函數=>畫面更新都會觸發一般函數</p>
+  <h2>Composition computed 和 一般函數差別</h2>
+  <h3>一般函數=>畫面更新都會觸發一般函數</h3>
   <input type="text" v-model="num">
   <p>{{ numFn() }}</p>
-  <hr>
-  <h3>數字轉百分比(computed)</h3>
-  <p>計算返回該值</p>
-  <p>不要重新給值</p>
-  <p>不要seilde-effect 不要污染到變數</p>
-  <p>computed=>監聽變數改變才會觸發computed</p>
+  <h3>computed=>監聽變數改變才會觸發computed</h3>
   <input type="text" v-model="num">
   <p>{{ numFn2 }}</p>
   <hr>
   <h3>computed get set</h3>
   <input type="text" v-model="fullName">
   <p>{{firstName}} {{lastName}}</p>
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=9HLPU8a85fw&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=7">computed 計算屬性</a>
@@ -77,12 +58,18 @@
     <li>
       <a href="https://www.youtube.com/watch?v=gJF5Cf2fz1A">定義資料 ref、reactive、computed 深度探討</a>
     </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ&ab_channel=MikeCheng" target="_blank">Vue3 + Vite 快速上手</a>
+    </li>
+    <li>
+      <a href="https://stackoverflow.com/questions/61452458/ref-vs-reactive-in-vue-3" target="_blank">ref vs reactive</a>
+    </li>
   </ul>
-  <hr>
+  <!-- <hr>
   <h2>option_hml_computed</h2>
   <p>computed的更新條件是原始資料有變更才會更新</p>
-  <pre class="prettyprint">
-    <!-- <div id='app'>
+  <pre>
+    <div id='app'>
       <p>methods: {{ num() }}</p>
       <p>computes: {{ run }}</p>
     </div>
@@ -106,11 +93,11 @@
         }
       }
     };
-    Vue.createApp(App).mount('#app') -->
+    Vue.createApp(App).mount('#app')
   </pre>
   <h3>option_hml_搜尋</h3>
-  <pre class="prettyprint">
-    <!-- <div id='app'>
+  <pre>
+    <div id='app'>
       <input type="search" v-model="search">
       <ul>
         <li v-for="item in filter">
@@ -151,15 +138,15 @@
         }
       }
     };
-    Vue.createApp(App).mount('#app')-->
+    Vue.createApp(App).mount('#app')
   </pre>
   <h3>option_hml_getter與setter</h3>
   <ol>
     <li>getter：將data資料取出到comliuted運算完之後渲染到畫面</li>
     <li>setter：把資料(以下範例使用methods)運算完，傳回data</li>
   </ol>
-  <pre class="prettyprint">
-    <!-- <div id="app">
+  <pre>
+    <div id="app">
       <ul>
         <li v-for="product in products">
           {{ product.name }} / {{ product.price }}
@@ -216,36 +203,26 @@
         },
       }
     };
-    Vue.createApp(App).mount('#app') -->
-  </pre>
-  <hr>
-  
-  <h4>參考</h4>
-  <ul>
-    <li>
-      <a href="https://vuejs.org/tutorial/#step-2" target="_blank">vue 官網</a>
-    </li>
-    <li>
-      <a href="https://cn.vitejs.dev/guide/#scaffolding-your-first-vite-project" target="_blank">vite 官網</a>
-    </li>
-    <li>
-      <a href="https://ithelp.ithome.com.tw/articles/10280361" target="_blank">Vue.js 從零開始</a>
-    </li>
-    <li>
-      <a href="https://stackoverflow.com/questions/61452458/ref-vs-reactive-in-vue-3" target="_blank">ref vs reactive</a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=rNQIA0Fe9KQ&ab_channel=MikeCheng" target="_blank">Vue3 + Vite 快速上手</a>
-    </li>
-  </ul>
-  <hr>
+    Vue.createApp(App).mount('#app')
+  </pre> -->
 </template>
 <script setup>
   import {computed,ref} from 'vue'
 
-  //畫面更新會觸發一般函數
-  const test = ref(1)
+  //Composition computed
+  //原數組
+  const list = ref([1,2,3,4])
+  //計算後數組
+  const computedList = computed(()=>{
+    return list.value.filter(item=>item>2)
+  })
+  //修改數組
+  setTimeout(()=>{
+    list.value.push(9,10)
+  },3000)
 
+
+  //Composition computed 和 一般函數差別
   //一般函數=>畫面更新都會觸發numFn函數
   const num = ref(0.6)
   const numFn = ()=>{
@@ -255,7 +232,6 @@
     //是數字
     return `${num.value*100}%`;
   }
-
   //computed=>監聽變數改變才會觸發numFn2函數
   const numFn2 = computed(()=>{
     console.log('computed')

@@ -15,7 +15,7 @@
   <h3>樣式變化</h3>
   <input type="text" :style="dynamicStyle" v-model="text6">
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=2s8gJ-0gUBs&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K&index=9">watch、watchEffect 監聽器【Proladon】</a>

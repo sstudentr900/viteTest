@@ -1,5 +1,5 @@
 <template>
-  <h3>綁定 key 值：「id」 VS 「index」</h3>
+  <h2>綁定 key 值：「id」 VS 「index」</h2>
   <ol>
     <li>id 具有唯一性，能直接對應到所屬項目，因此當陣列內容發生變動時，只需要處理增減的資料即可，其他資料仍可繼續複用，不需要重新渲染，進而維持效能。</li>
     <li>index 會跟著陣列內容的長度變化而隨之增減，且 index 具有順序性，所以只要變動其中一筆資料便會連帶影響到其他資料的排序，使得資料必須隨時重新渲染，相對影響效能</li>
@@ -27,7 +27,7 @@
       }).mount('#app')
   </pre>
   <hr>
-  <h3>v-for + select</h3>
+  <h2>v-for + select</h2>
   <pre>
       &lt;select v-model="select">
         &lt;option v-for="item in list" :key="item.id" :value="item.id">
@@ -52,7 +52,7 @@
       }
   </pre>
   <hr>
-  <h3>v-for + 篩選</h3>
+  <h2>v-for + 篩選</h2>
   <pre>
     &lt;div id="app">
       &lt;ul>
@@ -75,7 +75,22 @@
     }).mount('#app');
   </pre>
   <hr>
-  <h3>:key 動畫</h3>
+  <h2>使用tamplate</h2>
+  <pre>
+    &lt;div id="app">
+      &lt;template v-for="(item ,key) in data">
+        ...
+      &lt;/template>
+    &lt;/div>
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10205693">12 Vue的模板語法 - 迴圈 v-for (2) 使用tamplate</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>:key 動畫</h2>
   <pre>
     #script 
     import {ref} from '@vue/reactivity'

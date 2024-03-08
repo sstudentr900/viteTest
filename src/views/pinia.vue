@@ -81,10 +81,11 @@
         const doubleCount = computed(()=>{
           return counter.valu*2
         })
-        //修改值，異布，邏輯
-        const addCount = ()=>{
-          counter.valu++
+        //修改值,邏輯
+        const increment = ()=>{
+          counter.value++
         }
+        //異步
         const fetchApiData = async ()=>{
           try{
             const res = await axios.get('https:/60bd9841ace4d50017aab3ec.mockapi.io/api/post_card');
@@ -95,7 +96,7 @@
         }
         return {
           counter,
-          addCount,
+          increment,
           doubleCount,
           cardList,
           fetchApiData
@@ -113,34 +114,30 @@
     //執行
     const store = useCounterStore();
 
-    //累加
-    const clickAdd = ()=>{
-      store.increment();
-    }
-    console.log(store.increment());
-
     #template
     &lt;h2>取counter值: &lbrace;&lbrace;store.counter&rbrace;&rbrace;&lt;/h2>
-    &lt;button @click="clickAdd">clickAdd 累加&lt;/button>
+    &lt;button @click="store.increment();">clickAdd 累加&lt;/button>
 
     &lt;h2>store get axios data&lt;/h2>
     &lt;div>&lbrace;&lbrace;store.cardList&rbrace;&rbrace;&lt;/div>
     &lt;button  @click="store.fetchApiData">get axios data&lt;/button>
   </pre>
-  <h3>pinia 解構會響應丟失 </h3>
+  <h3>Pinia storeToRefs 解構會響應丟失 </h3>
   <p>pinia 解構ref、ref、ref要重新包裝響應，函數不用</p>
   <p>解構資料響應式會出問題需要加storeToRefs</p>
   <pre>
       import { storeToRefs } from "pinia";
       import {useCounterStore} from "./stores/counter.js";
+
       //執行方法得到store實例對象
       const store = useCounterStore();
 
-      //store解構cardList因是ref會失效響應所以要使用storeToRefs重新包裝響應
-      const {cardList} = storeToRefs(store);
+      //storeToRefs
+      const {cardList} = store; //error 值會響應丟失
+      const {cardList} = storeToRefs(store); //使用storeToRefs重新包裝響應
     
       //函數不用重新包裝響應
-      // const {fetchApiData} = store;
+      const {fetchApiData} = store;
       
       #template
       &lt;h2>解構後store使用方式&lt;/h2>
@@ -261,7 +258,7 @@
       <a href="https://www.tpisoftware.com/tpu/articleDetails/2844" target="_blank">新一代狀態管理工具 Pinia</a>
     </li>
   </ul>
-  <hr>
+  <!-- <hr>
   <h2>Vuex</h2>
   <img src="https://vuex.vuejs.org/vuex.png" alt="">
   <p>主要以四個核心概念——State、Getters、Mutations、Actions——所組成， Modules 可再進行模組化</p>
@@ -333,7 +330,7 @@
       bindName() {
           return this.$store.state.className.stateName;
       },//computed
-      <!-- <tageName :items="stateName"></tageName>        //template 使用data -->
+      <tageName :items="stateName"></tageName>        //template 使用data
 
       //2.
       ...mapState({
@@ -390,7 +387,7 @@
       //1.
       this.$store.dispatch('className/actionsName')   //mounted 執行非同步
       ...mapState('className', ['stateName'])         //computed 取得data
-      <!-- <tageName :items="stateName"></tageName>        //template 使用 -->
+      <tageName :items="stateName"></tageName>        //template 使用
 
       //2.
       ...mapActions([
@@ -503,7 +500,7 @@
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10278272" target="_blank">Vuex、Route</a>
     </li>
-  </ul>
+  </ul> -->
 </template>
 
 <style></style>

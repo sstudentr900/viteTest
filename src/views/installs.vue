@@ -12,7 +12,7 @@
     npm run dev
     <!-- </xmp> -->
   </pre>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://vuejs.org/tutorial/#step-2" target="_blank">vue 官網</a>
@@ -129,7 +129,7 @@
     <!-- </xmp> -->
   </pre>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10265925" target="_blank">Vue 個專案先</a>

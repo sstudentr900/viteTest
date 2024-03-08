@@ -27,7 +27,6 @@
   <h3>ref包obj watch 不能監聽除非deep</h3>
   <pre>
     import { ref, reactive,watch } from 'vue';
-    //ref包入object時watch不能被監聽
     const people = ref(0);
     const people1 = ref({
       num: 0,
@@ -52,22 +51,20 @@
   </pre>
   <h3>範例</h3>
   <pre>
-    #template
-    button @click="increment" 
-    
     #script
-    const count = ref(0); 
-    const increment = ()=>{
-      console.log(count)
+    const text = ref(0)
+    const changeText= ()=>{
       //count 被包裝後需要用.value才能取值
-      count.value += 1;
+      text.value++
     }
+
+    #template
+    &lt;button @click="changeText"> 
   </pre>
   <p>text:{{text}}</p>
-  <button @click="changeText">changeRef</button>
+  <button @click="changeText">changeText</button>
   <hr>
   <h2>reactive()</h2>
-  <p>reactive 只可以包{}和[] 取值不用加value</p>
   <p>reactive 只可以包{}和[] 取值不用加value</p>
   <h3>reactive 會解包 ref</h3>
   <pre>
@@ -84,17 +81,20 @@
   </pre>
   <h3>範例</h3>
   <pre>
-    const data = reactive({
-      name: 'mike'
-    }); 
-    setTimeout(()=>{
-      data.name = 'jacky'
-    },2000)
+    #script
+    const text3 = reactive({
+      count: 0
+    })
+    const setCount= ()=>{
+      text3.count++
+    }
+
+    #template
+    &lt;button @click="setCount">changeText&lt;/button>
   </pre>
-  <p>text:{{text3}}</p>
-  <button @click="changeText3">changeReactive</button>
-  <hr>
-  <h4>參考</h4>
+  <p>text:{{text3.count}}</p>
+  <button @click="setCount">changeText</button>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://vuejs.org/tutorial/#step-2" target="_blank">vue 官網</a>
@@ -119,7 +119,7 @@
     </li>
   </ul>
   <hr>
-  <h2>獲取dome</h2>
+  <h2>獲取dome value</h2>
   <pre>
     #script setup
     import { ref,onMounted } from 'vue';
@@ -132,33 +132,30 @@
 
     #template
     綁定ref對象
-    <h1 ref="h1Ref">h1</h1>  
+    &lt;h1 ref="h1Ref">h1&lt;/h1>  
   </pre>
-  <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=4DEbi_DBjUM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=13" target="_blank">模版引用</a>
     </li>
   </ul>
-  <hr>
 </template>
 <script setup>
   import {reactive,ref} from 'vue'
   //ref 動態資料(監聽畫面和資料做改變)
-  const text = ref('125')
+  const text = ref(0)
+  console.log(text)
   const changeText= ()=>{
-    text.value = '132'
+    text.value++
   }
 
   //reactive 只能用在物件 取值不用加value 
   const text3 = reactive({
-    text: 'text',
-    age: 12,
+    count: 0
   })
-  const changeText3= ()=>{
-    text3.text = '132'
-    text3.age = '23'
+  const setCount= ()=>{
+    text3.count++
   }
 </script>
 <style></style>

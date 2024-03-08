@@ -2,6 +2,7 @@
   <div class="navbar">
     <router-link active-class='active' to="/start">start</router-link>
     <router-link active-class='active' to="/environment">Vite 與環境變數</router-link>
+    <router-link active-class='active' to="/setup">setup 語法糖</router-link>
     <router-link active-class='active' to="/currentInstance">掛载全局方法</router-link>
     <router-link active-class='active' to="/life">生命週期</router-link>
     <!-- <router-link active-class='active' to="/installs">installs</router-link> -->
@@ -21,10 +22,12 @@
     <router-link active-class='active' to="/von">von</router-link>
     <router-link active-class='active' to="/style">style</router-link>
     <router-link active-class='active' to="/vhtml">vhtml</router-link>
+    <router-link active-class='active' to="/sass">sass</router-link>
     <router-link active-class='active' to="/active">active</router-link>
     <router-link active-class='active' to="/imageerror">圖片載入</router-link>
     <router-link active-class='active' to="/imglazy">圖片懶加載</router-link>
     <router-link active-class='active' to="/transition">transition</router-link>
+    <router-link active-class='active' to="/addtable">新增修改表單</router-link>
     <router-link active-class='active' to="/shoppingcart">shoppingcart 購物車</router-link>
     <router-link active-class='active' to="/pinia">plug pinia 資料傳遞</router-link>
     <router-link active-class='active' to="/express">plug express</router-link>

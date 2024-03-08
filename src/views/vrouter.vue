@@ -1,11 +1,5 @@
 <template>
   <h2>Vue-Router</h2>
-  <h3>main安裝</h3>
-  <pre>
-    #main.js
-    import router from './router'  
-    app.use(router);
-  </pre>
   <h3>新增router</h3>
   <pre>
     #src/router/index.js
@@ -17,8 +11,10 @@
       history: createWebHistory(import.meta.env.BASE_URL),
       routes: [
         {path: '/',component: home},
+
         //動態載入(到該頁面才載入比較快)
         {path: '/about',component: ()=>import('../views/about.vue')},
+
         //找不到頁面，要放在最後
         {
           path: '/404',
@@ -31,6 +27,7 @@
           name: 'any'
         },
       ],
+
       //滾動行為
       scrollBehavior(){
         return{
@@ -43,6 +40,12 @@
     // 將路由實例導出，以便其他地方可以導入並使用它
     export default router
   </pre>
+  <h3>main註冊</h3>
+  <pre>
+    #main.js
+    import router from './router'  
+    app.use(router);
+  </pre>
   <h3>引用router</h3>
   <pre>
     #template
@@ -52,6 +55,17 @@
 
     //顯示頁面
     &lt;router-view/&gt;
+  </pre>
+  <h3>createWebHistory</h3>
+  <p>需要服務器去配置</p>
+  <p>import.meta.env.BASE_URL 應用程序在不同 URL路徑下運行（如子目 錄或子網站）建議使用這個參數來設置。</p>
+  <p>若無任何子目錄則可寫 history: createWebHistory(),網址會有#字號</p>
+  <pre>
+    const router = createRouter({
+      history: createWebHistory(import.meta.env.BASE_URL),
+      routes: [
+      ]
+    })
   </pre>
   <hr>
   <h3>路由「:」</h3>
@@ -82,6 +96,60 @@
       params:{key:''||undefined},
     })
   </pre>
+  <hr>
+  <h2>路由守衛(Navigation Guards)</h2>
+  <ol>
+    <li>beforeEach 進入新的路由前(全域)</li>
+    <li>beforeResolve 路由跳轉前觸發(全域)但是時間點會晚於beforeEach</li>
+    <li>afterEach 路由跳轉結束後才會觸發(全域)</li>
+    <li>單一元件內的分別是beforeRouteEnter,beforeRouteUpdate,beforeRouteLeave</li>
+  </ol>
+  <pre>
+    #router.js (全域)
+    router.beforeEach((to, from, next) => {
+      if(token){
+        有登入
+      }else{
+        沒有登入
+      }
+    })
+  </pre>
+  <hr>
+  <h2>beforeEnter 不是全域只能在 route 物件內註冊</h2>
+  <h3>beforeEnter 進入新的路由前</h3>
+  <pre>
+    {
+      path: '/routerName',
+      name: 'routerName',
+      component: () => import ('@/views/routerName'),
+      beforeEnter(to, from, next) {
+        //必須由from頁進來
+        if (from.path == '/routerName') {
+          next();
+        } else {
+          next(from.path);
+        }
+      }
+    },
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10278913">頁面切換好夥伴- Vue Router</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10279602">路由搜查隊</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10278056"> Vue Router</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=QENGUJK9ecc&list=PLmOn9nNkQxJEFpabd412vGw_k7-lHlJOP&index=8">路由传递参数</a>
+    </li>
+    <li>
+      <a href="https://book.vue.tw/CH4/4-4-navigation-guards.html">路由守衛</a>
+    </li>
+  </ul>
   <hr>
   <h3>script useRoute useRouter</h3>
   <p>useRoute 局部對象可獲取name path params querr</p>
@@ -185,7 +253,6 @@
     //meta
     v-show="$route.meta"
   </pre>
-  <hr>
   <h3>template to push</h3>
   <pre>
     //字串
@@ -281,18 +348,6 @@
     })
   </pre>
   <hr>
-  <h3>createWebHistory</h3>
-  <p>需要服務器去配置</p>
-  <p>import.meta.env.BASE_URL 應用程序在不同 URL路徑下運行（如子目 錄或子網站）建議使用這個參數來設置。</p>
-  <p>若無任何子目錄則可寫 history: createWebHistory(),網址會有#字號</p>
-  <pre>
-    const router = createRouter({
-      history: createWebHistory(import.meta.env.BASE_URL),
-      routes: [
-      ]
-    })
-  </pre>
-  <hr>
   <h3>history路由模式</h3>
   <ol>
     <li>HTML 5 的 pushState() 和 replaceState() (History API)</li>
@@ -308,60 +363,7 @@
     <li>改變 # 後面的值，不會向 Server 發送請求，也不會刷新頁面</li>
     <li>觸發 hashchange 事件</li>
   </ol>
-  <hr>
-  <h2>路由守衛(Navigation Guards)</h2>
-  <ol>
-    <li>beforeEach 進入新的路由前(全域)</li>
-    <li>beforeResolve 路由跳轉前觸發(全域)但是時間點會晚於beforeEach</li>
-    <li>afterEach 路由跳轉結束後才會觸發(全域)</li>
-    <li>單一元件內的分別是beforeRouteEnter,beforeRouteUpdate,beforeRouteLeave</li>
-  </ol>
-  <pre>
-    #router.js (全域)
-    router.beforeEach((to, from, next) => {
-      if(token){
-        有登入
-      }else{
-        沒有登入
-      }
-    })
-  </pre>
-  <hr>
-  <h2>beforeEnter 不是全域只能在 route 物件內註冊</h2>
-  <h3>beforeEnter 進入新的路由前</h3>
-  <pre>
-    {
-      path: '/routerName',
-      name: 'routerName',
-      component: () => import ('@/views/routerName'),
-      beforeEnter(to, from, next) {
-        //必須由from頁進來
-        if (from.path == '/routerName') {
-          next();
-        } else {
-          next(from.path);
-        }
-      }
-    },
-  </pre>
-  <h3>參考</h3>
-  <ul>
-    <li>
-      <a href="https://ithelp.ithome.com.tw/articles/10278913">頁面切換好夥伴- Vue Router</a>
-    </li>
-    <li>
-      <a href="https://ithelp.ithome.com.tw/articles/10279602">路由搜查隊</a>
-    </li>
-    <li>
-      <a href="https://ithelp.ithome.com.tw/articles/10278056"> Vue Router</a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=QENGUJK9ecc&list=PLmOn9nNkQxJEFpabd412vGw_k7-lHlJOP&index=8">路由传递参数</a>
-    </li>
-    <li>
-      <a href="https://book.vue.tw/CH4/4-4-navigation-guards.html">路由守衛</a>
-    </li>
-  </ul>
+
   <!-- <hr> -->
   <!-- <script>
     export default {

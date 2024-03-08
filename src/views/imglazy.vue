@@ -31,7 +31,7 @@
     img v-img-lazy='img url'
   </pre>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=TOTq5QDXXSU&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=38">图片懒加载指令实现</a>
@@ -85,7 +85,7 @@
     img v-img-lazy='img url'
   </pre>
   <hr>
-  <h4>參考</h4>
+  <h3>參考</h3>
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=Cy657vSomos&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=39">懒加载指令优化</a>
