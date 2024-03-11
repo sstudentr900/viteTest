@@ -46,8 +46,29 @@
   <h3>computed=>監聽變數改變才會觸發computed</h3>
   <input type="text" v-model="num">
   <p>{{ numFn2 }}</p>
-  <hr>
   <h3>computed get set</h3>
+  <pre>
+    &lt;script setup>
+    const firstName = ref('john')
+    const lastName = ref('Doe')
+    const fullName = computed({
+      get(){
+        //取值
+        return `${firstName.value} ${lastName.value}`
+      },
+      set(newName){
+        //設定值
+        const [newfirstName,newlastName] = newName.split(' ')
+        firstName.value = newfirstName
+        lastName.value = newlastName
+      }
+    })
+    &lt;/script>
+    &lt;template>
+      &lt;input type="text" v-model="fullName">
+      &lt;p>&lbrace;&lbrace;firstName&rbrace;&rbrace; &lbrace;&lbrace;lastName&rbrace;&rbrace;&lt;/p>
+    &lt;/template>
+  </pre>
   <input type="text" v-model="fullName">
   <p>{{firstName}} {{lastName}}</p>
   <h3>參考</h3>
