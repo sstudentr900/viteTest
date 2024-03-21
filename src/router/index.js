@@ -129,6 +129,8 @@ const router = createRouter({
     {path: '/transition',component: transition},
     {path: '/addtable',component: addtable},
     {path: '/sass',component: ()=>import('../views/sass.vue')},
+    {path: '/nav',component: ()=>import('../views/nav.vue')},
+    {path: '/scrolltop',component: ()=>import('../views/scrolltop.vue')},
     //children
     {
       path: '/children',

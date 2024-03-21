@@ -8,7 +8,6 @@
 </script>
 <template>
   <h2>Slot 插槽</h2>
-  <br>
   <h3>slot_組件之間放傳遞內容(單個)</h3>
   <slot2>
     <p>slot2傳遞內容</p>
@@ -42,7 +41,6 @@
   <Slot5 :name="name">
     <p>123</p>
   </Slot5>
-  <hr>
   <h3>參考</h3>
   <ul>
     <li>
@@ -54,50 +52,52 @@
     <li>
       <a href="https://stackoverflow.com/questions/68803137/vue-3-passing-array-warning-extraneous-non-props-attributes-were-passed-to-comp">not be automatically inherited</a>
     </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=EzXSvSQZD28&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=36">【黑马程序员】前端Vue3小兔鲜实战项目-Day3-03-Home-面板组件封装</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=GWp-lvnWF3c&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=37">【黑马程序员】前端Vue3小兔鲜实战项目-Day3-04-Home-新鲜好物业务实现</a>
+    </li>
   </ul>
   <hr>
-  <h2>Slot</h2>
+  <!-- <h2>Slot</h2>
   <ol>
     <li>預設:顯示&lt;div class="box"&gt;&lt;div&gt; 預設值！&lt;/div&gt;&lt;/div&gt;</li>
     <li>打洞:顯示&lt;div class="box"&gt;&lt;p&gt; 打洞成功 !&lt;/p&gt;&lt;/div&gt;</li>
   </ol>
-  <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <h3> {{ text }} </h3> 
+  <pre>
+    <div id="app">
+      <h3> {{ text }} </h3> 
 
-        //預設
-        <out-text></out-text>
+      //預設
+      <out-text></out-text>
 
-        //打洞
-        <out-text>
-          <p>打洞成功</p>
-        </out-text>
-      
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外層元件",
-            }
+      //打洞
+      <out-text>
+        <p>打洞成功</p>
+      </out-text>
+    
+    </div>
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外層元件",
           }
-        });
-        app.component("outText", {
-          template: `
-            <div class="box">
-                <slot> 預設值！</slot>
-            </div>
-            `,
-          data() {
-            return {
-              text: "內部元件",
-            };
-          }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+        }
+      });
+      app.component("outText", {
+        template: `
+          <div class="box">
+              <slot> 預設值！</slot>
+          </div>
+          `,
+        data() {
+          return {
+            text: "內部元件",
+          };
+        }
+      });
+      app.mount("#app");
   </pre>
 
   <h3>slot 具名插槽(建立多個插槽)</h3>
@@ -105,42 +105,38 @@
     <li>template v-slot:name1 取代 slot name="name1"</li>
     <li>顯示結果:&lt;div class="box"&gt;波利卡片瘋兔卡片未插卡禿鷹卡片&lt;/div&gt;</li>
   </ol>
-  <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <out-text>
-          <template v-slot:header>波利卡片</template>
-          <template v-slot:main>瘋兔卡片</template>
-          <template v-slot:default></template>
-          <template v-slot:footer>禿鷹卡片</template>
-        </out-text>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外層元件",
-            }
+  <pre>
+    <div id="app">
+      <out-text>
+        <template v-slot:header>波利卡片</template>
+        <template v-slot:main>瘋兔卡片</template>
+        <template v-slot:default></template>
+        <template v-slot:footer>禿鷹卡片</template>
+      </out-text>
+    </div>
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外層元件",
           }
-        });
-        app.component("outText", {
-          template: `
-          <div class="box">
-              <slot name="header"></slot>
-              <slot name="main"></slot>
-              <slot>未插卡</slot>
-              <slot name="footer"></slot>
-          </div>
-          `,
-          data() {
-            return {
-              text: "內部元件",
-            };
-          }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+        }
+      });
+      app.component("outText", {
+        template: `
+        <div class="box">
+            <slot name="header"></slot>
+            <slot name="main"></slot>
+            <slot>未插卡</slot>
+            <slot name="footer"></slot>
+        </div>
+        `,
+        data() {
+          return {
+            text: "內部元件",
+          };
+        }
+      });
+      app.mount("#app");
   </pre>
 
 
@@ -149,44 +145,40 @@
     <li>內層元件要傳出去的資料 slot :ro="product" ， :ro為自定義名稱 ， product為內層元件的data</li>
     <li>外層元件模板 template v-slot:default="roprops"接收資料 ， v-slot:default 固定寫法 ， roprops為自定義名稱。</li>
   </ol>
-  <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <out-text>
-          <template v-slot:default="roprops">
-            內層元件插槽：
-            {{ roprops.ro.name }}
-          </template>
-        </out-text>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外層元件",
+  <pre>
+    <div id="app">
+      <out-text>
+        <template v-slot:default="roprops">
+          內層元件插槽：
+          {{ roprops.ro.name }}
+        </template>
+      </out-text>
+    </div>
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外層元件",
+          }
+        }
+      });
+      app.component("outText", {
+        template: `
+          <div class="header">
+            <slot :ro="product"></slot>
+          </div>
+        `,
+        data() {
+          return {
+            text: "內部元件",
+            product: {
+              name: "名刀不知火",
+              price: 200000,
+              city: "普隆德拉"
             }
-          }
-        });
-        app.component("outText", {
-          template: `
-            <div class="header">
-              <slot :ro="product"></slot>
-            </div>
-          `,
-          data() {
-            return {
-              text: "內部元件",
-              product: {
-                name: "名刀不知火",
-                price: 200000,
-                city: "普隆德拉"
-              }
-            };
-          }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+          };
+        }
+      });
+      app.mount("#app");
   </pre>
 
   <h3>Slot Props搭配Component Props</h3>
@@ -196,72 +188,57 @@
     <li>內層定義傳出去的資料slot :ro="product" :buy="buy"(資料是外部元件data，經由內部元件props提供)。</li>
     <li>外層模板改為物件方式接收v-slot:default="{ ro, buy }"。</li>
   </ol>
-  <pre class="prettyprint">
-    <!-- <xmp> -->
-      <div id="app">
-        <out-text :product="product">
-          <template v-slot:default="{ ro, buy }">
-            component props：{{ ro.name }} <br>
-            slot props：{{ buy }}
-          </template>
-        </out-text>
-      </div>
-      <!-- <script> -->
-        var app = Vue.createApp({
-          data() {
-            return {
-              text: "外層元件",
-              product: {
-                name: "名刀不知火",
-                price: 200000,
-                city: "普隆德拉",
-                amount: 5,
-              }
+  <pre>
+    <div id="app">
+      <out-text :product="product">
+        <template v-slot:default="{ ro, buy }">
+          component props：{{ ro.name }} <br>
+          slot props：{{ buy }}
+        </template>
+      </out-text>
+    </div>
+      var app = Vue.createApp({
+        data() {
+          return {
+            text: "外層元件",
+            product: {
+              name: "名刀不知火",
+              price: 200000,
+              city: "普隆德拉",
+              amount: 5,
             }
           }
-        });
-        app.component("outText", {
-          props: ['product'],
-          template: `
-              <div class="header">
-                <slot :ro="product" :buy="buy"></slot>
-              </div>
-            `,
-          data() {
-            return {
-              text: "內部元件",
-              buy: ""
-            };
-          },
-          created() {
-            if (this.product.amount > 1) {
-              this.buy = "可購買";
-            } else {
-              this.buy = "無法購買";
-            };
-          }
-        });
-        app.mount("#app");
-      <!-- </script> -->
-    <!-- </xmp> -->
+        }
+      });
+      app.component("outText", {
+        props: ['product'],
+        template: `
+            <div class="header">
+              <slot :ro="product" :buy="buy"></slot>
+            </div>
+          `,
+        data() {
+          return {
+            text: "內部元件",
+            buy: ""
+          };
+        },
+        created() {
+          if (this.product.amount > 1) {
+            this.buy = "可購買";
+          } else {
+            this.buy = "無法購買";
+          };
+        }
+      });
+      app.mount("#app");
   </pre>
-  <hr>
   <h3>參考</h3>
   <ul>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10278322" target="_blank">Vue.js 從零開始：Slot</a>
     </li>
-  </ul>
-  <hr>
+  </ul> -->
 </template>
-
 <style scoped>
-  /* .app{
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  } */
 </style>

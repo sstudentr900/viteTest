@@ -1,5 +1,13 @@
 <template>
   <h2>圖片懶加載</h2>
+  <h3>安裝vueuse</h3> 
+  <pre>
+    //安裝
+    npm i @vueuse/core
+
+    //引入
+    import { useWindowSize } from "@vueuse/core";
+  </pre>
   <h3>註冊全域指令</h3>
   <p>圖片進入可視視窗載入</p>
   <pre>
