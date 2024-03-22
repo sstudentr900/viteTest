@@ -29,6 +29,7 @@
     <router-link active-class='active' to="/imglazy">圖片懶加載</router-link>
     <router-link active-class='active' to="/transition">transition</router-link>
     <router-link active-class='active' to="/scrolltop">自動滾動</router-link>
+    <router-link active-class='active' to="/download">download</router-link>
     <router-link active-class='active' to="/addtable">新增修改表單</router-link>
     <router-link active-class='active' to="/shoppingcart">shoppingcart 購物車</router-link>
     <router-link active-class='active' to="/pinia">plug pinia 資料傳遞</router-link>

@@ -65,9 +65,18 @@
     <li>
       <a href="https://juejin.cn/post/7222096611635658811" target="_blank">TailwindCSS在vite项目中使用</a>
     </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/users/20162607/ironman/6658" target="_blank">tailwindcss - 從零開始學</a>
+    </li>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10334039" target="_blank">tailwindcss - 設定檔</a>
+    </li>
   </ul>
 </template>
 <script setup>
   import {reactive,ref} from 'vue'
-  // import '@/assets/style.css'; //引入tailwind.css
+  import '@/assets/style.css'; //引入tailwind.css
 </script>
+<style scoped>
+
+</style>
