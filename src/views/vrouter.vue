@@ -29,7 +29,14 @@
       ],
 
       //滾動行為
-      scrollBehavior(){
+      scrollBehavior(to, from, savedPosition){
+        // console.log('hash',to.hash)
+        if (to.hash) {
+          return{
+            el: to.hash,
+            behavior: 'smooth'
+          }
+        }
         return{
           left:0,
           top:0,
@@ -66,6 +73,26 @@
       routes: [
       ]
     })
+  </pre>
+  <hr>
+  <h3>滾動行為</h3>
+  <pre>
+    //滾動行為
+    scrollBehavior(to, from, savedPosition){
+      // console.log(判斷有xxx/#hash移動到該id='hash')
+      // console.log('xxx/#hash',to.hash)
+      if (to.hash) {
+        return{
+          el: to.hash,
+          behavior: 'smooth'
+        }
+      }
+      //console.log('每次載入滾到頭")
+      return{
+        left:0,
+        top:0,
+      }
+    }
   </pre>
   <hr>
   <h3>路由「:」</h3>

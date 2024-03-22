@@ -128,6 +128,7 @@ const router = createRouter({
     {path: '/slide4',component: slide4},
     {path: '/transition',component: transition},
     {path: '/addtable',component: addtable},
+    {path: '/tailwindcss',component: ()=>import('../views/tailwindcss.vue')},
     {path: '/sass',component: ()=>import('../views/sass.vue')},
     {path: '/nav',component: ()=>import('../views/nav.vue')},
     {path: '/scrolltop',component: ()=>import('../views/scrolltop.vue')},
