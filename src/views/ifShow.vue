@@ -108,7 +108,14 @@
   <pre>
     #template
 
-    &lt;a :class="{active:i==1}">link&lt;a>
+
+    &lt;a :class="{active:value}">link&lt;a>
+
+    有-
+    &lt;a :class="{'rotate-180':value}">link&lt;a>
+
+    3位元
+    &lt;a :class="value ? 'style1' : 'style2'">link&lt;a>
   </pre>
   <h3>參考</h3>
   <ul>
