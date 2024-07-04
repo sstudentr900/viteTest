@@ -119,23 +119,45 @@
     </li>
   </ul>
   <hr>
-  <h2>獲取dome value</h2>
+  <h2>獲取組件值</h2>
+  <p>一般組件 I.value.msg 就可取得該值</p>
+  <p>須注意在&lt;script setup>组件中要暴露出去的属性，使用 defineExpose 编译器</p>
   <pre>
-    #script setup
-    import { ref,onMounted } from 'vue';
-    const h1Ref = ref(null)
+    # 子组(index.vue)件代码片段
+    &lt;script setup>
+    import {ref} from "vue";
 
-    //須掛載完畢才能獲取
-    onMounted(()=>{
-      console.log(h1Ref.value)
-    })
+    function childFn() {
+        console.log('我是子组件');
+    }
+    
+    const msg = 'Hello World';
+    const num = ref(0);
 
-    #template
-    綁定ref對象
-    &lt;h1 ref="h1Ref">h1&lt;/h1>  
+    //暴露出去的属性
+    defineExpose({ 
+        msg,
+        num
+    });
+    &lt;/script>
+
+    #父组件代码片段
+    &lt;Index ref="I">&lt;/Index>
+    &lt;script setup>
+      import Index from "./index.vue";
+
+      const I = ref(null);
+      
+      function test() {
+          console.log(I.value.msg) // Hello World
+      }
+    &lt;/script>
   </pre>
   <h3>參考</h3>
   <ul>
+    <li>
+      <a href="https://juejin.cn/post/7025525656901386248" target="_blank">vue3 新增一个 defineExpose（‘expose’）功能 使用记录</a>
+    </li>
     <li>
       <a href="https://www.youtube.com/watch?v=4DEbi_DBjUM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=13" target="_blank">模版引用</a>
     </li>

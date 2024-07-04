@@ -26,6 +26,7 @@ import vroutes2 from '../views/vroutes2.vue'
 import vroutercatch from '../views/vroutercatch.vue'
 import shoppingcart from '../views/shoppingcart.vue'
 import von from '../views/von.vue'
+import vfile from '../views/vfile.vue'
 import nuxt from '../views/nuxt.vue'
 import error from '../views/error.vue'
 import life from '../views/life.vue'
@@ -88,6 +89,7 @@ const router = createRouter({
     {path: '/composables',component: composables,},
     {path: '/pinia',component: pinia,},
     {path: '/model',component: model,},
+    {path: '/vfile',component: vfile,},
     {path: '/slot',component: slot,},
     {path: '/register',component: Register},
     {path: '/naive',component: naive},

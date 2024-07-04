@@ -461,8 +461,8 @@
   </pre>-->
 </template>
 <script setup>
-  import axioss2 from '../components/axioss2.vue'
-  import axioss3 from '../components/axioss3.vue'
-  import axioss4 from '../components/axioss4.vue'
+  // import axioss2 from '../components/axioss2.vue'
+  // import axioss3 from '../components/axioss3.vue'
+  // import axioss4 from '../components/axioss4.vue'
 </script>
 <style></style>

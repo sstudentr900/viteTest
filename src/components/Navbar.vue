@@ -27,6 +27,7 @@
     <router-link active-class='active' to="/nav">選單</router-link>
     <router-link active-class='active' to="/imageerror">圖片載入</router-link>
     <router-link active-class='active' to="/imglazy">圖片懶加載</router-link>
+    <router-link active-class='active' to="/vfile">圖片上傳</router-link>
     <router-link active-class='active' to="/transition">transition</router-link>
     <router-link active-class='active' to="/scrolltop">自動滾動</router-link>
     <router-link active-class='active' to="/download">download</router-link>
