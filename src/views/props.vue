@@ -30,49 +30,48 @@
 
   //class 切換
   import props7 from '../components/props7.vue'
-
 </script>
 <template>
   <h2>Composition_sfc_props父傳子</h2>
   <pre>
-      #父
-      &lt;script setup>
-        import propHtml from '@/components/propHtml.vue';
-      &lt;/script>
-      &lt;template>
-        &lt;propHtml alt="logo"> &lt;/propHtml>
-      &lt;/template>
+    #父
+    &lt;script setup>
+      import propHtml from '@/components/propHtml.vue';
+    &lt;/script>
+    &lt;template>
+      &lt;propHtml alt="logo"> &lt;/propHtml>
+    &lt;/template>
 
-      #子
-      &lt;script setup>
-        //1.array 接收父值
-        const props_array = defineProps(['alt']);
-      
-        //2.object 接收父值
-        const props_object = defineProps({
-          str:{
-            type: String,
-            default: '',
-          },
-          bool:{
-            type: Boolean,
-            default: false,
-          },
-          obj:{
-            type: Object,
-            //obj 定義{}
-            default: ()=>({}),
-          },
-          arr:{
-            type: Array,
-            //arr 定義[]
-            default: ()=>[],
-          }
-        });
-      &lt;/script>
-      &lt;template>
-        &lt;h2 :alt=props_array.alt>&lbrace;&lbrace;props_array.alt&rbrace;&rbrace;&lt;/h2>
-      &lt;/template>
+    #子
+    &lt;script setup>
+      //1.array 接收父值
+      const props_array = defineProps(['alt']);
+    
+      //2.object 接收父值
+      const props_object = defineProps({
+        str:{
+          type: String,
+          default: '',
+        },
+        bool:{
+          type: Boolean,
+          default: false,
+        },
+        obj:{
+          type: Object,
+          //obj 定義{}
+          default: ()=>({}),
+        },
+        arr:{
+          type: Array,
+          //arr 定義[]
+          default: ()=>[],
+        }
+      });
+    &lt;/script>
+    &lt;template>
+      &lt;h2 :alt=props_array.alt>&lbrace;&lbrace;props_array.alt&rbrace;&rbrace;&lt;/h2>
+    &lt;/template>
   </pre>
   <h2>Composition_sfc_emit子傳父</h2>
   <pre>
@@ -124,7 +123,8 @@
   <h3>參考</h3>
   <ul>
     <li>
-      <a href="https://www.youtube.com/watch?v=LxWb_BRg-aM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=12" target="_blank">【黑马程序员】前端Vue3小兔鲜实战项目-Day1-12-组合式API下的父子通信 子传父
+      <a href="https://www.youtube.com/watch?v=LxWb_BRg-aM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=12" target="_blank">
+        【黑马程序员】前端Vue3小兔鲜实战项目-Day1-12-组合式API下的父子通信 子传父
       </a>
     </li>
   </ul>
@@ -212,14 +212,16 @@
       <a href="https://eudora.cc/posts/210303/">Components 間的資料傳遞</a>
     </li>
     <li>
-      <a
-        href="https://penueling.com/%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/vue3-%E7%9A%84%E8%B3%87%E6%96%99%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86%EF%BC%8Cprovide-inject%E3%80%81vuex/">Vue3的資料狀態管理，provide
-        / inject、vuex、props</a>
+      <a href="https://penueling.com/%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/vue3-%E7%9A%84%E8%B3%87%E6%96%99%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86%EF%BC%8Cprovide-inject%E3%80%81vuex/">
+        Vue3的資料狀態管理，provide
+        / inject、vuex、props
+      </a>
     </li>
     <li>
-      <a
-        href="https://linxinemily.github.io/2019/06/23/Vue%E7%88%BA%E5%AD%AB%E7%B5%84%E4%BB%B6%E8%B3%87%E6%96%99%E5%82%B3%E9%81%9E/">Vue
-        $attrs/$listeners 爺孫組件資料傳遞</a>
+      <a href="https://linxinemily.github.io/2019/06/23/Vue%E7%88%BA%E5%AD%AB%E7%B5%84%E4%BB%B6%E8%B3%87%E6%96%99%E5%82%B3%E9%81%9E/">
+        Vue
+        $attrs/$listeners 爺孫組件資料傳遞
+      </a>
     </li>
     <li>
       <a href="https://ithelp.ithome.com.tw/articles/10280361" target="_blank">Vue.js 從零開始</a>
@@ -306,7 +308,7 @@
   <pre>
     //父 
     &lt;script setup>
-      import { inject, reactive, computed } from "vue";
+      import { provide, reactive, computed } from "vue";
 
       //1.傳遞值
       provide('傳遞名','傳遞值')
@@ -338,6 +340,24 @@
   <ul>
     <li>
       <a href="https://www.youtube.com/watch?v=Bdqvd3c1pqg&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=14">【黑马程序员】前端Vue3小兔鲜实战项目-Day1-14-组合式API-provide和inject</a>
+    </li>
+  </ul>
+  <h2>父傳孫(provide/nject)只讀 readonly</h2>
+  <pre>
+    //父
+    setup(){
+      const count = ref(0);
+      provide('count', readonly(count)) // 使用readonly把保護起來，只能透過setCount來更動它。
+    }
+    //孫
+    setup(){
+      const count =inject('count') //因為被 readonly保護了，所以只可讀，不可直接修改他
+    }
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10277529">父傳孫(provide/nject)只讀</a>
     </li>
   </ul>
   <!-- <h2>各板本Props</h2>
@@ -532,7 +552,6 @@
         }
       }
   </pre> -->
-
   <!-- <h2>Options_sfc_v-model 與元件的雙向綁定 (Vue 3.x 新增)</h2>
   <pre>
       //父 template
@@ -551,7 +570,6 @@
         },
       }
   </pre> -->
-
   <!-- <h2>Options_sfc_update</h2>
   <pre>
       //子元件
@@ -602,7 +620,6 @@
     //父元件
     <BookList :inputText="searchText" @searchBook="searchText = $event.target.value" />
   </pre> -->
-
   <!-- <h2>資料傳遞</h2>
   <p>將內層資料傳遞到外層元件上使用</p>
   <img src="https://i.imgur.com/BVjQ2Ok.png" alt="">
@@ -648,7 +665,6 @@
     });
     app.mount("#app");
   </pre>  -->
-  
   <!-- <h2>provide/inject 傳值(隔山打牛)</h2>
   <ol>
     <li>provide傳遞的資料</li>
@@ -700,7 +716,6 @@
       });
       app.mount("#app");
   </pre> -->
-
   <!-- <h2>孫傳爺（emit / listeners）</h2>
 
   <h2>全域(vuex)</h2>
@@ -726,7 +741,6 @@
       });
       },
   </pre> -->
-
   <!-- <h2>mitt兩個子元件，彼此需要傳遞</h2>
   <ol>
     <li>npm安裝：npm install --save mitt</li>

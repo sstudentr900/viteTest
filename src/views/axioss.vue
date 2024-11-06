@@ -408,7 +408,6 @@
     &lt;div v-if='data'&gt;
       &lt;a :to='{ path:`/${data?.[1].id}` }>link&lt;a>
     &lt;/div&gt;
-
   </pre>
   <h3>參考</h3>
   <ul>
@@ -416,53 +415,6 @@
       <a href="https://www.youtube.com/watch?v=XcADwfqpj8g&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=55">基础数据渲染</a>
     </li>
   </ul>
-
-  <!-- <h3>options api axios</h3>
-  <pre>
-    import axios from "axios";
-    import { GET } from '@/api/api';
-    import { reqCategoryList } from '@/api';
-    export default {
-      data() {
-          return {
-              bookList: '',
-          };
-      },
-      //實例已創建
-      created() {
-          //axios
-          // var obj = this
-          // axios
-          // .get("https://bookshelf.goodideas-studio.com/api")
-          // .then(function(response){
-          //     console.log(response.data.list)
-          //     obj.bookList = response.data.list
-          // });
-      },
-      //此時可找到 DOM 節點
-      mounted(){
-          //使用封裝GET
-          // GET().then(function(response){
-          //     console.log(response.list)
-          // });
-  
-          //使用封裝reqCategoryList
-          reqCategoryList().then(function(response){
-              console.log(response)
-          })
-      }
-      // methods:{
-          // async axiosFn(){
-          //     const books = await GET();
-      // 	console.log(books.list); // 所有書單資料
-          // }
-      // }
-    } 
-  </pre>-->
 </template>
-<script setup>
-  // import axioss2 from '../components/axioss2.vue'
-  // import axioss3 from '../components/axioss3.vue'
-  // import axioss4 from '../components/axioss4.vue'
-</script>
+<script></script>
 <style></style>

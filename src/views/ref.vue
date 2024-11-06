@@ -119,6 +119,42 @@
     </li>
   </ul>
   <hr>
+  <h2>toRef & toRefs</h2>
+  <p>toRef 會將 原本 響應式物件內的一個屬性抽離出來 包裝成一個 ref 的值，因為與原本對象 是連接的，所以修改時，原本的值也會跟著變動。</p>
+  <pre>
+    const userInfo= reactive({
+      name:'Winnie',
+      age: 24
+    })
+    const userName = toRef(userInfo, 'name') //將響應物件裡的屬性抽離出來 使用
+
+    onUpdated(()=>{
+      console.log('toRef:',userName.value)  
+      console.log('元物件:',userInfo.name) // 元物件內的name
+    })
+    return {
+      userName //回傳 name屬性 給 template使用
+    }
+  </pre>
+  <p>toRefs 會將原本 響應式物件 轉為 普通響應式物件。其中在toRefs後的物件與值 是引用關係 且 每個值都轉為 ref 來達到 內部值 保有響應性。</p>
+  <pre>
+    const setCount= reactive({
+      count:1,
+      add: ()=> setCount.count ++
+    })
+    // const { count, add } = toRefs(info) 也可以這樣來解構，可以選擇要用的就好了。
+    
+    return {
+      ...toRefs(setCount)
+    }
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10275259" target="_blank">toRef</a>
+    </li>
+  </ul>
+  <hr>
   <h2>獲取組件值</h2>
   <p>一般組件 I.value.msg 就可取得該值</p>
   <p>須注意在&lt;script setup>组件中要暴露出去的属性，使用 defineExpose 编译器</p>
@@ -160,6 +196,37 @@
     </li>
     <li>
       <a href="https://www.youtube.com/watch?v=4DEbi_DBjUM&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=13" target="_blank">模版引用</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>多個動態元素 我們要如何抓到各個Dom元素呢？</h2>
+  <pre>
+    &lt;template>
+      &lt;div v-for ="(num,i) in nums" :ref="(el)=>{ divs[i] = el }">&#123;&#123; num &#125;&#125;&lt;/div>
+    &lt;/template>
+
+    &lt;script>
+      import { ref, reactive} form 'vue'
+      export default{
+        setup(){
+            const nums = reactive([1,2,3])
+            const divs = ref([]); 
+
+          return{ nums,divs }
+        }
+      }
+    &lt;/script>
+  </pre>
+  <h3>需要注意的地方，因為Dom節點是動態產生的，有可能因為 nums 內容順序更動而改變，所以在每次更動前我們需要在 onBeforeUpdate重置一下</h3>
+  <pre>
+    onBeforeUpdate(()=>{
+      divs.value =[] 
+    })
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10274581" target="_blank">多個動態元素 我們要如何抓到各個Dom元素呢</a>
     </li>
   </ul>
 </template>

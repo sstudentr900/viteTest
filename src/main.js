@@ -1,12 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 // import './assets/all.scss';
+import '@/assets/style.css'; //引入tailwind.css
 import './style.css'
 // 引入路由
 import router from './router'  
 import axios from 'axios';
 //pinia 
 import { createPinia } from 'pinia'
+
+
 
 // 引入 Vee Validate 元件跟功能
 import {Form, Field, ErrorMessage, defineRule, configure} from 'vee-validate'

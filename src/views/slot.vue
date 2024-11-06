@@ -9,6 +9,21 @@
 <template>
   <h2>Slot 插槽</h2>
   <h3>slot_組件之間放傳遞內容(單個)</h3>
+  <pre>
+    //Slot2.vue 內容
+    &lt;template>
+      &lt;slot>沒有值，填入預設值&lt;/slot>
+    &lt;/template>
+
+    //script 引用
+    import Slot2 from '../components/Slot2.vue'
+    
+    //template 使用
+    &lt;slot2>
+      &lt;p>slot2傳遞內容&lt;/p>
+    &lt;/slot2>
+  </pre>
+  <p>範例</p>
   <slot2>
     <p>slot2傳遞內容</p>
   </slot2>
@@ -16,6 +31,31 @@
   <h3>slot_組件之間放傳遞內容(多個)</h3>
   <p>改完要重整資料有時跑不出來</p>
   <p>外#name 去區分傳遞內部name=name位置</p>
+  <pre>
+    //Slot3.vue 內容
+    &lt;template>
+      &lt;div>
+        &lt;slot name="icon">&lt;/slot>
+      &lt;/div>
+      &lt;div>
+        &lt;slot name="btn">&lt;/slot>
+      &lt;/div>
+    &lt;/template>
+
+    //script 引用
+    import Slot3 from '../components/Slot3.vue'
+    
+    //template 使用
+    &lt;slot3>
+      &lt;template #icon>
+        &lt;p>icon&lt;/p>
+      &lt;/template>
+      &lt;template #btn>
+        &lt;p>btn&lt;/p>
+      &lt;/template>
+    &lt;/slot3>
+  </pre>
+  <p>範例</p>
   <slot3>
     <template #icon>
       <p>icon</p>
@@ -28,6 +68,24 @@
   <h3>slot_內傳外</h3>
   <p>改完要重整資料有時跑不出來</p>
   <p>#btn="{ text }" 內部(text)資料往外傳</p>
+  <pre>
+    //Slot4.vue 內容
+    &lt;template>
+      &lt;slot name="btn" text="內部的值" msg="內部的值2">預設值&lt;/slot>
+    &lt;/template>
+
+    //script 引用
+    import Slot4 from '../components/Slot4.vue'
+    
+    //template 使用
+    &lt;slot4>
+      &lt;template #btn="{ text,msg }">
+        &lt;p>{{ text }}&lt;/p>
+        &lt;p>{{ msg }}&lt;/p>
+      &lt;/template>
+    &lt;/slot4>
+  </pre>
+  <p>範例</p>
   <slot4>
     <template #btn="{ text,msg }">
       <p>{{ text }}</p>
@@ -38,7 +96,25 @@
   <h3>slot_外傳內</h3>
   <p>改完要重整資料有時跑不出來</p>
   <p>裡面一定要設定defineProps 不然會抱錯(not be automatically inherited)</p>
-  <Slot5 :name="name">
+  <pre>
+    //Slot5.vue 內容
+    &lt;template>
+      &lt;slot>預設值: &#123;&#123; title &#125;&#125; &lt;/slot>
+    &lt;/template>
+    &lt;script setup>
+      const props = defineProps(['title'])
+    &lt;/script>
+
+    //script 引用
+    import Slot5 from '../components/Slot5.vue'
+    
+    //template 使用
+    &lt;Slot5 :title="name">
+      &lt;p>123&lt;/p>
+    &lt;/Slot5>
+  </pre>
+  <p>範例</p>
+  <Slot5 name="name">
     <p>123</p>
   </Slot5>
   <h3>參考</h3>
@@ -59,7 +135,6 @@
       <a href="https://www.youtube.com/watch?v=GWp-lvnWF3c&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=37">【黑马程序员】前端Vue3小兔鲜实战项目-Day3-04-Home-新鲜好物业务实现</a>
     </li>
   </ul>
-  <hr>
   <!-- <h2>Slot</h2>
   <ol>
     <li>預設:顯示&lt;div class="box"&gt;&lt;div&gt; 預設值！&lt;/div&gt;&lt;/div&gt;</li>

@@ -128,13 +128,15 @@ const router = createRouter({
     {path: '/slide2',component: slide2},
     {path: '/slide3',component: slide3},
     {path: '/slide4',component: slide4},
+    {path: '/slide5',component: ()=>import('../views/slide5.vue')},
     {path: '/transition',component: transition},
     {path: '/addtable',component: addtable},
     {path: '/download',component: ()=>import('../views/download.vue')},
-    {path: '/tailwindcss',component: ()=>import('../views/tailwindcss.vue')},
     {path: '/sass',component: ()=>import('../views/sass.vue')},
     {path: '/nav',component: ()=>import('../views/nav.vue')},
     {path: '/scrolltop',component: ()=>import('../views/scrolltop.vue')},
+    {path: '/input_checkbox',component: ()=>import('../views/input_checkbox.vue')},
+    {path: '/countdown',component: ()=>import('../views/countdown.vue')},
     //children
     {
       path: '/children',

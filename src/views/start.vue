@@ -1,34 +1,12 @@
 <template>
-  <h2>start</h2>
-  <h3>Options API</h3>
-  <pre>
-    #script
-    export default{
-      data(){
-        return {
-          count: 0
-        }
-      },
-      methods:{
-        addcount(){
-          this.count++
-        }
-      }
-    }
-  </pre>
-  <hr>
-  <h3>Composition API(組合式api)</h3>
-  <pre>
-    #script setup
-    import {ref} form 'vue'
-    const count = ref(0)
-    const addcount=()=>count.value++
-  </pre>
-  <hr>
-  <h3>安裝 create-vue</h3>
+  <h2>安裝 create-vue</h2>
   <p>需node.js 16.0 以上</p>
   <pre>
-    npm init vue@latest
+    npm init vue@latest //安裝vue
+    npm install //安裝插件
+    npm run dev //執行專案
+    npm run build //打包
+    npm run preview //預覽打包後的dist專案
   </pre>
   <h3>參考</h3>
   <ul>
@@ -45,21 +23,26 @@
   <hr>
   <h2>vite 資料夾</h2>
   <pre>
-      vite.config                             //vite設定檔
+    vite.config                             //vite設定檔
       README.md                               //說明檔
       package.json                            //專案設定檔
         --dependencies                        //專案依賴
         --devDependencies                     //專案開發
-      .gitignore                              //忽略
+      .gitignore                              //git 忽略
       public                                  //靜態資源(不會被打包 完全複製)
       .vscode                                 //vscode設定檔
       src
         --apis                                //api接口
+        --compoenents                         //放元件
         --composables                         //組合函數
         --directives                          //全局指令
         --style                               //全局樣式
         --utils                               //工具函數
-        --assets                              //會被打包
+        --assets                              //靜態資源圖片css 會被打包
+        --views                               //頁面
+        --router                              //路由
+        --stores                              //pinia
+        --main.js                             //程式進入點
   </pre>
   <h3>參考</h3>
   <ul>
@@ -71,6 +54,5 @@
     </li>
   </ul>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style></style>

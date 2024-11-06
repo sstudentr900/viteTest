@@ -1,14 +1,10 @@
 <template>
   <h2>Composition computed</h2>
-  <h3></h3>
-  <p></p>
-  <ul>
-    <li>silde-effect 副作用?是用來重組或計算資料不應該異步請求或修改dom</li>
-    <li>會自動響應ref</li>
-    <li>屬性因該是只讀</li>
-    <li>無法在template傳參,要傳參請用函數傳直</li>
-    <li>一般函數更新都會觸發函數,computed監聽變數改變才會觸發函數</li>
-  </ul>
+  <p>silde-effect 副作用?是用來重組或計算資料不應該異步請求或修改dom</p>
+  <p>會自動響應ref</p>
+  <p>屬性因該是只讀</p>
+  <p>無法在template傳參,要傳參請用函數傳直</p>
+  <p>一般函數更新都會觸發函數,computed監聽變數改變才會觸發函數</p>
   <pre>
     &lt;script setup>
       import {ref,computed} from 'vue'
@@ -31,12 +27,16 @@
       &lt;div>計算後數組,&lbrace;&lbrace; computedList &rbrace;&rbrace;&lt;/div>
     &lt;/template>
   </pre>
+  <h3>範例</h3>
   <div>{{ list }}</div>
   <div>{{ computedList }}</div>
   <h3>參考</h3>
   <ul>
-    <li><a href="https://www.youtube.com/watch?v=O1BfveCr6HA&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=7">【黑马程序员】前端Vue3小兔鲜实战项目-Day1-07-组合式API-computed
-    </a></li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=O1BfveCr6HA&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=7">
+        【黑马程序员】前端Vue3小兔鲜实战项目-Day1-07-组合式API-computed
+      </a>
+    </li>
   </ul>
   <hr>
   <h2>Composition computed 和 一般函數差別</h2>
@@ -69,6 +69,7 @@
       &lt;p>&lbrace;&lbrace;firstName&rbrace;&rbrace; &lbrace;&lbrace;lastName&rbrace;&rbrace;&lt;/p>
     &lt;/template>
   </pre>
+  <h3>範例</h3>
   <input type="text" v-model="fullName">
   <p>{{firstName}} {{lastName}}</p>
   <h3>參考</h3>
@@ -277,6 +278,5 @@
       lastName.value = newlastName
     }
   })
-
 </script>
 <style></style>

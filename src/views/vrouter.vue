@@ -1,5 +1,9 @@
 <template>
   <h2>Vue-Router</h2>
+  <h3>安裝</h3>
+  <pre>
+    npm install vue-router@next
+  </pre>
   <h3>新增router</h3>
   <pre>
     #src/router/index.js

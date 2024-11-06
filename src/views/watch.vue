@@ -97,6 +97,28 @@
       <a href="https://www.youtube.com/watch?v=_MNg54De_ts&list=PLFbd8KZNbe---KNiUInMOOSEtmfudpONG&index=9">API-watch</a>
     </li>
   </ul>
+  <h2>watchEffect</h2>
+  <p>watchEffect()不用指定要監聽的目標，只要在callback函式中對應響應式資料更新後就會依照對應資料來執行了，而與 watch 不同的是，watchEffect()在初始setup()的時候，就會先執行一次了。</p>
+  <pre>
+    &lt;script setup>
+      const stop = watchEffect(()=>{
+        console.log(name.value)
+      })
+      
+      stop(); //停止監聽
+    &lt;/script>
+
+    &lt;template>
+      &lt;div>&lbrace;&lbrace;state.count&rbrace;&rbrace;&lt;/div>
+      &lt;div>button @click="changCount">
+    &lt;/template>
+  </pre>
+  <h3>參考</h3>
+  <ul>
+    <li>
+      <a href="https://ithelp.ithome.com.tw/articles/10276627">watchEffect</a>
+    </li>
+  </ul>
   <h2>vue3监听路由变化</h2>
   <pre>
     &lt;script setup>
